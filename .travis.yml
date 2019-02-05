@@ -3,6 +3,8 @@ os: linux
 group: stable
 
 install:
+ - sudo aptitude install debian-keyring debian-archive-keyring
+ - sudo apt-get update
  - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty universe"
  - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty main"
  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
