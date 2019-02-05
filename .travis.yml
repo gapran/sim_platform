@@ -1,6 +1,7 @@
 language: cpp
 os: linux
 group: stable
+dist: trusty
 
 install:
  - sudo apt-get update
