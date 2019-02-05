@@ -4,7 +4,7 @@ group: stable
 
 install:
  - sudo apt-get update
- - sudo apt-get install qtdeclarative5-dev qt5-default
+ - sudo apt-get install qt5-default
 
 script:
  - cd SimPlatform
