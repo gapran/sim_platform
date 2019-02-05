@@ -1,9 +1,9 @@
 language: cpp
 os: linux
 group: stable
-dist: trusty
 
 install:
+ - sudo aptitude install debian-keyring debian-archive-keyring
  - sudo apt-get update
  - sudo apt-get install qt5-default
 
