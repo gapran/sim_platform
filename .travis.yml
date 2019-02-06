@@ -12,4 +12,5 @@ script:
  - cd SimPlatform
  - qmake -project "QT = core gui widgets" 
  - qmake SimPlatform.pro
+ - qmake --version
  - make
