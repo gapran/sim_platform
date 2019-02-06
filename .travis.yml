@@ -11,6 +11,9 @@ install:
  - sudo apt-get install build-essential g++
  - sudo apt-get install qt5-default qt5-qmake qtbase5-dev-tools
  - sudo apt install qt511-meta-full
+ - ls /usr/lib/x86_64-linux-gnu/qtchooser
+ - ls /usr/lib/x86_64-linux-gnu/qt-default/qtchooser
+ - ls /etc/xdg/qtchooser
  
 script:
  - cd SimPlatform
