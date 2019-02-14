@@ -4,6 +4,7 @@
 int row;
 int column;
 QStringList tableHeaders;
+QStringList tableNamesColumn;
 
 Table::Table(QWidget *parent) : QDialog(parent) {
 
@@ -13,9 +14,12 @@ Table::Table(QWidget *parent) : QDialog(parent) {
     table->setRowCount(row);
     table->setColumnCount(column);
 
-    //tableHeader<<"a"<<"b"<<"c"<<"d"<<"e";
     table->setHorizontalHeaderLabels(tableHeaders);
 
+    //Add Names column values
+    for (int var = 0; var < tableNamesColumn.size(); ++var) {
+        table->setItem(var, 0, new QTableWidgetItem(tableNamesColumn[var]));
+    }
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(table);

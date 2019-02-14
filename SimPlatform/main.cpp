@@ -10,6 +10,7 @@ using namespace std;
 extern int row;
 extern int column;
 extern QStringList tableHeaders;
+extern QStringList tableNamesColumn;
 
 void createTable(int a, int b) {
 
@@ -22,6 +23,12 @@ void addTableHeaders(QStringList tableHeadersList) {
 
     for (int var = 0; var < tableHeadersList.size(); ++var) {
         tableHeaders.append(tableHeadersList[var]);
+    }
+}
+
+void addTableNameColumns(QStringList tableNameColumn) {
+    for (int var = 0; var < tableNameColumn.size(); ++var) {
+        tableNamesColumn.append(tableNameColumn[var]);
     }
 }
 
@@ -48,9 +55,14 @@ int main(int argc, char *argv[]) {
         mainWin.loadFile(parser.positionalArguments().first());
     mainWin.show();
 
+    //Table
     createTable(5, 5);
+
     QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date"};
     addTableHeaders(tableHeadersList);
+
+    QStringList insertNameColumn = {"Alex", "John", "Mike", "Bob", "Max"};
+    addTableNameColumns(insertNameColumn);
 
     Table *window = new Table;
     window->showMaximized();
