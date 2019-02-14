@@ -5,13 +5,23 @@
 #include "mainwindow.h"
 #include "table.h"
 
+using namespace std;
+
+extern int row;
+extern int column;
+
+void createTable(int a, int b) {
+
+    row = a;
+    column = b;
+
+}
+
 /*
  * Example from:
  * http://doc.qt.io/qt-5/qtwidgets-mainwindows-application-example.html
  */
-
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     Q_INIT_RESOURCE(application);
 
     QApplication app(argc, argv);
@@ -30,8 +40,10 @@ int main(int argc, char *argv[])
         mainWin.loadFile(parser.positionalArguments().first());
     mainWin.show();
 
+    createTable(5, 5);
+
     Table *window = new Table;
-      window->showMaximized();
+    window->showMaximized();
 
     return app.exec();
 }
