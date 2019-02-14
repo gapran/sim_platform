@@ -3,6 +3,7 @@
 #include <QCommandLineOption>
 
 #include "mainwindow.h"
+#include "table.h"
 
 /*
  * Example from:
@@ -28,5 +29,9 @@ int main(int argc, char *argv[])
     if (!parser.positionalArguments().isEmpty())
         mainWin.loadFile(parser.positionalArguments().first());
     mainWin.show();
+
+    Table *window = new Table;
+      window->showMaximized();
+
     return app.exec();
 }
