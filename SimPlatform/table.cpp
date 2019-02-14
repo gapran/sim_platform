@@ -3,7 +3,7 @@
 
 int row;
 int column;
-QStringList tableHeader;
+QStringList tableHeaders;
 
 Table::Table(QWidget *parent) : QDialog(parent) {
 
@@ -13,8 +13,8 @@ Table::Table(QWidget *parent) : QDialog(parent) {
     table->setRowCount(row);
     table->setColumnCount(column);
 
-    tableHeader<<"a"<<"b"<<"c"<<"d"<<"e";
-    table->setHorizontalHeaderLabels(tableHeader);
+    //tableHeader<<"a"<<"b"<<"c"<<"d"<<"e";
+    table->setHorizontalHeaderLabels(tableHeaders);
 
 
     QHBoxLayout *layout = new QHBoxLayout;

@@ -9,12 +9,20 @@ using namespace std;
 
 extern int row;
 extern int column;
+extern QStringList tableHeaders;
 
 void createTable(int a, int b) {
 
     row = a;
     column = b;
 
+}
+
+void addTableHeaders(QStringList tableHeadersList) {
+
+    for (int var = 0; var < tableHeadersList.size(); ++var) {
+        tableHeaders.append(tableHeadersList[var]);
+    }
 }
 
 /*
@@ -41,6 +49,8 @@ int main(int argc, char *argv[]) {
     mainWin.show();
 
     createTable(5, 5);
+    QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date"};
+    addTableHeaders(tableHeadersList);
 
     Table *window = new Table;
     window->showMaximized();
