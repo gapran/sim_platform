@@ -6,7 +6,10 @@ int column;
 QStringList tableHeaders;
 QStringList tableNamesColumn;
 QStringList tableStatusColumnValues;
+QStringList tableStartDatesColumn;
+QStringList tableLastUpdatesColumn;
 QStringList tableDescriptionsColumn;
+
 
 Table::Table(QWidget *parent) : QDialog(parent) {
 
@@ -28,9 +31,19 @@ Table::Table(QWidget *parent) : QDialog(parent) {
         table->setItem(i, 1, new QTableWidgetItem(tableStatusColumnValues[i]));
     }
 
+    //Add Start Date column values
+    for (int j = 0; j < tableStartDatesColumn.size(); ++j) {
+        table->setItem(j, 3, new QTableWidgetItem(tableStartDatesColumn[j]));
+    }
+
+    //Add Last Update column values
+    for (int k = 0; k < tableLastUpdatesColumn.size(); ++k) {
+        table->setItem(k, 4, new QTableWidgetItem(tableLastUpdatesColumn[k]));
+    }
+
     //Add Description column values
-    for (int k = 0; k < tableDescriptionsColumn.size(); ++k) {
-        table->setItem(k, 5, new QTableWidgetItem(tableDescriptionsColumn[k]));
+    for (int l = 0; l < tableDescriptionsColumn.size(); ++l) {
+        table->setItem(l, 5, new QTableWidgetItem(tableDescriptionsColumn[l]));
     }
 
 

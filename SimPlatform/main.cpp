@@ -13,6 +13,9 @@ extern QStringList tableHeaders;
 extern QStringList tableNamesColumn;
 extern QStringList tableStatusColumnValues;
 extern QStringList tableDescriptionsColumn;
+extern QStringList tableStartDatesColumn;
+extern QStringList tableLastUpdatesColumn;
+
 
 void createTable(int a, int b) {
 
@@ -43,6 +46,18 @@ void addTableStatusColumns(QStringList tableStatusColumn) {
 void addTableDescriptionColumns(QStringList tableDescriptionColumn) {
     for (int k = 0; k < tableDescriptionColumn.size(); ++k) {
         tableDescriptionsColumn.append(tableDescriptionColumn[k]);
+    }
+}
+
+void addTableStartDateColumns(QStringList tableStartDateColumn) {
+    for (int l = 0; l < tableStartDateColumn.size(); ++l) {
+        tableStartDatesColumn.append(tableStartDateColumn[l]);
+    }
+}
+
+void addTableLastUpdateColumns(QStringList tableLastUpdateColumn) {
+    for (int m = 0; m < tableLastUpdateColumn.size(); ++m) {
+        tableLastUpdatesColumn.append(tableLastUpdateColumn[m]);
     }
 }
 
@@ -80,6 +95,12 @@ int main(int argc, char *argv[]) {
 
     QStringList insertStatusColumn = {"fixed", "working", "not fixed", "fixed", "fixed"};
     addTableStatusColumns(insertStatusColumn);
+
+    QStringList insertStartDateColumn = {"16-02-2019", "16-02-2019", "15-02-2019", "15-02-2019", "15-02-2019"};
+    addTableStartDateColumns(insertStartDateColumn);
+
+    QStringList insertLastUpdateColumn = {"17-02-2019", "18-02-2019", "16-02-2019", "17-02-2019", "17-02-2019"};
+    addTableLastUpdateColumns(insertLastUpdateColumn);
 
     QStringList insertDescriptionColumn = {"des1", "des2", "des3", "des4", "des5"};
     addTableDescriptionColumns(insertDescriptionColumn);
