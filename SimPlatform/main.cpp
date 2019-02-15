@@ -11,6 +11,7 @@ extern int row;
 extern int column;
 extern QStringList tableHeaders;
 extern QStringList tableNamesColumn;
+extern QStringList tableStatusColumn;
 
 void createTable(int a, int b) {
 
@@ -29,6 +30,12 @@ void addTableHeaders(QStringList tableHeadersList) {
 void addTableNameColumns(QStringList tableNameColumn) {
     for (int var = 0; var < tableNameColumn.size(); ++var) {
         tableNamesColumn.append(tableNameColumn[var]);
+    }
+}
+
+void addTableStatusColumns(QStringList tableStatusColumn) {
+    for (int j = 0; j < tableStatusColumn.size(); ++j) {
+        tableStatusColumn.append(tableStatusColumn[j]);
     }
 }
 
@@ -63,6 +70,9 @@ int main(int argc, char *argv[]) {
 
     QStringList insertNameColumn = {"Alex", "John", "Mike", "Bob", "Max"};
     addTableNameColumns(insertNameColumn);
+
+    QStringList insertStatusColumn = {"fixed","working","not fixed","fixed","fixed"};
+    addTableStatusColumns(insertStatusColumn);
 
     Table *window = new Table;
     window->showMaximized();
