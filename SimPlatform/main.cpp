@@ -11,7 +11,7 @@ extern int row;
 extern int column;
 extern QStringList tableHeaders;
 extern QStringList tableNamesColumn;
-//extern QStringList tableStatusColumn;
+extern QStringList tableStatusColumnValues;
 extern QStringList tableDescriptionsColumn;
 
 void createTable(int a, int b) {
@@ -34,11 +34,11 @@ void addTableNameColumns(QStringList tableNameColumn) {
     }
 }
 
-//void addTableStatusColumns(QStringList tableStatusColumn) {
-//    for (int j = 0; j < tableStatusColumn.size(); ++j) {
-//        tableStatusesColumn.append(tableStatusColumn[j]);
-//    }
-//}
+void addTableStatusColumns(QStringList tableStatusColumn) {
+    for (int j = 0; j < tableStatusColumn.size(); ++j) {
+        tableStatusColumnValues.append(tableStatusColumn[j]);
+    }
+}
 
 void addTableDescriptionColumns(QStringList tableDescriptionColumn) {
     for (int k = 0; k < tableDescriptionColumn.size(); ++k) {
@@ -78,8 +78,8 @@ int main(int argc, char *argv[]) {
     QStringList insertNameColumn = {"Alex", "John", "Mike", "Bob", "Max"};
     addTableNameColumns(insertNameColumn);
 
-//    QStringList insertStatusColumn = {"fixed", "working", "not fixed", "fixed", "fixed"};
-//    addTableStatusColumns(insertStatusColumn);
+    QStringList insertStatusColumn = {"fixed", "working", "not fixed", "fixed", "fixed"};
+    addTableStatusColumns(insertStatusColumn);
 
     QStringList insertDescriptionColumn = {"des1", "des2", "des3", "des4", "des5"};
     addTableDescriptionColumns(insertDescriptionColumn);
