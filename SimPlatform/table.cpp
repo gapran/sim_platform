@@ -5,7 +5,8 @@ int row;
 int column;
 QStringList tableHeaders;
 QStringList tableNamesColumn;
-QStringList tableStatusColumn;
+//QStringList tableStatusColumn;
+QStringList tableDescriptionsColumn;
 
 Table::Table(QWidget *parent) : QDialog(parent) {
 
@@ -22,10 +23,16 @@ Table::Table(QWidget *parent) : QDialog(parent) {
         table->setItem(var, 0, new QTableWidgetItem(tableNamesColumn[var]));
     }
 
-//    //Add Status column values
+    //Add Status column values
 //    for (int i = 0; i < tableStatusColumn.size(); ++i) {
 //        table->setItem(i, 1, new QTableWidgetItem(tableStatusColumn[i]));
 //    }
+
+    //Add Description column values
+    for (int k = 0; k < tableDescriptionsColumn.size(); ++k) {
+        table->setItem(k, 5, new QTableWidgetItem(tableDescriptionsColumn[k]));
+    }
+
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(table);

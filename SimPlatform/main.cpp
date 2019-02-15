@@ -11,7 +11,8 @@ extern int row;
 extern int column;
 extern QStringList tableHeaders;
 extern QStringList tableNamesColumn;
-extern QStringList tableStatusColumn;
+//extern QStringList tableStatusColumn;
+extern QStringList tableDescriptionsColumn;
 
 void createTable(int a, int b) {
 
@@ -33,9 +34,15 @@ void addTableNameColumns(QStringList tableNameColumn) {
     }
 }
 
-void addTableStatusColumns(QStringList tableStatusColumn) {
-    for (int j = 0; j < tableStatusColumn.size(); ++j) {
-        tableStatusColumn.append(tableStatusColumn[j]);
+//void addTableStatusColumns(QStringList tableStatusColumn) {
+//    for (int j = 0; j < tableStatusColumn.size(); ++j) {
+//        tableStatusesColumn.append(tableStatusColumn[j]);
+//    }
+//}
+
+void addTableDescriptionColumns(QStringList tableDescriptionColumn) {
+    for (int k = 0; k < tableDescriptionColumn.size(); ++k) {
+        tableDescriptionsColumn.append(tableDescriptionColumn[k]);
     }
 }
 
@@ -63,16 +70,19 @@ int main(int argc, char *argv[]) {
     mainWin.show();
 
     //Table
-    createTable(5, 5);
+    createTable(5, 6);
 
-    QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date"};
+    QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date", "Description"};
     addTableHeaders(tableHeadersList);
 
     QStringList insertNameColumn = {"Alex", "John", "Mike", "Bob", "Max"};
     addTableNameColumns(insertNameColumn);
 
-    QStringList insertStatusColumn = {"fixed","working","not fixed","fixed","fixed"};
-    addTableStatusColumns(insertStatusColumn);
+//    QStringList insertStatusColumn = {"fixed", "working", "not fixed", "fixed", "fixed"};
+//    addTableStatusColumns(insertStatusColumn);
+
+    QStringList insertDescriptionColumn = {"des1", "des2", "des3", "des4", "des5"};
+    addTableDescriptionColumns(insertDescriptionColumn);
 
     Table *window = new Table;
     window->showMaximized();
