@@ -12,9 +12,10 @@ extern int column;
 extern QStringList tableHeaders;
 extern QStringList tableNamesColumn;
 extern QStringList tableStatusColumnValues;
-extern QStringList tableDescriptionsColumn;
 extern QStringList tableStartDatesColumn;
 extern QStringList tableLastUpdatesColumn;
+extern QStringList tableDescriptionsColumn;
+extern QStringList tableActionsColumn;
 
 
 void createTable(int a, int b) {
@@ -43,12 +44,6 @@ void addTableStatusColumns(QStringList tableStatusColumn) {
     }
 }
 
-void addTableDescriptionColumns(QStringList tableDescriptionColumn) {
-    for (int k = 0; k < tableDescriptionColumn.size(); ++k) {
-        tableDescriptionsColumn.append(tableDescriptionColumn[k]);
-    }
-}
-
 void addTableStartDateColumns(QStringList tableStartDateColumn) {
     for (int l = 0; l < tableStartDateColumn.size(); ++l) {
         tableStartDatesColumn.append(tableStartDateColumn[l]);
@@ -58,6 +53,18 @@ void addTableStartDateColumns(QStringList tableStartDateColumn) {
 void addTableLastUpdateColumns(QStringList tableLastUpdateColumn) {
     for (int m = 0; m < tableLastUpdateColumn.size(); ++m) {
         tableLastUpdatesColumn.append(tableLastUpdateColumn[m]);
+    }
+}
+
+void addTableDescriptionColumns(QStringList tableDescriptionColumn) {
+    for (int k = 0; k < tableDescriptionColumn.size(); ++k) {
+        tableDescriptionsColumn.append(tableDescriptionColumn[k]);
+    }
+}
+
+void addTableActionColumns(QStringList tableActionColumn) {
+    for (int n = 0; n < tableActionColumn.size(); ++n) {
+        tableActionsColumn.append(tableActionColumn[n]);
     }
 }
 
@@ -84,10 +91,10 @@ int main(int argc, char *argv[]) {
         mainWin.loadFile(parser.positionalArguments().first());
     mainWin.show();
 
-    //Table
-    createTable(5, 6);
+    //Create Table with rows and columns
+    createTable(5, 7);
 
-    QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date", "Description"};
+    QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date", "Description","Action"};
     addTableHeaders(tableHeadersList);
 
     QStringList insertNameColumn = {"Alex", "John", "Mike", "Bob", "Max"};
@@ -104,6 +111,9 @@ int main(int argc, char *argv[]) {
 
     QStringList insertDescriptionColumn = {"des1", "des2", "des3", "des4", "des5"};
     addTableDescriptionColumns(insertDescriptionColumn);
+
+    QStringList insertActionColumn = {"action1", "action2", "action3", "action4", "action5"};
+    addTableActionColumns(insertActionColumn);
 
     Table *window = new Table;
     window->showMaximized();

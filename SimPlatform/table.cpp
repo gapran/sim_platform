@@ -9,6 +9,8 @@ QStringList tableStatusColumnValues;
 QStringList tableStartDatesColumn;
 QStringList tableLastUpdatesColumn;
 QStringList tableDescriptionsColumn;
+QStringList tableActionsColumn;
+
 
 
 Table::Table(QWidget *parent) : QDialog(parent) {
@@ -44,6 +46,11 @@ Table::Table(QWidget *parent) : QDialog(parent) {
     //Add Description column values
     for (int l = 0; l < tableDescriptionsColumn.size(); ++l) {
         table->setItem(l, 5, new QTableWidgetItem(tableDescriptionsColumn[l]));
+    }
+
+    //Add Action column values
+    for (int n = 0; n < tableActionsColumn.size(); ++n) {
+        table->setItem(n, 6, new QTableWidgetItem(tableActionsColumn[n]));
     }
 
 
