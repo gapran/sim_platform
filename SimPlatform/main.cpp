@@ -5,6 +5,8 @@
 #include "mainwindow.h"
 #include "table.h"
 
+#include <iostream>
+
 using namespace std;
 
 extern int row;
@@ -16,7 +18,6 @@ extern QStringList tableStartDatesColumn;
 extern QStringList tableLastUpdatesColumn;
 extern QStringList tableDescriptionsColumn;
 extern QStringList tableActionsColumn;
-
 
 void createTable(int a, int b) {
 
@@ -68,6 +69,14 @@ void addTableActionColumns(QStringList tableActionColumn) {
     }
 }
 
+void findColumn(QString columnName) {
+    for (int a = 0; a < tableHeaders.size(); ++a) {
+        if (columnName == tableHeaders[a]) {
+            cout << "Found";
+        }
+    }
+}
+
 /*
  * Example from:
  * http://doc.qt.io/qt-5/qtwidgets-mainwindows-application-example.html
@@ -94,7 +103,7 @@ int main(int argc, char *argv[]) {
     //Create Table with rows and columns
     createTable(5, 7);
 
-    QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date", "Description","Action"};
+    QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date", "Description", "Action"};
     addTableHeaders(tableHeadersList);
 
     QStringList insertNameColumn = {"Alex", "John", "Mike", "Bob", "Max"};
@@ -117,6 +126,9 @@ int main(int argc, char *argv[]) {
 
     Table *window = new Table;
     window->showMaximized();
+
+    //Search on Column ID
+    findColumn("Action");
 
     return app.exec();
 }

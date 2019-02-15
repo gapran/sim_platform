@@ -10,7 +10,7 @@ QStringList tableStartDatesColumn;
 QStringList tableLastUpdatesColumn;
 QStringList tableDescriptionsColumn;
 QStringList tableActionsColumn;
-
+QString columnsName;
 
 
 Table::Table(QWidget *parent) : QDialog(parent) {
@@ -53,11 +53,11 @@ Table::Table(QWidget *parent) : QDialog(parent) {
         table->setItem(n, 6, new QTableWidgetItem(tableActionsColumn[n]));
     }
 
-
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(table);
 
     setLayout(layout);
+
 }
 
 Table::~Table() {
