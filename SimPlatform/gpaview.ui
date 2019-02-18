@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DashBoard</class>
- <widget class="QMainWindow" name="DashBoard">
+ <class>GpaView</class>
+ <widget class="QMainWindow" name="GpaView">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -39,22 +39,7 @@
           <widget class="QWidget" name="verticalLayoutWidget_2">
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
-             <widget class="QListView" name="listView">
-              <property name="toolTip">
-               <string>List View</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="verticalLayoutWidget_3">
-           <layout class="QVBoxLayout" name="verticalLayout_5">
-            <item>
-             <widget class="QListView" name="listView_2">
-              <property name="toolTip">
-               <string>List View</string>
-              </property>
-             </widget>
+             <widget class="LeftWidget" name="leftWidget" native="true"/>
             </item>
            </layout>
           </widget>
@@ -65,11 +50,7 @@
       <widget class="QWidget" name="horizontalLayoutWidget">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QTableView" name="tableView">
-          <property name="toolTip">
-           <string>Table View</string>
-          </property>
-         </widget>
+         <widget class="RightSide" name="rightSide" native="true"/>
         </item>
        </layout>
       </widget>
@@ -100,7 +81,14 @@
     </property>
     <addaction name="actionInfo"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionchoose_color"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
    <addaction name="menuInfo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -124,7 +112,26 @@
     <string>Exit</string>
    </property>
   </action>
+  <action name="actionchoose_color">
+   <property name="text">
+    <string>choose color</string>
+   </property>
+  </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RightSide</class>
+   <extends>QWidget</extends>
+   <header location="global">rightside.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LeftWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">leftwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -25,14 +25,20 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    dashboard.cpp
+        gpaview.cpp \
+    rightside.cpp \
+    leftwidget.cpp
 
 HEADERS += \
         mainwindow.h \
-    dashboard.h
+        gpaview.h \
+    rightside.h \
+    leftwidget.h
 
 FORMS += \
-    dashboard.ui
+        gpaview.ui \
+    rightside.ui \
+    leftwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
