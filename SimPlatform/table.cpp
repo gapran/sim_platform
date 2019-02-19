@@ -1,17 +1,23 @@
 #include "table.h"
 #include "ui_table.h"
 
+#include<iostream>
+
+using namespace std;
+
 int row;
 int column;
+int rowUpdateNo;
+int columnUpdateNo;
+QString columnsName;
+QString valueUpdate;
 QStringList tableHeaders;
 QStringList tableNamesColumn;
-QStringList tableStatusColumnValues;
+QStringList tableActionsColumn;
 QStringList tableStartDatesColumn;
 QStringList tableLastUpdatesColumn;
 QStringList tableDescriptionsColumn;
-QStringList tableActionsColumn;
-QString columnsName;
-
+QStringList tableStatusColumnValues;
 
 Table::Table(QWidget *parent) : QDialog(parent) {
 
@@ -52,6 +58,12 @@ Table::Table(QWidget *parent) : QDialog(parent) {
     for (int n = 0; n < tableActionsColumn.size(); ++n) {
         table->setItem(n, 6, new QTableWidgetItem(tableActionsColumn[n]));
     }
+
+    cout << "rowUpdate value is " << rowUpdateNo << "\n";
+    cout << "columnUpdate value is " << columnUpdateNo << "\n";
+    //Update a certain cell when the default values changed i.e., user has called the function with some values
+    //if(rowUpdate != 0 && columnUpdate != 0 && valueUpdate != "") {
+    //table->setItem(rowUpdate, columnUpdate, new QTableWidgetItem(valueUpdate)); }
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(table);

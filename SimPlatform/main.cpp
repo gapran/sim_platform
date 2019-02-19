@@ -11,13 +11,17 @@ using namespace std;
 
 extern int row;
 extern int column;
+extern int rowUpdateNo;
+extern int columnUpdateNo;
+extern QString valueUpdate;
 extern QStringList tableHeaders;
 extern QStringList tableNamesColumn;
-extern QStringList tableStatusColumnValues;
+extern QStringList tableActionsColumn;
 extern QStringList tableStartDatesColumn;
 extern QStringList tableLastUpdatesColumn;
 extern QStringList tableDescriptionsColumn;
-extern QStringList tableActionsColumn;
+extern QStringList tableStatusColumnValues;
+
 
 void createTable(int a, int b) {
 
@@ -72,9 +76,16 @@ void addTableActionColumns(QStringList tableActionColumn) {
 void findColumn(QString columnName) {
     for (int a = 0; a < tableHeaders.size(); ++a) {
         if (columnName == tableHeaders[a]) {
-            cout << "Found";
+            cout << "Found" << "\n";
         }
     }
+}
+
+void updateTable(int rowNo, int columnNo, QString value){
+
+    rowUpdateNo = rowNo;
+    columnUpdateNo = columnNo;
+    valueUpdate = value;
 }
 
 /*
@@ -129,6 +140,9 @@ int main(int argc, char *argv[]) {
 
     //Search on Column ID
     findColumn("Action");
+
+    //Update a certain cell in a table with a certain row id and column
+    updateTable( 2, 1, "fixed");
 
     return app.exec();
 }
