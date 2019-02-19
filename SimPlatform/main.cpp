@@ -30,6 +30,13 @@ void createTable(int a, int b) {
 
 }
 
+void updateTable(int rowNo, int columnNo, QString value) {
+
+    rowUpdateNo = rowNo;
+    columnUpdateNo = columnNo;
+    valueUpdate = value;
+}
+
 void addTableHeaders(QStringList tableHeadersList) {
 
     for (int var = 0; var < tableHeadersList.size(); ++var) {
@@ -76,16 +83,9 @@ void addTableActionColumns(QStringList tableActionColumn) {
 void findColumn(QString columnName) {
     for (int a = 0; a < tableHeaders.size(); ++a) {
         if (columnName == tableHeaders[a]) {
-            cout << "Found" << "\n";
+            cout << "The column is found in the table." << "\n";
         }
     }
-}
-
-void updateTable(int rowNo, int columnNo, QString value){
-
-    rowUpdateNo = rowNo;
-    columnUpdateNo = columnNo;
-    valueUpdate = value;
 }
 
 /*
@@ -135,14 +135,15 @@ int main(int argc, char *argv[]) {
     QStringList insertActionColumn = {"action1", "action2", "action3", "action4", "action5"};
     addTableActionColumns(insertActionColumn);
 
+    //Update a certain cell in a table with a certain row id and column
+    updateTable(2, 1, "fixed");
+
     Table *window = new Table;
     window->showMaximized();
 
     //Search on Column ID
     findColumn("Action");
 
-    //Update a certain cell in a table with a certain row id and column
-    updateTable( 2, 1, "fixed");
 
     return app.exec();
 }
