@@ -11,7 +11,9 @@ int rowUpdateNo;
 int columnUpdateNo;
 QString columnsName;
 QString valueUpdate;
+QString filtersName;
 QStringList tableHeaders;
+QString columnFiltersName;
 QStringList tableNamesColumn;
 QStringList tableActionsColumn;
 QStringList tableStartDatesColumn;
@@ -64,6 +66,24 @@ Table::Table(QWidget *parent) : QDialog(parent) {
         table->setItem(rowUpdateNo, columnUpdateNo, new QTableWidgetItem(valueUpdate));
     }
 
+    //Apply the filter on the table: Column name and Filter keyword
+    int columnFilterNo;
+    for (int p = 0; p < tableHeaders.size(); ++p) {
+        if (columnFiltersName == tableHeaders[p]) {
+            columnFilterNo = p;
+        }
+    }
+
+    for (int q = 0; q < table->rowCount(); ++q) {
+
+        QString search = table->item(q, columnFilterNo)->text();
+
+        if (filtersName != search) {
+            table->removeRow(q);
+        }
+    }
+
+
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(table);
 
@@ -74,3 +94,4 @@ Table::Table(QWidget *parent) : QDialog(parent) {
 Table::~Table() {
     delete table;
 }
+☺

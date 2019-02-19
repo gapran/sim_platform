@@ -14,7 +14,9 @@ extern int column;
 extern int rowUpdateNo;
 extern int columnUpdateNo;
 extern QString valueUpdate;
+extern QString filtersName;
 extern QStringList tableHeaders;
+extern QString columnFiltersName;
 extern QStringList tableNamesColumn;
 extern QStringList tableActionsColumn;
 extern QStringList tableStartDatesColumn;
@@ -88,6 +90,13 @@ void findColumn(QString columnName) {
     }
 }
 
+void applyFilter(QString columnFilterName, QString filterName) {
+
+    columnFiltersName = columnFilterName;
+    filtersName = filterName;
+
+}
+
 /*
  * Example from:
  * http://doc.qt.io/qt-5/qtwidgets-mainwindows-application-example.html
@@ -137,6 +146,9 @@ int main(int argc, char *argv[]) {
 
     //Update a certain cell in a table with a certain row id and column
     updateTable(2, 1, "fixed");
+
+    //Filter the table: Column name and Filter keyword
+    applyFilter("Status", "not fixed");
 
     Table *window = new Table;
     window->showMaximized();
