@@ -145,10 +145,10 @@ int main(int argc, char *argv[]) {
     addTableActionColumns(insertActionColumn);
 
     //Update a certain cell in a table with a certain row id and column
-    //updateTable(2, 1, "fixed");
+    // updateTable(2, 1, "fixed");
 
     //Filter the table: Column name and Filter keyword
-    //applyFilter("Status", "not fixed");
+    applyFilter("Status", "not fixed");
 
     Table *window = new Table;
     window->showMaximized();

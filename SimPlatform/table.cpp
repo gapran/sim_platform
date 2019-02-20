@@ -2,8 +2,9 @@
 #include "ui_table.h"
 
 #include<iostream>
+#include<vector>
 
-using namespace std;
+using namespace std; //Import the standard library
 
 int row;
 int column;
@@ -67,22 +68,33 @@ Table::Table(QWidget *parent) : QDialog(parent) {
     }
 
     //Apply the filter on the table: Column name and Filter keyword
-    if ( filtersName != "") {
-    int columnFilterNo;
-    for (int p = 0; p < tableHeaders.size(); ++p) {
-        if (columnFiltersName == tableHeaders[p]) {
-            columnFilterNo = p;
+    if (filtersName != "") {
+        int columnFilterNo;
+        int rowDeleteNo;
+        std::vector<int> rowsToDelete;
+
+        //   int rowCount = table->rowCount();
+        for (int p = 0; p < tableHeaders.size(); ++p) {
+            if (columnFiltersName == tableHeaders[p]) {
+                columnFilterNo = p;
+            }
         }
-    }
 
-    for (int q = 0; q < table->rowCount(); ++q) {
+        for (int q = 0; q < row; ++q) {
 
-        QString search = table->item(q, columnFilterNo)->text();
+            QString search = table->item(q, columnFilterNo)->text();
 
-        if (filtersName != search) {
-            table->removeRow(q);
+            if (filtersName != search) {
+                // table->removeRow(q);
+                rowsToDelete.push_back(q);
+            }
         }
-    }
+
+        for (int r = 0; r < rowsToDelete.size(); ++r) {
+            rowDeleteNo = rowsToDelete[r];
+            table->removeRow(rowDeleteNo -
+                             r); // Once a row deleted, table view is now 1 less to the collected row value to be deleted
+        }
     }
 
 
