@@ -67,6 +67,7 @@ Table::Table(QWidget *parent) : QDialog(parent) {
     }
 
     //Apply the filter on the table: Column name and Filter keyword
+    if ( filtersName != "") {
     int columnFilterNo;
     for (int p = 0; p < tableHeaders.size(); ++p) {
         if (columnFiltersName == tableHeaders[p]) {
@@ -82,6 +83,7 @@ Table::Table(QWidget *parent) : QDialog(parent) {
             table->removeRow(q);
         }
     }
+    }
 
 
     QHBoxLayout *layout = new QHBoxLayout;
@@ -94,4 +96,3 @@ Table::Table(QWidget *parent) : QDialog(parent) {
 Table::~Table() {
     delete table;
 }
-☺
