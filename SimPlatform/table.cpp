@@ -90,7 +90,7 @@ Table::Table(QWidget *parent) : QDialog(parent) {
             }
         }
 
-        for (int r = 0; r < rowsToDelete.size(); ++r) {
+        for (unsigned int r = 0; r < rowsToDelete.size(); ++r) {
             rowDeleteNo = rowsToDelete[r];
             table->removeRow(rowDeleteNo -
                              r); // Once a row deleted, table view is now 1 less to the collected row value to be deleted
