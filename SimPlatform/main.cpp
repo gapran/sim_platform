@@ -13,6 +13,8 @@ extern int row;
 extern int column;
 extern int rowUpdateNo;
 extern int columnUpdateNo;
+
+extern QString bgColor;
 extern QString valueUpdate;
 extern QString filtersName;
 extern QStringList tableHeaders;
@@ -97,6 +99,12 @@ void applyFilter(QString columnFilterName, QString filterName) {
 
 }
 
+void applyBackgroundColor(QString backgroundColor){
+
+    bgColor = "background-color:"+backgroundColor;
+
+}
+
 /*
  * Example from:
  * http://doc.qt.io/qt-5/qtwidgets-mainwindows-application-example.html
@@ -148,13 +156,16 @@ int main(int argc, char *argv[]) {
     // updateTable(2, 1, "fixed");
 
     //Filter the table: Column name and Filter keyword
-    applyFilter("Status", "not fixed");
+    //applyFilter("Status", "not fixed");
+
+    //Apply color for background to Table
+    applyBackgroundColor("yellow");
 
     Table *window = new Table;
     window->showMaximized();
 
     //Search on Column ID
-    findColumn("Action");
+    //findColumn("Action");
 
 
     return app.exec();

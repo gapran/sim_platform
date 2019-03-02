@@ -10,6 +10,8 @@ int row;
 int column;
 int rowUpdateNo;
 int columnUpdateNo;
+
+QString bgColor;
 QString columnsName;
 QString valueUpdate;
 QString filtersName;
@@ -21,6 +23,7 @@ QStringList tableStartDatesColumn;
 QStringList tableLastUpdatesColumn;
 QStringList tableDescriptionsColumn;
 QStringList tableStatusColumnValues;
+
 
 Table::Table(QWidget *parent) : QDialog(parent) {
 
@@ -99,6 +102,10 @@ Table::Table(QWidget *parent) : QDialog(parent) {
 
     //When the user presses a column header then sorting happens.
     table->setSortingEnabled(true);
+
+    //Applies background color to Table if user provides a color
+    if (!bgColor.isNull()){
+    table->setStyleSheet(bgColor); }
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(table);
