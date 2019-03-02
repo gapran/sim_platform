@@ -97,6 +97,8 @@ Table::Table(QWidget *parent) : QDialog(parent) {
         }
     }
 
+    //When the user presses a column header then sorting happens.
+    table->setSortingEnabled(true);
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(table);
