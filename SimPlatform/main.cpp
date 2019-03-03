@@ -21,6 +21,7 @@ extern QStringList tableHeaders;
 extern QString columnFiltersName;
 extern QStringList tableNamesColumn;
 extern QStringList tableActionsColumn;
+extern QStringList borderWidthColorStyle;
 extern QStringList tableStartDatesColumn;
 extern QStringList tableLastUpdatesColumn;
 extern QStringList tableDescriptionsColumn;
@@ -105,6 +106,11 @@ void applyBackgroundColor(QString backgroundColor){
 
 }
 
+void applyBorderWidthColor( QStringList borderWidthColor){
+
+    borderWidthColorStyle = borderWidthColor;
+}
+
 /*
  * Example from:
  * http://doc.qt.io/qt-5/qtwidgets-mainwindows-application-example.html
@@ -159,7 +165,11 @@ int main(int argc, char *argv[]) {
     //applyFilter("Status", "not fixed");
 
     //Apply color for background to Table
-    applyBackgroundColor("yellow");
+    //applyBackgroundColor("yellow");
+
+    //Apply border width and color for Table window
+    QStringList insertBorderStyle = {"1px", "blue"};
+    applyBorderWidthColor(insertBorderStyle);
 
     Table *window = new Table;
     window->showMaximized();

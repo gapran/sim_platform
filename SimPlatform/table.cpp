@@ -19,6 +19,7 @@ QStringList tableHeaders;
 QString columnFiltersName;
 QStringList tableNamesColumn;
 QStringList tableActionsColumn;
+QStringList borderWidthColorStyle;
 QStringList tableStartDatesColumn;
 QStringList tableLastUpdatesColumn;
 QStringList tableDescriptionsColumn;
@@ -106,6 +107,11 @@ Table::Table(QWidget *parent) : QDialog(parent) {
     //Applies background color to Table if user provides a color
     if (!bgColor.isNull()){
     table->setStyleSheet(bgColor); }
+
+    //Applies border width and color
+    if (!borderWidthColorStyle.isEmpty()){
+    QString style = "border: " +borderWidthColorStyle[0]+ " solid " +borderWidthColorStyle[1];
+    table->setStyleSheet(style); }
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(table);
