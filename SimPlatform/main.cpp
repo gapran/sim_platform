@@ -1,32 +1,23 @@
-#include <QApplication>
-#include <QCommandLineParser>
-#include <QCommandLineOption>
-
 #include "mainwindow.h"
-
-/*
- * Example from:
- * http://doc.qt.io/qt-5/qtwidgets-mainwindows-application-example.html
- */
+#include <QApplication>
+#include "statlib.h"
+#include "QWidget"
+#include "QPushButton"
+#include <QVBoxLayout>
+#include <QGraphicsView>
 
 int main(int argc, char *argv[])
 {
-    Q_INIT_RESOURCE(application);
+    QApplication a(argc, argv);
+    MainWindow w;
+    StatLib clib; // library
 
-    QApplication app(argc, argv);
-    QCoreApplication::setOrganizationName("QtProject");
-    QCoreApplication::setApplicationName("Application Example");
-    QCoreApplication::setApplicationVersion(QT_VERSION_STR);
-    QCommandLineParser parser;
-    parser.setApplicationDescription(QCoreApplication::applicationName());
-    parser.addHelpOption();
-    parser.addVersionOption();
-    parser.addPositionalArgument("file", "The file to open.");
-    parser.process(app);
+    int width =1000;
+    int height =500;
+    QString name = "GPA";
+    QString color = "lightgrey";
 
-    MainWindow mainWin;
-    if (!parser.positionalArguments().isEmpty())
-        mainWin.loadFile(parser.positionalArguments().first());
-    mainWin.show();
-    return app.exec();
+    clib.mainView(&w , name,width,height,color);    //initializing
+    w.show();
+    return a.exec();
 }
