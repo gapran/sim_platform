@@ -11,13 +11,13 @@
 
 class QTextEdit;
 
-class TextElement: public QDialog
+class Text: public QDialog
 {
     Q_OBJECT
 public:
-    explicit TextElement(QWidget *parent = 0);
+    explicit Text(QWidget *parent = 0);
 
-    ~TextElement();
+    ~Text();
 
     void setText(QString text);
     void setTextSize(qreal size);

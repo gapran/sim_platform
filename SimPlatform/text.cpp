@@ -1,5 +1,4 @@
-
-#include "textelement.h"
+#include "text.h"
 
 #include<iostream>
 #include<vector>
@@ -13,19 +12,19 @@ QString textColor;
 QString textInput;
 QString bgColor;
 
-TextElement::TextElement(QWidget *parent) : QDialog (parent){
+Text::Text(QWidget *parent) : QDialog (parent){
 
 
     textEdit = new QTextEdit;
 
     //Setting default text
-    setText("Default-Text");
+    //setText("Default-Text");
 
     //Setting default text-size
-    setTextSize(NULL);
+    //setTextSize(NULL);
 
     //Setting default font-family
-    setFontFamily(NULL);
+    //setFontFamily(NULL);
 
     //Setting default text-color
     setTextColor(NULL);
@@ -44,17 +43,17 @@ TextElement::TextElement(QWidget *parent) : QDialog (parent){
 
 }
 
-TextElement::~TextElement(){
+Text::~Text(){
     delete textEdit;
 }
 
-void TextElement:: setText(QString text)
+void Text:: setText(QString text)
 {
 
         textEdit->setText(text); //Setting Input Text
 }
 
-void TextElement:: setTextSize(qreal textSize)
+void Text:: setTextSize(qreal textSize)
 {
     if(QString::number(textSize).isNull())
     {
@@ -67,7 +66,7 @@ void TextElement:: setTextSize(qreal textSize)
     }
 }
 
-void TextElement:: setFontFamily(qreal family)
+void Text:: setFontFamily(qreal family)
 {
     if(QString::number(family).isNull())
     {
@@ -80,7 +79,7 @@ void TextElement:: setFontFamily(qreal family)
     }
 }
 
-void TextElement:: setFontUnderline(bool fontUnderline)
+void Text:: setFontUnderline(bool fontUnderline)
 {
     if(fontUnderline)
     {
@@ -91,7 +90,7 @@ void TextElement:: setFontUnderline(bool fontUnderline)
     }
 }
 
-void TextElement:: setFontItalic(bool fontItalic)
+void Text:: setFontItalic(bool fontItalic)
 {
     if(fontItalic)
     {
@@ -102,7 +101,7 @@ void TextElement:: setFontItalic(bool fontItalic)
     }
 }
 
-void TextElement:: setTextColor(QString textColor )
+void Text:: setTextColor(QString textColor )
 {
     if(textColor.isNull())
     {
@@ -113,7 +112,7 @@ void TextElement:: setTextColor(QString textColor )
     }
 }
 
-void TextElement:: setBackgroundColor(QString bgColor)
+void Text:: setBackgroundColor(QString bgColor)
 {
     if(bgColor.isNull())
     {
@@ -124,7 +123,7 @@ void TextElement:: setBackgroundColor(QString bgColor)
     }
 }
 
-void TextElement:: setTextBold(bool textBold)
+void Text:: setTextBold(bool textBold)
 {
     if(textBold)
     {
@@ -134,19 +133,19 @@ void TextElement:: setTextBold(bool textBold)
     }
 }
 
-void TextElement:: setHoverText(QString hoverText)
-{
-    QTextCursor cursor(textEdit->document());
-    textEdit->setTextCursor(cursor);
-    cursor.insertText(hoverText);
-}
+//void Text:: setHoverText(QString hoverText)
+//{
+//    QTextCursor cursor(textEdit->document());
+//    textEdit->setTextCursor(cursor);
+//    cursor.insertText(hoverText);
+//}
 
-void TextElement:: setClickable(QString link)
-{
-    textEdit->selectAll();
-    QTextCursor cursor(textEdit->document());
-    textEdit->setTextCursor(cursor);
-    QTextCharFormat linkFormat = cursor.charFormat();
-    linkFormat.setAnchor(true);
-    linkFormat.setAnchorHref(link);
-}
+//void Text:: setClickable(QString link)
+//{
+//    textEdit->selectAll();
+//    QTextCursor cursor(textEdit->document());
+//    textEdit->setTextCursor(cursor);
+//    QTextCharFormat linkFormat = cursor.charFormat();
+//    linkFormat.setAnchor(true);
+//    linkFormat.setAnchorHref(link);
+//}
