@@ -3,6 +3,7 @@
 #include <QCommandLineOption>
 
 #include "mainwindow.h"
+#include "gpalib.h"
 
 /*
  * Example from:
@@ -28,5 +29,10 @@ int main(int argc, char *argv[])
     if (!parser.positionalArguments().isEmpty())
         mainWin.loadFile(parser.positionalArguments().first());
     mainWin.show();
+
+    // Test the library linked
+    GPAlib gpaLib;
+    gpaLib.Test();
+
     return app.exec();
 }
