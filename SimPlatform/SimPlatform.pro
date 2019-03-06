@@ -27,7 +27,8 @@ SOURCES += \
         mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        ../GPAlib/gpalib.h
 
 FORMS +=
 
@@ -38,3 +39,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     application.qrc
+
+INCLUDEPATH += "../GPAlib"
+LIBS += "C:/Users/Varma/Documents/GitHub/sim_platform/build-GPAlib-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/debug/libGPAlib.a"
