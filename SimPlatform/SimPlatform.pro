@@ -23,8 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp
+        main.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,4 +40,4 @@ RESOURCES += \
     application.qrc
 
 INCLUDEPATH += "../GPAlib"
-LIBS += -L../GPAlib/debug -lGPAlib
+LIBS += "../build-GPAlib-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/debug/libGPAlib.a"
