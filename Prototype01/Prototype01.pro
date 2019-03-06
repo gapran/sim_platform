@@ -6,7 +6,7 @@
 
 QT       += core gui widgets
 
-TARGET = StatLib
+TARGET = Prototype01
 TEMPLATE = lib
 CONFIG += staticlib
 

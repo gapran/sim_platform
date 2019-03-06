@@ -24,22 +24,15 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    leftwidget.cpp \
-    rightwidget.cpp
-
-INCLUDEPATH += "F:/QT/StatLib"
-LIBS +="F:/QT/build-StatLib-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/debug/libStatLib.a"
+        mainwindow.cpp
+INCLUDEPATH += ../Prototype01
+LIBS += -L../build-Prototype01-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/debug -lPrototype01
 
 HEADERS += \
-        mainwindow.h \
-    leftwidget.h \
-    rightwidget.h
+        mainwindow.h
 
 FORMS += \
-    mainwindow.ui \
-    leftwidget.ui \
-    rightwidget.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
