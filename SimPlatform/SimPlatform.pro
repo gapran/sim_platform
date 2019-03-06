@@ -41,4 +41,4 @@ RESOURCES += \
     application.qrc
 
 INCLUDEPATH += "../GPAlib"
-LIBS += "C:/Users/Varma/Documents/GitHub/sim_platform/build-GPAlib-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/debug/libGPAlib.a"
+LIBS += -L../GPAlib/debug -lGPAlib
