@@ -8,9 +8,6 @@
 int main(int argc, char *argv[])
 {
 
-    // Test the library linked
-    GPAlib gpaLib;
-    gpaLib.Test();
 
     QApplication app(argc, argv);
 
@@ -21,15 +18,6 @@ int main(int argc, char *argv[])
         window.setWindowTitle(
             QApplication::translate("toplevel", "GPA Prototype"));
 
-        //Create Child Widget
-        QPushButton *button = new QPushButton(
-                QApplication::translate("toplevel", "Press me"), &window);
-            button->move(100, 100);
-            button->show();
-
-    //Container in Library
-            GPAlib gpaLib2;
-            gpaLib2.createNewContainer();
 
     return app.exec();
 
