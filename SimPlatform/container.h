@@ -11,20 +11,26 @@ private:
     QString title;
 
 public:
-    QMainWindow* createMainContainer( QMainWindow *mainWindow ,int length, int width, QString title){
 
-        this->length = length;
-        this->width = width;
-        this->title = title;
+    QMainWindow* createMainContainer( QMainWindow *mainWindow ,int length, int width, QString title, QString colour){
 
     mainWindow->setWindowTitle(title);
     mainWindow->resize(length,width);
+    mainWindow->setStyleSheet("background-color: "+colour+";");
 
     return mainWindow;
 
-        // Pass the values in widget creation and later pass all widgets to a list
-        //then a function like UI-Builder will create widgets in an application.
+    }
 
+    QWidget* createContainer(QBoxLayout* qBoxLayout, int length, int width, int positionX, int positionY, QString title, QString colour){
+
+        QWidget* qWidget = new QWidget();
+            qWidget->setLayout(qBoxLayout);
+            qWidget->resize(length, width);
+            qWidget->move(positionX, positionY);
+            qWidget->setToolTip(title);
+            qWidget->setStyleSheet("background-color: "+colour+";");
+            return qWidget;
 
     }
 

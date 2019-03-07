@@ -24,14 +24,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+    maincontainerview.cpp
 
 HEADERS += \
         ../SimPlatform/simplatform.h \
-        mainwindow.h
+    maincontainerview.h
 
 FORMS += \
-      mainwindow.ui
+    maincontainerview.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
