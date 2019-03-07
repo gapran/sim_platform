@@ -15,19 +15,20 @@ int main(int argc, char *argv[])
         QString mainTitle = "GPA Prototype";
         int mainContainerLength = 900;
         int mainContainerWidth = 300;
-        QString mainColour = "sky-blue";
+        QString mainColour = "green";
 
         //Create main container / window
+
         Container container;
         container.createMainContainer(&mainContainerView, mainContainerLength, mainContainerWidth, mainTitle, mainColour);
 
         //Create inner containers
-        QBoxLayout* qBoxLayout1 = new QVBoxLayout();
-        QWidget* container1 = container.createContainer(qBoxLayout1, 50, 50, 10, 10, "Container 1", "blue");
+
+        QWidget* container1 = container.createContainer( 50, 50, 10, 10, "Container 1", "blue");
         mainContainerView.layout()->addWidget(container1);
 
-        QBoxLayout* qBoxLayout2 = new QHBoxLayout();
-        QWidget* container2 = container.createContainer(qBoxLayout2, 50, 50, 70, 80, "Container 2", "orange");
+
+        QWidget* container2 = container.createContainer( 50, 50, 60, 10, "Container 2", "orange");
         mainContainerView.layout()->addWidget(container2);
 
 
