@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       -= gui
+QT       += core widgets
+
 
 TARGET = GPAlib
 TEMPLATE = lib
@@ -25,7 +27,8 @@ SOURCES += \
         gpalib.cpp
 
 HEADERS += \
-        gpalib.h
+        gpalib.h \
+    container.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

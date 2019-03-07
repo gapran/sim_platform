@@ -27,6 +27,10 @@ int main(int argc, char *argv[])
             button->move(100, 100);
             button->show();
 
+    //Container in Library
+            GPAlib gpaLib2;
+            gpaLib2.createNewContainer();
+
     return app.exec();
 
 }

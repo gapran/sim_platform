@@ -9,6 +9,7 @@ class GPAlib
 public:
     GPAlib();
     void Test();
+    void createNewContainer();
 };
 
 #endif // GPALIB_H
