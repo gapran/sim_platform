@@ -8,14 +8,17 @@ class Container{
 private:
     int length;
     int width;
-    QString layout;
+    QString title;
 
 public:
-    void createContainer( int length, int width, QString layout){
+    void createMainContainer( int length, int width, QString title){
 
     this->length = length;
     this->width = width;
-    this->layout = layout;
+    this->title = title;
+
+        // Pass the values in widget creation and later pass all widgets to a list
+        //then a function like UI-Builder will create widgets in an application.
 
 
     }

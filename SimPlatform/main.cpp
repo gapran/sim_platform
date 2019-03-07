@@ -1,22 +1,19 @@
-#include "gpalib.h"
+#include "container.h"
 
 #include <QApplication>
-#include <QPushButton>
-#include <QWidget>
-#include <QtGui>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
 
-
     QApplication app(argc, argv);
+    qDebug() << "Welcome to GPA Prototype Builder!";
 
-    //Create Main Container
-    QWidget window;
-        window.resize(900, 300);
-        window.show();
-        window.setWindowTitle(
-            QApplication::translate("toplevel", "GPA Prototype"));
+    // User Code goes here...
+
+        //Create main container / window
+        Container top;
+        top.createMainContainer(900,300,"GPA Prototype");
 
 
     return app.exec();
