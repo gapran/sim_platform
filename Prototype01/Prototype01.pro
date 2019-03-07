@@ -23,12 +23,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+        mainwindow.cpp
 
 HEADERS += \
-        ../SimPlatform/simplatform.h
+        ../SimPlatform/simplatform.h \
+        mainwindow.h
 
-FORMS +=
+FORMS += \
+      mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

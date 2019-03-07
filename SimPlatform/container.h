@@ -11,11 +11,16 @@ private:
     QString title;
 
 public:
-    void createMainContainer( int length, int width, QString title){
+    QMainWindow* createMainContainer( QMainWindow *mainWindow ,int length, int width, QString title){
 
-    this->length = length;
-    this->width = width;
-    this->title = title;
+        this->length = length;
+        this->width = width;
+        this->title = title;
+
+    mainWindow->setWindowTitle(title);
+    mainWindow->resize(length,width);
+
+    return mainWindow;
 
         // Pass the values in widget creation and later pass all widgets to a list
         //then a function like UI-Builder will create widgets in an application.
