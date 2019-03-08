@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
         //Create inner containers
 
         QWidget* container1 = container.createContainer( 50, 50, 10, 10, "Container 1", "blue");
-       // mainContainerView.layout()->addWidget(container1);
+      // mainContainerView.layout()->addWidget(container1);
 
         QWidget* container2 = container.createContainer( 50, 50, 80, 10, "Container 2", "orange");
        // mainContainerView.layout()->addWidget(container2);

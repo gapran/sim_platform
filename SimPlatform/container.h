@@ -47,19 +47,18 @@ public:
      */
     QBoxLayout* createLayout(QString layoutName, QWidgetList containerList){
 
+        QBoxLayout *mainLayout = new QVBoxLayout;
+        QHBoxLayout *horizontalLayout = new QHBoxLayout;
+
         if( layoutName == "horizontalLayout"){
 
-            QBoxLayout *mainLayout;
-            QHBoxLayout *horizontalLayout;
-
             for (int var = 0; var < containerList.size(); ++var) {
-                horizontalLayout->addWidget(containerList[var]);
+                horizontalLayout->addWidget(containerList.at(var));
             }
 
             mainLayout->addLayout(horizontalLayout);
 
-            return mainLayout;
-} }
+} return mainLayout; }
 
 
 //        } else if (layoutName == "verticalLayout") {
