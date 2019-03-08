@@ -42,59 +42,51 @@ public:
 
     /*
      * Method parameters:
-     * 1. Defines what kind of layout is required
-     * 2. List of containers
+     * 1. Provides view of Main Container
+     * 2. Defines what kind of layout is required
+     * 3. List of containers
      */
-   QBoxLayout* createLayout(QMainWindow *mW, QString layoutName, QWidgetList containerList){
+ void createLayout(QMainWindow *mainContainerView, QString layoutName, QWidgetList containerList){
 
-        QWidget *centralWidget = new QWidget (mW);
-        QBoxLayout *mainLayout = new QVBoxLayout;
+        QWidget *centralWidget = new QWidget (mainContainerView);
+        QVBoxLayout *widgetLayout = new QVBoxLayout(centralWidget);
+        QHBoxLayout *mainLayout = new QHBoxLayout;
         QHBoxLayout *horizontalLayout1 = new QHBoxLayout;
+        QVBoxLayout *verticalLayout1 = new QVBoxLayout;
 
-        QHBoxLayout *horizontalLayout2 = new QHBoxLayout;
-
-        QGroupBox *groupBox = new QGroupBox();
-        horizontalLayout1->addWidget(groupBox);
 
         if( layoutName == "horizontalLayout"){
 
             for (int var = 0; var < containerList.size(); ++var) {
-                horizontalLayout2->addWidget(containerList.at(var));
+                horizontalLayout1->addWidget(containerList.at(var));
             }
 
-            mainLayout->addLayout(horizontalLayout2);
+            mainLayout->addLayout(horizontalLayout1);
 
-          //  groupBox->setLayout(mainLayout);
+            widgetLayout->addLayout(mainLayout);
+            mainContainerView->setCentralWidget(centralWidget);
 
-           QVBoxLayout *widgetLayout = new QVBoxLayout(centralWidget);
+
+        } else if (layoutName == "verticalLayout") {
+
+            for (int var = 0; var < containerList.size(); ++var) {
+                verticalLayout1->addWidget(containerList.at(var));
+            }
+
+           mainLayout->addLayout(verticalLayout1);
+
            widgetLayout->addLayout(mainLayout);
-           mW->setCentralWidget(centralWidget);
+           mainContainerView->setCentralWidget(centralWidget);
 
 
+        } else {
 
-} return horizontalLayout1;
-    }
+            clog << "Please provide valid input." << endl;
 
-
-//        } else if (layoutName == "verticalLayout") {
-
-//            QVBoxLayout *verticalLayout = new QVBoxLayout;
-//            verticalLayout->addWidget(presentContainer);
-
-//            QBoxLayout *mainLayout = new QBoxLayout;
-//            mainLayout->addLayout(verticalLayout);
-
-//            return mainLayout;
+        }
 
 
-//        } else {
-
-//            clog << "Please provide valid input." << endl;
-
-//        }
-
- //   }
-
+}
 };
 
 #endif // CONTAINER_H

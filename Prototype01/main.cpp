@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
     qDebug() << "Welcome to GPA Prototype Builder!";
     MainWindow mainContainerView;
 
+
     // User Code goes here...
 
         QString mainTitle = "GPA Prototype";
@@ -27,28 +28,35 @@ int main(int argc, char *argv[])
         //Create inner containers
 
         QWidget* container1 = container.createContainer( 50, 50, 10, 10, "Container 1", "blue");
-      // mainContainerView.layout()->addWidget(container1);
-
         QWidget* container2 = container.createContainer( 50, 50, 80, 10, "Container 2", "orange");
-       // mainContainerView.layout()->addWidget(container2);
-
-//        QWidget* container3 = container.createContainer( 50, 50, 150, 10, "Container 3", "brown");
-//        mainContainerView.layout()->addWidget(container3);
+        QWidget* container3 = container.createContainer( 50, 50, 150, 10, "Container 3", "brown");
 
 
 
         //Specify Layout for the containers
 
-        Container layoutContainer;
-        QWidgetList containerList;
-        containerList.append(container1);
-        containerList.append(container2);
+        Container layoutContainer1;
+        Container layoutContainer2;
 
-        QBoxLayout* layoutAll =  layoutContainer.createLayout(&mainContainerView, "horizontalLayout", containerList);
-        mainContainerView.setLayout(layoutAll);
+        QWidgetList containerList1;
+        containerList1.append(container1);
+        containerList1.append(container2);
+
+
+       layoutContainer1.createLayout(&mainContainerView, "horizontalLayout", containerList1);
+
+
+       // Add 3rd container in vertical layout
+
+//       QWidgetList containerList2;
+//       containerList1.append(container3);
+//       layoutContainer2.createLayout(&mainContainerView, "verticalLayout", containerList2);
+
 
 
    //User Code ends
+
+
 
      mainContainerView.show();
      return app.exec();
