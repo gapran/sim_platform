@@ -31,6 +31,9 @@ int main(int argc, char *argv[])
         QWidget* container2 = container.createContainer( 50, 50, 60, 10, "Container 2", "orange");
         mainContainerView.layout()->addWidget(container2);
 
+        //Specify Layout for the containers
+
+
 
    //User Code ends
 

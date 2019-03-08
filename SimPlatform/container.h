@@ -36,6 +36,16 @@ public:
 
     }
 
+    /* Method parameters:
+     * 1. Defines what kind of layout is required
+     * 2. Defines whether the current conatiner's parent is previous container or all conatiners
+     * 3. Mentions present container
+     * 4. Lists the previous containers to present one */
+    //createLayout(QBoxLayout qBoxLayout, QString parent, QWidget *presentContainer, QWidgetList parentContainers){
+
+
+    //}
+
 };
 
 #endif // CONTAINER_H
