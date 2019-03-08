@@ -45,20 +45,30 @@ public:
      * 1. Defines what kind of layout is required
      * 2. List of containers
      */
-    QBoxLayout* createLayout(QString layoutName, QWidgetList containerList){
+   QBoxLayout* createLayout(QString layoutName, QWidgetList containerList){
 
         QBoxLayout *mainLayout = new QVBoxLayout;
-        QHBoxLayout *horizontalLayout = new QHBoxLayout;
+        QHBoxLayout *horizontalLayout1 = new QHBoxLayout;
+
+        QHBoxLayout *horizontalLayout2 = new QHBoxLayout;
+
+        QGroupBox *groupBox = new QGroupBox();
+        horizontalLayout1->addWidget(groupBox);
 
         if( layoutName == "horizontalLayout"){
 
             for (int var = 0; var < containerList.size(); ++var) {
-                horizontalLayout->addWidget(containerList.at(var));
+                horizontalLayout2->addWidget(containerList.at(var));
             }
 
-            mainLayout->addLayout(horizontalLayout);
+            mainLayout->addLayout(horizontalLayout2);
 
-} return mainLayout; }
+            groupBox->setLayout(mainLayout);
+
+
+
+} return horizontalLayout1;
+    }
 
 
 //        } else if (layoutName == "verticalLayout") {

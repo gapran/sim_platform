@@ -41,8 +41,12 @@ int main(int argc, char *argv[])
         QWidgetList containerList;
         containerList.append(container1);
         containerList.append(container2);
-        QBoxLayout* layoutAll = layoutContainer.createLayout("horizontalLayout", containerList);
+       // QBoxLayout* layoutAll =
+      QBoxLayout* layoutAll =  layoutContainer.createLayout("horizontalLayout", containerList);
         mainContainerView.setLayout(layoutAll);
+
+//        QGroupBox *groupBox = new QGroupBox();
+//        groupBox->setLayout(layoutAll);
 
    //User Code ends
 
