@@ -32,8 +32,10 @@ int main(int argc, char *argv[])
         QWidget* container2 = container.createContainer( 50, 50, 80, 10, "Container 2", "orange");
        // mainContainerView.layout()->addWidget(container2);
 
-       // QWidget* container3 = container.createContainer( 50, 50, 150, 10, "Container 3", "brown");
-      //  mainContainerView.layout()->addWidget(container3);
+//        QWidget* container3 = container.createContainer( 50, 50, 150, 10, "Container 3", "brown");
+//        mainContainerView.layout()->addWidget(container3);
+
+
 
         //Specify Layout for the containers
 
@@ -41,12 +43,10 @@ int main(int argc, char *argv[])
         QWidgetList containerList;
         containerList.append(container1);
         containerList.append(container2);
-       // QBoxLayout* layoutAll =
-      QBoxLayout* layoutAll =  layoutContainer.createLayout("horizontalLayout", containerList);
+
+        QBoxLayout* layoutAll =  layoutContainer.createLayout(&mainContainerView, "horizontalLayout", containerList);
         mainContainerView.setLayout(layoutAll);
 
-//        QGroupBox *groupBox = new QGroupBox();
-//        groupBox->setLayout(layoutAll);
 
    //User Code ends
 

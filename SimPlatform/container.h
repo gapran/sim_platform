@@ -45,8 +45,9 @@ public:
      * 1. Defines what kind of layout is required
      * 2. List of containers
      */
-   QBoxLayout* createLayout(QString layoutName, QWidgetList containerList){
+   QBoxLayout* createLayout(QMainWindow *mW, QString layoutName, QWidgetList containerList){
 
+        QWidget *centralWidget = new QWidget (mW);
         QBoxLayout *mainLayout = new QVBoxLayout;
         QHBoxLayout *horizontalLayout1 = new QHBoxLayout;
 
@@ -63,7 +64,11 @@ public:
 
             mainLayout->addLayout(horizontalLayout2);
 
-            groupBox->setLayout(mainLayout);
+          //  groupBox->setLayout(mainLayout);
+
+           QVBoxLayout *widgetLayout = new QVBoxLayout(centralWidget);
+           widgetLayout->addLayout(mainLayout);
+           mW->setCentralWidget(centralWidget);
 
 
 
