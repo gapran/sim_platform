@@ -1,6 +1,7 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 
+#include <QBoxLayout>
 #include <QtWidgets>
 #include <iostream>
 #include <QIcon>
@@ -39,38 +40,46 @@ public:
 
     }
 
-    /* Method parameters:
+    /*
+     * Method parameters:
      * 1. Defines what kind of layout is required
-     * 2. Defines whether the current conatiner's parent is previous container or all conatiners
-     * 3. Mentions present container
-     * 4. Lists the previous containers to present one */
-    QBoxLayout* createLayout(QString layoutName, QWidget *presentContainer, QWidgetList parentContainers){
+     * 2. List of containers
+     */
+    QBoxLayout* createLayout(QString layoutName, QWidgetList containerList){
 
         if( layoutName == "horizontalLayout"){
 
-            QHBoxLayout *horizontalLayout = new QHBoxLayout;
-            horizontalLayout->addWidget(presentContainer);
+            QBoxLayout *mainLayout;
+            QHBoxLayout *horizontalLayout;
 
-            QBoxLayout *mainLayout = new QBoxLayout;
+            for (int var = 0; var < containerList.size(); ++var) {
+                horizontalLayout->addWidget(containerList[var]);
+            }
+
             mainLayout->addLayout(horizontalLayout);
 
             return mainLayout;
+} }
 
 
+//        } else if (layoutName == "verticalLayout") {
 
-        } else if (layoutName == "verticalLayout") {
+//            QVBoxLayout *verticalLayout = new QVBoxLayout;
+//            verticalLayout->addWidget(presentContainer);
 
-            QVBoxLayout *verticalLayout = new QVBoxLayout;
-            verticalLayout->addWidget(presentContainer);
+//            QBoxLayout *mainLayout = new QBoxLayout;
+//            mainLayout->addLayout(verticalLayout);
+
+//            return mainLayout;
 
 
-        } else {
+//        } else {
 
-            clog << "Please provide valid input." << endl;
+//            clog << "Please provide valid input." << endl;
 
-        }
+//        }
 
-    }
+ //   }
 
 };
 
