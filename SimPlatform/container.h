@@ -2,7 +2,10 @@
 #define CONTAINER_H
 
 #include <QtWidgets>
+#include <iostream>
 #include <QIcon>
+
+using namespace std;
 
 class Container{
 
@@ -41,10 +44,33 @@ public:
      * 2. Defines whether the current conatiner's parent is previous container or all conatiners
      * 3. Mentions present container
      * 4. Lists the previous containers to present one */
-    //createLayout(QBoxLayout qBoxLayout, QString parent, QWidget *presentContainer, QWidgetList parentContainers){
+    QBoxLayout* createLayout(QString layoutName, QWidget *presentContainer, QWidgetList parentContainers){
+
+        if( layoutName == "horizontalLayout"){
+
+            QHBoxLayout *horizontalLayout = new QHBoxLayout;
+            horizontalLayout->addWidget(presentContainer);
+
+            QBoxLayout *mainLayout = new QBoxLayout;
+            mainLayout->addLayout(horizontalLayout);
+
+            return mainLayout;
 
 
-    //}
+
+        } else if (layoutName == "verticalLayout") {
+
+            QVBoxLayout *verticalLayout = new QVBoxLayout;
+            verticalLayout->addWidget(presentContainer);
+
+
+        } else {
+
+            clog << "Please provide valid input." << endl;
+
+        }
+
+    }
 
 };
 
