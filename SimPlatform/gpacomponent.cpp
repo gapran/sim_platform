@@ -10,7 +10,7 @@ void GpaComponent :: mainView(QMainWindow *mW , QString c ,int h , int w , QStri
     mW->setStyleSheet("background-color: "+color+";");
 }
 
-QWidget* GpaComponent :: newComponent(int w, int h, int posx, int posy, QBoxLayout* qbl, QString color, QString ttp, QString font)
+QWidget* GpaComponent :: newComponent(int w, int h, int posx, int posy, QBoxLayout* qbl, QString color, QString ttp)
 {
     QWidget* qw = new QWidget();
     qw->resize(w,h);
@@ -41,7 +41,7 @@ void GpaComponent :: open(QWidget* qw){
 void GpaComponent :: close(QWidget*qw){
      qw->close();
 }
-void GpaComponent :: update(QWidget* qw , QBoxLayout* qblay , QAbstractItemView* view , int w, int h, int posx, int posy,QString color,QString font){
+void GpaComponent :: update(QWidget* qw , QBoxLayout* qblay , QAbstractItemView* view , int w, int h, int posx, int posy,QString color){
     if(view != nullptr){
         qblay->addWidget(view);
     }
