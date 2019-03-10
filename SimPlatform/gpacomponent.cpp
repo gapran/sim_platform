@@ -27,15 +27,25 @@ QVBoxLayout* GpaComponent:: newVLayout()
     QVBoxLayout* vLayout = new QVBoxLayout();
     return vLayout;
 }
-void GpaComponent :: Resize(QResizeEvent *r_event){
-
+void GpaComponent :: addView(QBoxLayout* qw, QAbstractItemView* view, int posx, int posy, QString ttp){
+    qw->addWidget(view);
+    view->move(posx,posy);
+    view->setToolTip(ttp);
 }
-void GpaComponent :: open(){
-
+void GpaComponent :: resize(QWidget* qw,int w, int h){
+     qw->resize(w,h);
 }
-void GpaComponent :: close(QCloseEvent *c_event){
-
+void GpaComponent :: open(QWidget* qw){
+    qw->show();
 }
-void GpaComponent :: Update(){
-
+void GpaComponent :: close(QWidget*qw){
+     qw->close();
+}
+void GpaComponent :: update(QWidget* qw , QBoxLayout* qblay , QAbstractItemView* view , int w, int h, int posx, int posy,QString color,QString font){
+    if(view != nullptr){
+        qblay->addWidget(view);
+    }
+    view->move(posx,posy);
+    qw->setStyleSheet("background-color: "+color+";");
+    qw->resize(w,h);
 }
