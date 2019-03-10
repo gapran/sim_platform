@@ -22,10 +22,10 @@ int main(int argc, char *argv[])
 
     QBoxLayout* ql = gpalib.newVLayout();
     addlayout.ListView(ql, "This is List View");
-    QWidget* qw = gpalib.newComponent(150, 150, 0, 20, ql, "lightgrey", "Container 01");
+    QWidget* qw = gpalib.newComponent(150, 150, 0, 20, ql, "lightgrey", "Container name","font name");
 
     QBoxLayout* ql2 = gpalib.newVLayout();
-    QWidget* qw2 = gpalib.newComponent(200, 200, 150, 20, ql2, "black", "Container 02");
+    QWidget* qw2 = gpalib.newComponent(200, 200, 150, 20, ql2, "black", "Container name","font name");
 
     w.layout()->addWidget(qw);
     w.layout()->addWidget(qw2);
