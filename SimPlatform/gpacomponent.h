@@ -1,5 +1,5 @@
-#ifndef CONTAINER_H
-#define CONTAINER_H
+#ifndef GPACOMPONENT_H
+#define GPACOMPONENT_H
 
 #include <QtWidgets>
 #include <iostream>
@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Container{
+class GpaComponent{
 
 private:
     int length;
@@ -16,7 +16,7 @@ private:
 
 public:
 
-    void createMainContainer( QMainWindow *mainWindow ,int length, int width, QString title, QString colour){
+    void createMainComponent( QMainWindow *mainWindow ,int length, int width, QString title, QString colour){
 
     mainWindow->setWindowTitle(title);
     mainWindow->resize(length,width);
@@ -26,10 +26,9 @@ public:
 
 }
 
-   void createContainer( QMainWindow *mainWindow ,int length, int width, int positionX, int positionY, QString title, QString colour){
+   void createComponent( QMainWindow *mainWindow ,int length, int width, int positionX, int positionY, QString title, QString colour){
 
-        QWidget* qWidget = new QWidget();
-
+            QWidget* qWidget = new QWidget();
             qWidget->setParent(mainWindow->centralWidget());
             qWidget->resize(length, width);
             qWidget->move(positionX, positionY);
@@ -39,6 +38,13 @@ public:
 
     }
 
+   void setChild( QWidget *presentWindow, QString child, QString parent){
+
+       QWidget* childComponent = presentWindow->findChild<QWidget*>(child);
+       QWidget* parentComponent = presentWindow->findChild<QWidget*>(parent);
+      // childComponent->setParent(parentComponent);
+   }
+
 };
 
-#endif // CONTAINER_H
+#endif // GPACOMPONENT_H

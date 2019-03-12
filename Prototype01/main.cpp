@@ -1,4 +1,4 @@
-#include "container.h"
+#include "gpacomponent.h"
 #include "maincontainerview.h"
 #include <QApplication>
 #include <QBoxLayout>
@@ -10,32 +10,38 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
     qDebug() << "Welcome to GPA Prototype Builder!";
-    MainWindow mainContainerView;
+    MainWindow mainComponentView;
+    QWidget* presentWindow = QApplication::activeWindow();
 
 
     // User Code goes here...
 
         QString mainTitle = "GPA Prototype";
-        int mainContainerLength = 900;
-        int mainContainerWidth = 300;
+        int mainComponentLength = 900;
+        int mainComponentWidth = 300;
         QString mainColour = "green";
 
-        //Create main container / window
+        //Create main GpaComponent / window
 
-        Container container;
-        container.createMainContainer(&mainContainerView, mainContainerLength, mainContainerWidth, mainTitle, mainColour);
+        GpaComponent component;
+        component.createMainComponent(&mainComponentView, mainComponentLength, mainComponentWidth, mainTitle, mainColour);
 
-        //Create inner containers
+        //Create inner components
 
-     container.createContainer(&mainContainerView, 50, 50, 10, 10, "Container 1", "blue");
-     container.createContainer(&mainContainerView, 50, 50, 80, 10, "Container 2", "orange");
-     container.createContainer(&mainContainerView, 50, 50, 150, 10, "Container 3", "brown");
-     container.createContainer(&mainContainerView, 50, 50, 800, 200, "Container 4", "purple");
+     component.createComponent(&mainComponentView, 100, 100, 25, 25, "Component1 1", "blue");
+     component.createComponent(&mainComponentView, 50, 50, 50, 50, "Component 2", "orange");
+
+
+     component.setChild(presentWindow, "Component 2", "Component 1");
+
+
+//     container.createContainer(&mainContainerView, 50, 50, 150, 10, "Container 3", "brown");
+//     container.createContainer(&mainContainerView, 50, 50, 800, 200, "Container 4", "purple");
 
 
    //User Code ends
 
 
-     mainContainerView.show();
+     mainComponentView.show();
      return app.exec();
 }
