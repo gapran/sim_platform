@@ -26,11 +26,11 @@ public:
 
 }
 
-   void createContainer( QWidget *centralWidget ,int length, int width, int positionX, int positionY, QString title, QString colour){
+   void createContainer( QMainWindow *mainWindow ,int length, int width, int positionX, int positionY, QString title, QString colour){
 
         QWidget* qWidget = new QWidget();
 
-            qWidget->setParent(centralWidget);
+            qWidget->setParent(mainWindow->centralWidget());
             qWidget->resize(length, width);
             qWidget->move(positionX, positionY);
             qWidget->setToolTip(title);

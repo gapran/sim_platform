@@ -25,19 +25,15 @@ int main(int argc, char *argv[])
         Container container;
         container.createMainContainer(&mainContainerView, mainContainerLength, mainContainerWidth, mainTitle, mainColour);
 
-
-
-
         //Create inner containers
 
-     container.createContainer(mainContainerView.centralWidget(), 50, 50, 10, 10, "Container 1", "blue");
-     container.createContainer(mainContainerView.centralWidget(), 50, 50, 80, 10, "Container 2", "orange");
-     container.createContainer(mainContainerView.centralWidget(), 50, 50, 150, 10, "Container 3", "brown");
+     container.createContainer(&mainContainerView, 50, 50, 10, 10, "Container 1", "blue");
+     container.createContainer(&mainContainerView, 50, 50, 80, 10, "Container 2", "orange");
+     container.createContainer(&mainContainerView, 50, 50, 150, 10, "Container 3", "brown");
+     container.createContainer(&mainContainerView, 50, 50, 800, 200, "Container 4", "purple");
 
 
    //User Code ends
-
-
 
 
      mainContainerView.show();
