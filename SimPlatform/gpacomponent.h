@@ -26,23 +26,27 @@ public:
 
 }
 
-   void createComponent( QMainWindow *mainWindow ,int length, int width, int positionX, int positionY, QString title, QString colour){
+   void createComponent( QMainWindow *mainWindow, QWidget* presentWindow, QString parent, int length, int width, int positionX, int positionY, QString title, QString colour){
 
             QWidget* qWidget = new QWidget();
-            qWidget->setParent(mainWindow->centralWidget());
+          //  qWidget->setParent(mainWindow->centralWidget());
             qWidget->resize(length, width);
             qWidget->move(positionX, positionY);
             qWidget->setToolTip(title);
             qWidget->setStyleSheet("background-color: "+colour+";");
+            if(parent == ""){
+                qWidget->setParent(mainWindow->centralWidget());
+            } else { setChild(presentWindow, title, parent); }
             qWidget->show();
 
     }
 
-   void setChild( QWidget *presentWindow, QString child, QString parent){
+   void setChild(QWidget* presentWindow, QString child, QString parent){
 
        QWidget* childComponent = presentWindow->findChild<QWidget*>(child);
        QWidget* parentComponent = presentWindow->findChild<QWidget*>(parent);
-      // childComponent->setParent(parentComponent);
+
+       childComponent->setParent(parentComponent);
    }
 
 };

@@ -13,7 +13,6 @@ int main(int argc, char *argv[])
     MainWindow mainComponentView;
     QWidget* presentWindow = QApplication::activeWindow();
 
-
     // User Code goes here...
 
         QString mainTitle = "GPA Prototype";
@@ -28,11 +27,11 @@ int main(int argc, char *argv[])
 
         //Create inner components
 
-     component.createComponent(&mainComponentView, 100, 100, 25, 25, "Component1 1", "blue");
-     component.createComponent(&mainComponentView, 50, 50, 50, 50, "Component 2", "orange");
+     component.createComponent(&mainComponentView, presentWindow, "", 100, 100, 25, 25, "Component 1", "blue");
+     //component.createComponent(&mainComponentView, presentWindow, "Component 1", 50, 50, 50, 50, "Component 2", "orange");
 
 
-     component.setChild(presentWindow, "Component 2", "Component 1");
+   //  component.setChild(presentWindow, "Component 2", "Component 1");
 
 
 //     container.createContainer(&mainContainerView, 50, 50, 150, 10, "Container 3", "brown");
