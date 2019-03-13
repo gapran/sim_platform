@@ -10,43 +10,48 @@ using namespace std;
 class GpaComponent{
 
 private:
+
+    QWidget* qWidget;
     int length;
     int width;
     QString title;
+    QLayout* layout = new QHBoxLayout();
 
 public:
 
-    void createMainComponent( QMainWindow *mainWindow ,int length, int width, QString title, QString colour){
-
-    mainWindow->setWindowTitle(title);
-    mainWindow->resize(length,width);
-    mainWindow->setStyleSheet("background-color: "+colour+";");
-    mainWindow->setWindowIcon(QIcon(":/resources/icon/gpa_logo.png"));
-    mainWindow->show();
-
-}
-
-   void createComponent( QMainWindow *mainWindow, QWidget* presentWindow, QString parent, int length, int width, int positionX, int positionY, QString title, QString colour){
-
-            QWidget* qWidget = new QWidget();
-          //  qWidget->setParent(mainWindow->centralWidget());
+    GpaComponent(QWidget* widget, int length, int width,QString title, QString colour){
+            qWidget = widget;
             qWidget->resize(length, width);
-            qWidget->move(positionX, positionY);
+           // qWidget->move(positionX, positionY);
             qWidget->setToolTip(title);
             qWidget->setStyleSheet("background-color: "+colour+";");
-            if(parent == ""){
-                qWidget->setParent(mainWindow->centralWidget());
-            } else { setChild(presentWindow, title, parent); }
+          // if(!qWidget->layout()) qWidget->setLayout(new QHBoxLayout());
             qWidget->show();
+            std::cout << colour.toStdString() ;
 
     }
 
-   void setChild(QWidget* presentWindow, QString child, QString parent){
+    GpaComponent( int length, int width, QString title, QString colour){
+    GpaComponent(new QWidget(), length, width,title, colour);
 
-       QWidget* childComponent = presentWindow->findChild<QWidget*>(child);
-       QWidget* parentComponent = presentWindow->findChild<QWidget*>(parent);
+    }
 
-       childComponent->setParent(parentComponent);
+QBoxLayout* addChild(QMainWindow *mainContainerView, GpaComponent* childComponent, int x, int y){
+
+         //    QWidget *centralWidget = new QWidget (mainContainerView);
+          //   QVBoxLayout *widgetLayout = new QVBoxLayout(centralWidget);
+             QHBoxLayout *mainLayout = new QHBoxLayout;
+
+     QHBoxLayout *horizontalLayout1 = new QHBoxLayout;
+     QWidget* child = childComponent->qWidget;
+     child->move(x, y);
+     horizontalLayout1->addWidget(child);
+
+     mainLayout->addLayout(horizontalLayout1);
+  //     widgetLayout->addLayout(mainLayout);
+ //                mainContainerView->setCentralWidget(centralWidget);
+
+     return mainLayout;
    }
 
 };

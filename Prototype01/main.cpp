@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     qDebug() << "Welcome to GPA Prototype Builder!";
     MainWindow mainComponentView;
-    QWidget* presentWindow = QApplication::activeWindow();
 
     // User Code goes here...
 
@@ -20,23 +19,20 @@ int main(int argc, char *argv[])
         int mainComponentWidth = 300;
         QString mainColour = "green";
 
+
         //Create main GpaComponent / window
 
-        GpaComponent component;
-        component.createMainComponent(&mainComponentView, mainComponentLength, mainComponentWidth, mainTitle, mainColour);
+        GpaComponent* gpaComponent = new GpaComponent(&mainComponentView, mainComponentLength, mainComponentWidth, mainTitle, mainColour);
+
 
         //Create inner components
 
-     component.createComponent(&mainComponentView, presentWindow, "", 100, 100, 25, 25, "Component 1", "blue");
-     //component.createComponent(&mainComponentView, presentWindow, "Component 1", 50, 50, 50, 50, "Component 2", "orange");
+    //    GpaComponent* childComponent1 = new GpaComponent( 100, 100,  "Component 1", "blue");
 
 
-   //  component.setChild(presentWindow, "Component 2", "Component 1");
-
-
-//     container.createContainer(&mainContainerView, 50, 50, 150, 10, "Container 3", "brown");
-//     container.createContainer(&mainContainerView, 50, 50, 800, 200, "Container 4", "purple");
-
+    //   QBoxLayout* layout =  gpaComponent->addChild(&mainComponentView, childComponent1,0,0);
+     //  mainComponentView.setLayout(layout);
+//
 
    //User Code ends
 
