@@ -18,16 +18,34 @@ private:
     QLayout* layout = new QHBoxLayout();
 
 public:
+    GpaComponent(){
 
-    GpaComponent(QWidget* widget, int length, int width,QString title, QString colour){
+    }
+    void createMainContainer( QMainWindow *mainWindow ,int length, int width, QString title, QString colour){
+
+        mainWindow->setWindowTitle(title);
+        mainWindow->resize(length,width);
+        mainWindow->setStyleSheet("background-color: "+colour+";");
+        mainWindow->setWindowIcon(QIcon(":/resources/icon/gpa_logo.png"));
+        mainWindow->show();
+
+    }
+
+    GpaComponent(QWidget* widget, int length, int width, QString title, QString colour){
+//            qWidget = widget;
+//            qWidget->resize(length, width);
+//           // qWidget->move(positionX, positionY);
+//            qWidget->setToolTip(title);
+//            qWidget->setStyleSheet("background-color: "+colour+";");
+//          // if(!qWidget->layout()) qWidget->setLayout(new QHBoxLayout());
+//            qWidget->show();
+//            std::cout << colour.toStdString() ;
             qWidget = widget;
-            qWidget->resize(length, width);
-           // qWidget->move(positionX, positionY);
-            qWidget->setToolTip(title);
-            qWidget->setStyleSheet("background-color: "+colour+";");
-          // if(!qWidget->layout()) qWidget->setLayout(new QHBoxLayout());
-            qWidget->show();
-            std::cout << colour.toStdString() ;
+            qWidget->setWindowTitle(title);
+             qWidget->resize(length,width);
+             qWidget->setStyleSheet("background-color: "+colour+";");
+              qWidget->setWindowIcon(QIcon(":/resources/icon/gpa_logo.png"));
+             qWidget->show();
 
     }
 
@@ -53,6 +71,8 @@ QBoxLayout* addChild(QMainWindow *mainContainerView, GpaComponent* childComponen
 
      return mainLayout;
    }
+
+
 
 };
 

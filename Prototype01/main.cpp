@@ -22,7 +22,8 @@ int main(int argc, char *argv[])
 
         //Create main GpaComponent / window
 
-        GpaComponent* gpaComponent = new GpaComponent(&mainComponentView, mainComponentLength, mainComponentWidth, mainTitle, mainColour);
+        GpaComponent gpaMainComponent;
+        gpaMainComponent.createMainContainer(&mainComponentView, mainComponentLength, mainComponentWidth, mainTitle, mainColour);
 
 
         //Create inner components
