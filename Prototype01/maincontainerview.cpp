@@ -1,6 +1,6 @@
 #include "maincontainerview.h"
 #include "ui_maincontainerview.h"
-#include "gpacomponent.h"
+#include "container.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

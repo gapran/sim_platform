@@ -26,7 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES +=
 
 HEADERS += \
-    gpacomponent.h
+    container.h
 
 unix {
     target.path = /usr/lib

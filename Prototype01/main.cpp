@@ -1,43 +1,47 @@
-#include "gpacomponent.h"
+#include "container.h"
 #include "maincontainerview.h"
 #include <QApplication>
+#include <QPushButton>
+#include<QGraphicsProxyWidget>
 #include <QBoxLayout>
 #include <QLayout>
 #include <QDebug>
+
+QGraphicsProxyWidget* buttonWidget;
 
 int main(int argc, char *argv[])
 {
 
     QApplication app(argc, argv);
     qDebug() << "Welcome to GPA Prototype Builder!";
-    MainWindow mainComponentView;
+    MainWindow mainContainerView;
+
+    QWidget qWidget;
 
     // User Code goes here...
 
         QString mainTitle = "GPA Prototype";
-        int mainComponentLength = 900;
-        int mainComponentWidth = 300;
+        int mainContainerLength = 900;
+        int mainContainerWidth = 300;
         QString mainColour = "green";
 
 
         //Create main GpaComponent / window
-
-        GpaComponent gpaMainComponent;
-        gpaMainComponent.createMainContainer(&mainComponentView, mainComponentLength, mainComponentWidth, mainTitle, mainColour);
-
-
-        //Create inner components
-
-    //    GpaComponent* childComponent1 = new GpaComponent( 100, 100,  "Component 1", "blue");
+        Container container;
+        container.createMainContainer(&mainContainerView,  mainContainerLength, mainContainerWidth, mainTitle, mainColour);
 
 
-    //   QBoxLayout* layout =  gpaComponent->addChild(&mainComponentView, childComponent1,0,0);
-     //  mainComponentView.setLayout(layout);
-//
+        //Create inner containers
+        container.createContainer(mainContainerView.centralWidget(), qWidget, 50, 50, 10, 10, "Container 1", "blue");
 
-   //User Code ends
+      //  QPushButton *button = new QPushButton;
+      //  buttonWidget->scene()->addWidget(button);
+      //  container.createContainer(mainContainerView.centralWidget(), &buttonWidget, 50, 50, 80, 10, "Container 2", "orange");
+     //   container.createContainer(mainContainerView.centralWidget(), 50, 50, 150, 10, "Container 3", "brown");
 
 
-     mainComponentView.show();
+    // User Code ends
+
+     mainContainerView.show();
      return app.exec();
 }
