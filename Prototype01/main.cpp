@@ -2,12 +2,10 @@
 #include "maincontainerview.h"
 #include <QApplication>
 #include <QPushButton>
-#include<QGraphicsProxyWidget>
 #include <QBoxLayout>
 #include <QLayout>
 #include <QDebug>
 
-QGraphicsProxyWidget* buttonWidget;
 
 int main(int argc, char *argv[])
 {
@@ -15,8 +13,6 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     qDebug() << "Welcome to GPA Prototype Builder!";
     MainWindow mainContainerView;
-
-    QWidget *qWidget = new QWidget();
 
     // User Code goes here...
 
@@ -32,12 +28,17 @@ int main(int argc, char *argv[])
 
 
         //Create inner containers
-        container.createContainer(mainContainerView.centralWidget(), qWidget, 50, 50, 10, 10, "Container 1", "blue");
 
-      //  QPushButton *button = new QPushButton;
-      //  buttonWidget->scene()->addWidget(button);
-      //  container.createContainer(mainContainerView.centralWidget(), &buttonWidget, 50, 50, 80, 10, "Container 2", "orange");
-     //   container.createContainer(mainContainerView.centralWidget(), 50, 50, 150, 10, "Container 3", "brown");
+       // QWidget *qWidget = new QWidget();
+       // container.createContainer(mainContainerView.centralWidget(), qWidget, 50, 50, 10, 10, "Container 1", "blue");
+
+        QGraphicsProxyWidget *buttonWidget;
+        QPushButton *button = new QPushButton;
+        buttonWidget->scene()->addWidget(button);
+        QWidget *bWidget = buttonWidget->contains(1);
+        container.createContainer(mainContainerView.centralWidget(), bWidget, 50, 50, 80, 10, "Container 2", "orange");
+
+        //   container.createContainer(mainContainerView.centralWidget(), 50, 50, 150, 10, "Container 3", "brown");
 
 
     // User Code ends
