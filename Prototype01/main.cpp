@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     qDebug() << "Welcome to GPA Prototype Builder!";
     MainWindow mainContainerView;
 
-    QWidget qWidget;
+    QWidget *qWidget = new QWidget();
 
     // User Code goes here...
 
