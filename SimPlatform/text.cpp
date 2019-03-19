@@ -133,19 +133,19 @@ void Text:: setTextBold(bool textBold)
     }
 }
 
-//void Text:: setHoverText(QString hoverText)
-//{
-//    QTextCursor cursor(textEdit->document());
-//    textEdit->setTextCursor(cursor);
-//    cursor.insertText(hoverText);
-//}
+void Text:: setHoverText(QString hoverText)
+{
+    QTextCursor cursor(textEdit->document());
+    textEdit->setTextCursor(cursor);
+    cursor.insertText(hoverText);
+}
 
-//void Text:: setClickable(QString link)
-//{
-//    textEdit->selectAll();
-//    QTextCursor cursor(textEdit->document());
-//    textEdit->setTextCursor(cursor);
-//    QTextCharFormat linkFormat = cursor.charFormat();
-//    linkFormat.setAnchor(true);
-//    linkFormat.setAnchorHref(link);
-//}
+void Text:: setClickable(QString link)
+{
+    textEdit->selectAll();
+    QTextCursor cursor(textEdit->document());
+    textEdit->setTextCursor(cursor);
+    QTextCharFormat linkFormat = cursor.charFormat();
+    linkFormat.setAnchor(true);
+    linkFormat.setAnchorHref(link);
+}
