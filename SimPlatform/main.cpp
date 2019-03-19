@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
     // Text Styles
     text->setFontFamily("Georgia");
     text->setTextSize(16);
+    text->setTextItalic();
     text->setTextBold();
     text->setTextColor("blue");
     text->show();
