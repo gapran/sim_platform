@@ -33,7 +33,7 @@ Text::Text(QWidget *parent) : QDialog (parent){
     setBackgroundColor(NULL);
 
     setFontUnderline(false);
-    setFontItalic(false);
+    //setTextItalic();
     //setTextBold();
 
     QHBoxLayout *layout = new QHBoxLayout;
@@ -90,15 +90,10 @@ void Text:: setFontUnderline(bool fontUnderline)
     }
 }
 
-void Text:: setFontItalic(bool fontItalic)
+void Text:: setTextItalic()
 {
-    if(fontItalic)
-    {
-        textEdit->setFontItalic(true); //Setting font-style
-    }
-    else {
-        textEdit->setFontItalic(false);
-    }
+    textEdit->setFontItalic(true); //Setting font-style
+
 }
 
 void Text:: setTextColor(QString textColor )
