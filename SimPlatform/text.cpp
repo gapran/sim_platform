@@ -32,7 +32,7 @@ Text::Text(QWidget *parent) : QDialog (parent){
     //Setting default bg-color
     setBackgroundColor(NULL);
 
-    setFontUnderline(false);
+    //setTextUnderline();
     //setTextItalic();
     //setTextBold();
 
@@ -79,15 +79,11 @@ void Text:: setFontFamily(QString family)
     }
 }
 
-void Text:: setFontUnderline(bool fontUnderline)
+void Text:: setTextUnderline()
 {
-    if(fontUnderline)
-    {
-        textEdit->setFontUnderline(true); //Setting font-style
-    }
-    else {
-        textEdit->setFontUnderline(false);
-    }
+
+    textEdit->setFontUnderline(true); //Setting font-style
+
 }
 
 void Text:: setTextItalic()

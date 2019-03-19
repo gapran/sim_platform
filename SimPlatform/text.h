@@ -22,7 +22,7 @@ public:
     void setText(QString text);
     void setTextSize(qreal size);
     void setFontFamily(QString family);
-    void setFontUnderline(bool fontUnderline);
+    void setTextUnderline();
     void setTextItalic();
     void setTextColor(QString color);
     void setBackgroundColor(QString color);
