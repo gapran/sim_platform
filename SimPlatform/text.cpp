@@ -1,6 +1,7 @@
 #include "text.h"
 
 #include<iostream>
+#include<QLabel>
 #include<vector>
 
 using namespace std;
@@ -123,17 +124,63 @@ void Text:: setTextBold()
 
 void Text:: setHoverText(QString hoverText)
 {
-    QTextCursor cursor(textEdit->document());
-    textEdit->setTextCursor(cursor);
-    cursor.insertText(hoverText);
+
+//   QTextCursor cursor(textEdit->document());
+//    textEdit->setTextCursor(cursor);
+//    cursor.insertText(hoverText);
+//   textEdit->setStyleSheet("QLabel { background-color : red; }");
+//   textEdit->toolTip() = hoverText;
+//   QMouseEvent *e;
+//    textEdit->mousePressEvent(&e);
+//    cursor.insertText(hoverText);
 }
 
-void Text:: setClickable(QString link)
+void Text:: setClick(QString link)
 {
+
+//    QLabel label;
+//    label.setOpenExternalLinks(true);
+//    label.setText("<a href=" + link + ">click here</a>");
+
+
+
+//   // QString previousText = textEdit->s;
+//    QString textLink = "<a href='http://" + link + "'>" + previousText + "</a>";
+//    textEdit->setText(textLink);
+//    QLabel* myLabel;
+//    myLabel->setText("<a href=\"http://example.com/\">Click Here!</a>");
+//    myLabel->setTextFormat(Qt::RichText);
+//    myLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+//    myLabel->setOpenExternalLinks(true);
+
     textEdit->selectAll();
     QTextCursor cursor(textEdit->document());
-    textEdit->setTextCursor(cursor);
+
+    QString text = textEdit->document()->toPlainText();
+   // textEdit->setTextCursor(cursor);
+   // textEdit->setText("click here");
     QTextCharFormat linkFormat = cursor.charFormat();
     linkFormat.setAnchor(true);
     linkFormat.setAnchorHref(link);
+    linkFormat.anchorName() = "hello";
+    textEdit->clear();
+    cursor.insertText(text, linkFormat);
+
+   // textEdit->setText();
+
+
+//    textEdit->textCursor().mergeCharFormat( linkFormat );
+  //  textEdit->textCursor().mergeCurrrentCharFormat( linkFormat );
+
+//   QString test = " Text {
+//        anchors.centerIn: parent
+//        text: " UPB, <a href='http://www.upb.de'>click here</a>"
+//        onLinkActivated: Qt.openUrlExternally(link)
+
+//        MouseArea {
+//            anchors.fill: parent
+//            acceptedButtons: Qt.NoButton
+//            cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+//        }
+//    } "
 }

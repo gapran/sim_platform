@@ -28,11 +28,14 @@ public:
     void setBackgroundColor(QString color);
     void setTextBold();
     void setHoverText(QString hoverText);
-    void setClickable(QString link);
+    void setClick(QString link);
 
 private:
 
     QTextEdit *textEdit;
+
+ protected:
+
 
 
 };
