@@ -6,8 +6,8 @@
 using namespace std;
 
 qreal textSize;
-qreal font_family;
 
+QString font_family;
 QString textColor;
 QString textInput;
 QString bgColor;
@@ -66,16 +66,16 @@ void Text:: setTextSize(qreal textSize)
     }
 }
 
-void Text:: setFontFamily(qreal family)
+void Text:: setFontFamily(QString family)
 {
-    if(QString::number(family).isNull())
+    if(family.isNull())
     {
         textEdit->selectAll();
         textEdit->setFontFamily("Times New Roman"); //Setting default font-family
     }
     else {
         textEdit->selectAll();
-        textEdit->setFontFamily(QString::number(family)); //Setting font-family
+        textEdit->setFontFamily(family); //Setting font-family
     }
 }
 
