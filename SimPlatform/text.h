@@ -27,6 +27,8 @@ public:
     void setTextColor(QString color);
     void setBackgroundColor(QString color);
     void setTextBold(bool textBold);
+    void setHoverText(QString hoverText);
+    void setClickable(QString link);
 
 private:
 
