@@ -22,20 +22,16 @@ Text::Text(QWidget *parent) : QDialog (parent){
     setText("Default-Text");
 
     //Setting default text-size
-    //setTextSize(NULL);
+    setTextSize(12);
 
     //Setting default font-family
-    //setFontFamily(NULL);
+    setFontFamily("Times New Roman");
 
     //Setting default text-color
-    setTextColor(NULL);
+    setTextColor("black");
 
     //Setting default bg-color
-    setBackgroundColor(NULL);
-
-    //setTextUnderline();
-    //setTextItalic();
-    //setTextBold();
+    setBackgroundColor("white");
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(textEdit);
