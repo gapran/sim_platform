@@ -34,7 +34,7 @@ Text::Text(QWidget *parent) : QDialog (parent){
 
     setFontUnderline(false);
     setFontItalic(false);
-    setTextBold(false);
+    //setTextBold();
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(textEdit);
@@ -123,14 +123,11 @@ void Text:: setBackgroundColor(QString bgColor)
     }
 }
 
-void Text:: setTextBold(bool textBold)
+void Text:: setTextBold()
 {
-    if(textBold)
-    {
         QTextCharFormat format;
         format.setFontWeight(QFont::Bold);
         textEdit->textCursor().mergeCharFormat(format);
-    }
 }
 
 void Text:: setHoverText(QString hoverText)

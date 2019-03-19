@@ -26,7 +26,7 @@ public:
     void setFontItalic(bool fontItalic);
     void setTextColor(QString color);
     void setBackgroundColor(QString color);
-    void setTextBold(bool textBold);
+    void setTextBold();
     void setHoverText(QString hoverText);
     void setClickable(QString link);
 
