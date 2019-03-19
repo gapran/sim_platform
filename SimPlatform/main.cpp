@@ -3,6 +3,7 @@
 #include <QCommandLineOption>
 
 #include "mainwindow.h"
+#include "text.h"
 
 /*
  * Example from:
@@ -23,6 +24,13 @@ int main(int argc, char *argv[])
     parser.addVersionOption();
     parser.addPositionalArgument("file", "The file to open.");
     parser.process(app);
+
+    //Text Element
+    QWidget *textWidget = new QWidget();
+    Text *text = new Text(textWidget);
+    text->setText("Welcome to GPA");
+    text->show();
+    textWidget->show();
 
     MainWindow mainWin;
     if (!parser.positionalArguments().isEmpty())
