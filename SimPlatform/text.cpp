@@ -18,7 +18,7 @@ Text::Text(QWidget *parent) : QDialog (parent){
     textEdit = new QTextEdit;
 
     //Setting default text
-    //setText("Default-Text");
+    setText("Default-Text");
 
     //Setting default text-size
     //setTextSize(NULL);

@@ -11,10 +11,10 @@ int main(int argc, char *argv[])
 
 {
 
-    //Text Element
+    //Text
     QWidget *textWidget = new QWidget();
     Text *text = new Text(textWidget);
-    text->setText("Welcome to GPA");
+    //text->setText("Welcome to GPA");
     text->show();
     textWidget->show();
 
