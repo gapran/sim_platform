@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     Text *text = new Text(textWidget);
     text->setText("Welcome to GPA");
     // Text Styles
+    text->setFontFamily("Georgia");
     text->setTextSize(16);
     text->setTextBold();
     text->setTextColor("blue");
