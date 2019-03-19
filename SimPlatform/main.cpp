@@ -25,10 +25,14 @@ int main(int argc, char *argv[])
     parser.addPositionalArgument("file", "The file to open.");
     parser.process(app);
 
-    //Text
+    // Text
     QWidget *textWidget = new QWidget();
     Text *text = new Text(textWidget);
-    //text->setText("Welcome to GPA");
+    text->setText("Welcome to GPA");
+    // Text Styles
+    text->setTextSize(16);
+    text->setTextBold();
+    text->setTextColor("blue");
     text->show();
     textWidget->show();
 
