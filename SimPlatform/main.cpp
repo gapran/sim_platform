@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 
     //Create Table with rows and columns
     QWidget *tableWidget = new QWidget();
-    Table *table = new Table(*tableWidget);
+    Table *table = new Table(tableWidget);
     table->createTable(6,7);
 
     QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date", "Description", "Action"};
