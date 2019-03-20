@@ -18,8 +18,8 @@ int main(int argc, char *argv[])
     // User Code goes here...
 
         QString mainTitle = "GPA Prototype";
-        int mainContainerLength = 900;
-        int mainContainerWidth = 300;
+        int mainContainerLength = 1000;
+        int mainContainerWidth = 400;
         QString mainColour = "white";
 
 
@@ -30,8 +30,8 @@ int main(int argc, char *argv[])
 
         //Create inner containers
 
-        QWidget *tableContainer = new QWidget();
-        Table *table1 = new Table(tableContainer);
+       // QWidget *tableContainer = new QWidget();
+        Table *table1 = new Table(mainContainerView.centralWidget());
 
         //Create Table with rows and columns
         table1->createTable(5,7);
@@ -62,16 +62,19 @@ int main(int argc, char *argv[])
         //table1->updateTable(2, 1, "fixed");
 
         //Filter the table: Column name and Filter keyword
-        table1->applyFilter("Status", "not fixed");
+        //table1->applyFilter("Status", "not fixed");
 
         //Apply border width and color for Table window
-        QStringList insertBorderStyle = {"1px", "blue"};
-        table1->applyBorderWidthColor(insertBorderStyle);
+        //QStringList insertBorderStyle = {"1px", "blue"};
+        //table1->applyBorderWidthColor(insertBorderStyle);
 
         //Search on Column ID
-        table1->findColumn("Action");
+        //table1->findColumn("Action");
 
-        container.createContainer(mainContainerView.centralWidget(), tableContainer, 500, 200, 150, 10, "Table Container","gray");
+        //When the user presses a column header then sorting happens.
+        //table1->sort(true);
+
+        container.createContainer(mainContainerView.centralWidget(), table1, 700, 200, 150, 10, "Table Container","gray");
 
 
     // User Code ends

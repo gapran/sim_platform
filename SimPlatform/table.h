@@ -20,7 +20,7 @@ public:
     void addTableDescriptionColumns(QStringList tableDescriptionColumn);
     void addTableActionColumns(QStringList tableActionColumn);
     void findColumn(QString columnName);
-    void setSorting(bool value);
+    void sort(bool value);
     void applyFilter(QString columnFilterName, QString filterName);
     void applyBackgroundColor(QString backgroundColor);
     void applyBorderWidthColor( QStringList borderWidthColor);

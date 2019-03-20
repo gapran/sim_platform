@@ -166,7 +166,7 @@ void Table::applyBorderWidthColor( QStringList borderWidthColor){
 
 }
 
-void Table::setSorting(bool value){
+void Table::sort(bool value){
 
         //When the user presses a column header then sorting happens.
         table->setSortingEnabled(value);
