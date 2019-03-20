@@ -39,12 +39,7 @@ void Table::updateTable(int rowNo, int columnNo, QString value) {
 
 void Table::addTableHeaders(QStringList tableHeadersList) {
 
-    QStringList tableHeaders;
-    for (int var = 0; var < tableHeadersList.size(); ++var) {
-        tableHeaders.append(tableHeadersList[var]);
-    }
-
-     table->setHorizontalHeaderLabels(tableHeaders);
+     table->setHorizontalHeaderLabels(tableHeadersList);
 }
 
 void Table::addTableNameColumns(QStringList tableNameColumn) {
@@ -120,40 +115,40 @@ void Table::addTableActionColumns(QStringList tableActionColumn) {
 //    }
 //}
 
-void Table::applyFilter(QString columnFilterName, QString filterName) {
+//void Table::applyFilter(QString columnFilterName, QString filterName) {
 
 
-    //Apply the filter on the table: Column name and Filter keyword
-    if (filterName != "") {
-        int columnFilterNo;
-        int rowDeleteNo;
-        std::vector<int> rowsToDelete;
+//    //Apply the filter on the table: Column name and Filter keyword
+//    if (filterName != "") {
+//        int columnFilterNo;
+//        int rowDeleteNo;
+//        std::vector<int> rowsToDelete;
 
-        //   int rowCount = table->rowCount();
-//        for (int p = 0; p < tableHeaders.size(); ++p) {
-//            if (columnFilterName == tableHeaders[p]) {
-//                columnFilterNo = p;
-//            }
+//        //   int rowCount = table->rowCount();
+////        for (int p = 0; p < tableHeaders.size(); ++p) {
+////            if (columnFilterName == tableHeaders[p]) {
+////                columnFilterNo = p;
+////            }
+////        }
+
+////        for (int q = 0; q < row; ++q) {
+
+////            QString search = table->item(q, columnFilterNo)->text();
+
+////            if (filterName != search) {
+////                // table->removeRow(q);
+////                rowsToDelete.push_back(q);
+////            }
+////        }
+
+//        for (unsigned int r = 0; r < rowsToDelete.size(); ++r) {
+//            rowDeleteNo = rowsToDelete[r];
+//            table->removeRow(rowDeleteNo -
+//                             r); // Once a row deleted, table view is now 1 less to the collected row value to be deleted
 //        }
+//    }
 
-//        for (int q = 0; q < row; ++q) {
-
-//            QString search = table->item(q, columnFilterNo)->text();
-
-//            if (filterName != search) {
-//                // table->removeRow(q);
-//                rowsToDelete.push_back(q);
-//            }
-//        }
-
-        for (unsigned int r = 0; r < rowsToDelete.size(); ++r) {
-            rowDeleteNo = rowsToDelete[r];
-            table->removeRow(rowDeleteNo -
-                             r); // Once a row deleted, table view is now 1 less to the collected row value to be deleted
-        }
-    }
-
-}
+//}
 
 void Table::applyBackgroundColor(QString backgroundColor){
 

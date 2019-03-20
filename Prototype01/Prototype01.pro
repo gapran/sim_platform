@@ -24,14 +24,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-    maincontainerview.cpp
+        maincontainerview.cpp
 
 HEADERS += \
         ../SimPlatform/simplatform.h \
-    maincontainerview.h
+        maincontainerview.h
 
 FORMS += \
-    maincontainerview.ui
+      maincontainerview.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -42,4 +42,4 @@ INCLUDEPATH += "../SimPlatform"
 LIBS += "../build-SimPlatform-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/debug/libSimPlatform.a"
 
 RESOURCES += \
-    resources.qrc
+          resources.qrc

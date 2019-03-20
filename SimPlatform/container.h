@@ -11,7 +11,7 @@ class Container{
 
 
 public:
-    //QWidget qWidget;
+
     void createMainContainer( QMainWindow *mainWindow ,int length, int width, QString title, QString colour){
 
     mainWindow->setWindowTitle(title);
