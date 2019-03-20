@@ -107,49 +107,55 @@ void Table::findColumn(QString columnName) {
     }
 }
 
-//void Table::applyFilter(QString columnFilterName, QString filterName) {
+void Table::applyFilter(QString columnFilterName, QString filterName) {
 
 
-//    //Apply the filter on the table: Column name and Filter keyword
-//    if (filterName != "") {
-//        int columnFilterNo;
-//        int rowDeleteNo;
-//        std::vector<int> rowsToDelete;
+    QStringList tableHeaders;
+    for(int i = 0; i < table->model()->columnCount(); i++)
+    {
+      tableHeaders.append(table->model()->headerData(i, Qt::Horizontal).toString());
+    }
 
-//        //   int rowCount = table->rowCount();
-////        for (int p = 0; p < tableHeaders.size(); ++p) {
-////            if (columnFilterName == tableHeaders[p]) {
-////                columnFilterNo = p;
-////            }
-////        }
+    //Apply the filter on the table: Column name and Filter keyword
+    if (filterName != "") {
+        int columnFilterNo;
+        int rowDeleteNo;
+        std::vector<int> rowsToDelete;
 
-////        for (int q = 0; q < row; ++q) {
+        //   int rowCount = table->rowCount();
+        for (int p = 0; p < tableHeaders.size(); ++p) {
+            if (columnFilterName == tableHeaders[p]) {
+                columnFilterNo = p;
+            }
+        }
 
-////            QString search = table->item(q, columnFilterNo)->text();
+        for (int q = 0; q < table->rowCount(); ++q) {
 
-////            if (filterName != search) {
-////                // table->removeRow(q);
-////                rowsToDelete.push_back(q);
-////            }
-////        }
+            QString search = table->item(q, columnFilterNo)->text();
 
-//        for (unsigned int r = 0; r < rowsToDelete.size(); ++r) {
-//            rowDeleteNo = rowsToDelete[r];
-//            table->removeRow(rowDeleteNo -
-//                             r); // Once a row deleted, table view is now 1 less to the collected row value to be deleted
-//        }
-//    }
+            if (filterName != search) {
+                // table->removeRow(q);
+                rowsToDelete.push_back(q);
+            }
+        }
 
-//}
-
-void Table::applyBackgroundColor(QString backgroundColor){
-
-    QString bgColor = "background-color:"+backgroundColor;
-    //Applies background color to Table if user provides a color
-    if (!bgColor.isNull()){
-    table->setStyleSheet(bgColor); }
+        for (unsigned int r = 0; r < rowsToDelete.size(); ++r) {
+            rowDeleteNo = rowsToDelete[r];
+            table->removeRow(rowDeleteNo -
+                             r); // Once a row deleted, table view is now 1 less to the collected row value to be deleted
+        }
+    }
 
 }
+
+//void Table::applyBackgroundColor(QString backgroundColor){
+
+//    QString bgColor = "background-color:"+backgroundColor;
+//    //Applies background color to Table if user provides a color
+//    if (!bgColor.isNull()){
+//    table->setStyleSheet(bgColor); }
+
+//}
 
 void Table::applyBorderWidthColor( QStringList borderWidthColor){
 

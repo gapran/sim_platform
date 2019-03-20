@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
         Table *table1 = new Table(tableContainer);
 
         //Create Table with rows and columns
-        table1->createTable(6,7);
+        table1->createTable(5,7);
 
         QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date", "Description", "Action"};
         table1->addTableHeaders(tableHeadersList);
@@ -59,13 +59,10 @@ int main(int argc, char *argv[])
 
 
         //Update a certain cell in a table with a certain row id and column
-        // updateTable(2, 1, "fixed");
+        //table1->updateTable(2, 1, "fixed");
 
         //Filter the table: Column name and Filter keyword
-        //applyFilter("Status", "not fixed");
-
-        //Apply color for background to Table
-        //applyBackgroundColor("yellow");
+        table1->applyFilter("Status", "not fixed");
 
         //Apply border width and color for Table window
         QStringList insertBorderStyle = {"1px", "blue"};
