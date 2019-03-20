@@ -26,6 +26,7 @@ public:
     void applyFilter(QString columnFilterName, QString filterName);
     void applyBackgroundColor(QString backgroundColor);
     void applyBorderWidthColor( QStringList borderWidthColor);
+    void show();
 
     ~Table();
 

@@ -112,13 +112,13 @@ void Table::addTableActionColumns(QStringList tableActionColumn) {
     }
 }
 
-void Table::findColumn(QString columnName) {
-    for (int a = 0; a < tableHeaders.size(); ++a) {
-        if (columnName == tableHeaders[a]) {
-            cout << "The column is found in the table." << "\n";
-        }
-    }
-}
+//void Table::findColumn(QString columnName) {
+//    for (int a = 0; a < tableHeaders.size(); ++a) {
+//        if (columnName == tableHeaders[a]) {
+//            cout << "The column is found in the table." << "\n";
+//        }
+//    }
+//}
 
 void Table::applyFilter(QString columnFilterName, QString filterName) {
 
@@ -130,21 +130,21 @@ void Table::applyFilter(QString columnFilterName, QString filterName) {
         std::vector<int> rowsToDelete;
 
         //   int rowCount = table->rowCount();
-        for (int p = 0; p < tableHeaders.size(); ++p) {
-            if (columnFilterName == tableHeaders[p]) {
-                columnFilterNo = p;
-            }
-        }
+//        for (int p = 0; p < tableHeaders.size(); ++p) {
+//            if (columnFilterName == tableHeaders[p]) {
+//                columnFilterNo = p;
+//            }
+//        }
 
-        for (int q = 0; q < row; ++q) {
+//        for (int q = 0; q < row; ++q) {
 
-            QString search = table->item(q, columnFilterNo)->text();
+//            QString search = table->item(q, columnFilterNo)->text();
 
-            if (filterName != search) {
-                // table->removeRow(q);
-                rowsToDelete.push_back(q);
-            }
-        }
+//            if (filterName != search) {
+//                // table->removeRow(q);
+//                rowsToDelete.push_back(q);
+//            }
+//        }
 
         for (unsigned int r = 0; r < rowsToDelete.size(); ++r) {
             rowDeleteNo = rowsToDelete[r];
@@ -177,6 +177,12 @@ void Table::setSorting(bool value){
 
         //When the user presses a column header then sorting happens.
         table->setSortingEnabled(value);
+
+}
+
+void Table::show(){
+
+    table->show();
 
 }
 
