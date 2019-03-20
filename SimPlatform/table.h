@@ -12,6 +12,20 @@ class Table : public QDialog {
 
 public:
     explicit Table(QWidget *parent = 0);
+    void createTable(int row, int column);
+    void updateTable(int rowNo, int columnNo, QString value);
+    void addTableHeaders(QStringList tableHeadersList);
+    void addTableNameColumns(QStringList tableNameColumn);
+    void addTableStatusColumns(QStringList tableStatusColumn);
+    void addTableStartDateColumns(QStringList tableStartDateColumn);
+    void addTableLastUpdateColumns(QStringList tableLastUpdateColumn);
+    void addTableDescriptionColumns(QStringList tableDescriptionColumn);
+    void addTableActionColumns(QStringList tableActionColumn);
+    void findColumn(QString columnName);
+    void setSorting(bool value);
+    void applyFilter(QString columnFilterName, QString filterName);
+    void applyBackgroundColor(QString backgroundColor);
+    void applyBorderWidthColor( QStringList borderWidthColor);
 
     ~Table();
 
