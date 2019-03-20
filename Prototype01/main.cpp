@@ -39,33 +39,26 @@ int main(int argc, char *argv[])
         QStringList tableHeadersList = {"Name", "Status", "Progress", "Start date", "Last date", "Description", "Action"};
         table1->addTableHeaders(tableHeadersList);
 
-        table1->show();
-       // tableContainer->show();
+        QStringList insertNameColumn = {"Alex", "John", "Mike", "Bob", "Max"};
+        table1->addTableNameColumns(insertNameColumn);
 
+        QStringList insertStatusColumn = {"fixed", "working", "not fixed", "fixed", "fixed"};
+        table1->addTableStatusColumns(insertStatusColumn);
 
+        QStringList insertStartDateColumn = {"16-02-2019", "16-02-2019", "15-02-2019", "15-02-2019", "15-02-2019"};
+        table1->addTableStartDateColumns(insertStartDateColumn);
 
-//        QStringList insertNameColumn = {"Alex", "John", "Mike", "Bob", "Max"};
-//        table->addTableNameColumns(insertNameColumn);
+        QStringList insertLastUpdateColumn = {"17-02-2019", "18-02-2019", "16-02-2019", "17-02-2019", "17-02-2019"};
+        table1->addTableLastUpdateColumns(insertLastUpdateColumn);
 
-//        QStringList insertStatusColumn = {"fixed", "working", "not fixed", "fixed", "fixed"};
-//        table->addTableStatusColumns(insertStatusColumn);
+        QStringList insertDescriptionColumn = {"des1", "des2", "des3", "des4", "des5"};
+        table1->addTableDescriptionColumns(insertDescriptionColumn);
 
-//        QStringList insertStartDateColumn = {"16-02-2019", "16-02-2019", "15-02-2019", "15-02-2019", "15-02-2019"};
-//        table->addTableStartDateColumns(insertStartDateColumn);
-
-//        QStringList insertLastUpdateColumn = {"17-02-2019", "18-02-2019", "16-02-2019", "17-02-2019", "17-02-2019"};
-//        table->addTableLastUpdateColumns(insertLastUpdateColumn);
-
-//        QStringList insertDescriptionColumn = {"des1", "des2", "des3", "des4", "des5"};
-//        table->addTableDescriptionColumns(insertDescriptionColumn);
-
-//        QStringList insertActionColumn = {"action1", "action2", "action3", "action4", "action5"};
-//        table->addTableActionColumns(insertActionColumn);
-
+        QStringList insertActionColumn = {"action1", "action2", "action3", "action4", "action5"};
+        table1->addTableActionColumns(insertActionColumn);
 
 
         container.createContainer(mainContainerView.centralWidget(), tableContainer, 500, 200, 150, 10, "Table Container","gray");
-
 
 
     // User Code ends

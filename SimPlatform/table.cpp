@@ -44,9 +44,6 @@ void Table::addTableHeaders(QStringList tableHeadersList) {
 }
 
 void Table::addTableNameColumns(QStringList tableNameColumn) {
-    for (int var = 0; var < tableNameColumn.size(); ++var) {
-        tableNameColumn.append(tableNameColumn[var]);
-    }
 
     //Add Names column values
     for (int var = 0; var < tableNameColumn.size(); ++var) {
@@ -64,9 +61,6 @@ void Table::addTableStatusColumns(QStringList tableStatusColumn) {
 }
 
 void Table::addTableStartDateColumns(QStringList tableStartDateColumn) {
-    for (int l = 0; l < tableStartDateColumn.size(); ++l) {
-        tableStartDateColumn.append(tableStartDateColumn[l]);
-    }
 
     //Add Start Date column values
     for (int j = 0; j < tableStartDateColumn.size(); ++j) {
@@ -75,10 +69,6 @@ void Table::addTableStartDateColumns(QStringList tableStartDateColumn) {
 }
 
 void Table::addTableLastUpdateColumns(QStringList tableLastUpdateColumn) {
-    for (int m = 0; m < tableLastUpdateColumn.size(); ++m) {
-        tableLastUpdateColumn.append(tableLastUpdateColumn[m]);
-    }
-
 
     //Add Last Update column values
     for (int k = 0; k < tableLastUpdateColumn.size(); ++k) {
@@ -87,9 +77,6 @@ void Table::addTableLastUpdateColumns(QStringList tableLastUpdateColumn) {
 }
 
 void Table::addTableDescriptionColumns(QStringList tableDescriptionColumn) {
-    for (int k = 0; k < tableDescriptionColumn.size(); ++k) {
-        tableDescriptionColumn.append(tableDescriptionColumn[k]);
-    }
 
     //Add Description column values
     for (int l = 0; l < tableDescriptionColumn.size(); ++l) {
@@ -98,9 +85,6 @@ void Table::addTableDescriptionColumns(QStringList tableDescriptionColumn) {
 }
 
 void Table::addTableActionColumns(QStringList tableActionColumn) {
-    for (int n = 0; n < tableActionColumn.size(); ++n) {
-        tableActionColumn.append(tableActionColumn[n]);
-    }
 
     //Add Action column values
     for (int n = 0; n < tableActionColumn.size(); ++n) {
@@ -178,7 +162,7 @@ void Table::setSorting(bool value){
 
 void Table::show(){
 
-    table->showMaximized();
+    table->show();
 
 }
 
