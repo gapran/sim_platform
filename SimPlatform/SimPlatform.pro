@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        table.cpp
+        table.cpp \
+        borderlayout.cpp
 
 HEADERS += \
         table.h \
-        container.h
+        container.h \
+        borderlayout.h
 
 FORMS += \
       table.ui

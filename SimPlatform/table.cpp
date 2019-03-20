@@ -1,4 +1,5 @@
 #include "table.h"
+#include "borderlayout.h"
 
 #include<iostream>
 #include<vector>
@@ -11,8 +12,8 @@ Table::Table(QWidget *parent) : QTableWidget(parent) {
     //Creates the table, then you set the number of rows and columns.
     table = new QTableWidget;
 
-    QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(table);
+    BorderLayout *layout = new BorderLayout;
+    layout->addWidget(table, BorderLayout::Center);
 
     setLayout(layout);
 
@@ -177,7 +178,7 @@ void Table::setSorting(bool value){
 
 void Table::show(){
 
-    table->show();
+    table->showMaximized();
 
 }
 
