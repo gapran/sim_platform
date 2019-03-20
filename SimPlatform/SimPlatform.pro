@@ -34,8 +34,7 @@ HEADERS += \
         container.h \
         borderlayout.h
 
-FORMS += \
-      table.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

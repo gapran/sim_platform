@@ -27,7 +27,6 @@ SOURCES += \
         maincontainerview.cpp
 
 HEADERS += \
-        ../SimPlatform/simplatform.h \
         maincontainerview.h
 
 FORMS += \

@@ -7,29 +7,31 @@
 
 using namespace std;
 
-class Container{
+class Container {
 
 
 public:
 
-    void createMainContainer( QMainWindow *mainWindow ,int length, int width, QString title, QString colour){
+    void createMainContainer(QMainWindow *mainWindow, int length, int width, QString title, QString colour) {
 
-    mainWindow->setWindowTitle(title);
-    mainWindow->resize(length,width);
-    mainWindow->setStyleSheet("background-color: "+colour+";");
-    mainWindow->setWindowIcon(QIcon(":/resources/icon/gpa_logo.png"));
-    mainWindow->show();
+        mainWindow->setWindowTitle(title);
+        mainWindow->resize(length, width);
+        mainWindow->setStyleSheet("background-color: " + colour + ";");
+        mainWindow->setWindowIcon(QIcon(":/resources/icon/gpa_logo.png"));
+        mainWindow->show();
 
-}
+    }
 
-   void createContainer( QWidget *centralWidget ,QWidget *qMainWidget, int length, int width, int positionX, int positionY, QString title, QString colour){
+    void
+    createContainer(QWidget *centralWidget, QWidget *qMainWidget, int length, int width, int positionX, int positionY,
+                    QString title, QString colour) {
 
-            qMainWidget->setParent(centralWidget);
-            qMainWidget->resize(length, width);
-            qMainWidget->move(positionX, positionY);
-            qMainWidget->setToolTip(title);
-            qMainWidget->setStyleSheet("background-color: "+colour+";");
-            qMainWidget->show();
+        qMainWidget->setParent(centralWidget);
+        qMainWidget->resize(length, width);
+        qMainWidget->move(positionX, positionY);
+        qMainWidget->setToolTip(title);
+        qMainWidget->setStyleSheet("background-color: " + colour + ";");
+        qMainWidget->show();
 
     }
 

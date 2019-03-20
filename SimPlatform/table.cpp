@@ -19,7 +19,7 @@ Table::Table(QWidget *parent) : QTableWidget(parent) {
 
 }
 
-void Table::createTable(int row, int column){
+void Table::createTable(int row, int column) {
 
     table->setRowCount(row);
     table->setColumnCount(column);
@@ -40,7 +40,7 @@ void Table::updateTable(int rowNo, int columnNo, QString value) {
 
 void Table::addTableHeaders(QStringList tableHeadersList) {
 
-     table->setHorizontalHeaderLabels(tableHeadersList);
+    table->setHorizontalHeaderLabels(tableHeadersList);
 }
 
 void Table::addTableNameColumns(QStringList tableNameColumn) {
@@ -95,9 +95,8 @@ void Table::addTableActionColumns(QStringList tableActionColumn) {
 void Table::findColumn(QString columnName) {
 
     QStringList tableHeaders;
-    for(int i = 0; i < table->model()->columnCount(); i++)
-    {
-      tableHeaders.append(table->model()->headerData(i, Qt::Horizontal).toString());
+    for (int i = 0; i < table->model()->columnCount(); i++) {
+        tableHeaders.append(table->model()->headerData(i, Qt::Horizontal).toString());
     }
 
     for (int a = 0; a < tableHeaders.size(); ++a) {
@@ -111,9 +110,8 @@ void Table::applyFilter(QString columnFilterName, QString filterName) {
 
 
     QStringList tableHeaders;
-    for(int i = 0; i < table->model()->columnCount(); i++)
-    {
-      tableHeaders.append(table->model()->headerData(i, Qt::Horizontal).toString());
+    for (int i = 0; i < table->model()->columnCount(); i++) {
+        tableHeaders.append(table->model()->headerData(i, Qt::Horizontal).toString());
     }
 
     //Apply the filter on the table: Column name and Filter keyword
@@ -157,23 +155,24 @@ void Table::applyFilter(QString columnFilterName, QString filterName) {
 
 //}
 
-void Table::applyBorderWidthColor( QStringList borderWidthColor){
+void Table::applyBorderWidthColor(QStringList borderWidthColor) {
 
     //Applies border width and color
-    if (!borderWidthColor.isEmpty()){
-    QString style = "border: " +borderWidthColor[0]+ " solid " +borderWidthColor[1];
-    table->setStyleSheet(style); }
+    if (!borderWidthColor.isEmpty()) {
+        QString style = "border: " + borderWidthColor[0] + " solid " + borderWidthColor[1];
+        table->setStyleSheet(style);
+    }
 
 }
 
-void Table::sort(bool value){
+void Table::sort(bool value) {
 
-        //When the user presses a column header then sorting happens.
-        table->setSortingEnabled(value);
+    //When the user presses a column header then sorting happens.
+    table->setSortingEnabled(value);
 
 }
 
-void Table::show(){
+void Table::show() {
 
     table->show();
 
