@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 
     //Create inner containers
 
-    // QWidget *tableContainer = new QWidget();
+    // GPA Issue 4 - Table implementation
     Table *table1 = new Table(mainContainerView.centralWidget());
 
     //Create Table with rows and columns
