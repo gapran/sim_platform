@@ -1,13 +1,11 @@
 #ifndef TABLE_H
 #define TABLE_H
 
-#include <QDialog>
-
 #include <QTableWidgetItem>
 #include <QTableWidget>
 #include <QHBoxLayout>
 
-class Table : public QDialog {
+class Table : public QTableWidget {
     Q_OBJECT
 
 public:

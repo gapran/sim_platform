@@ -6,7 +6,7 @@
 using namespace std; //Import the standard library
 
 
-Table::Table(QWidget *parent) : QDialog(parent) {
+Table::Table(QWidget *parent) : QTableWidget(parent) {
 
     //Creates the table, then you set the number of rows and columns.
     table = new QTableWidget;

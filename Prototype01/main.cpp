@@ -30,8 +30,8 @@ int main(int argc, char *argv[])
 
         //Create inner containers
 
-        QWidget *tableWidget = new QWidget();
-        Table *table1 = new Table(tableWidget);
+        QWidget *tableContainer = new QWidget();
+        Table *table1 = new Table(tableContainer);
 
         //Create Table with rows and columns
         table1->createTable(6,7);
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         table1->addTableHeaders(tableHeadersList);
 
         table1->show();
-        tableWidget->show();
+       // tableContainer->show();
 
 
 
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 
 
 
-      //  container.createContainer(mainContainerView.centralWidget(), tableWidget, 500, 200, 150, 10, "Table Container","gray");
+        container.createContainer(mainContainerView.centralWidget(), tableContainer, 500, 200, 150, 10, "Table Container","gray");
 
 
 
