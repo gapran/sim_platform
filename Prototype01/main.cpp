@@ -58,6 +58,22 @@ int main(int argc, char *argv[])
         table1->addTableActionColumns(insertActionColumn);
 
 
+        //Update a certain cell in a table with a certain row id and column
+        // updateTable(2, 1, "fixed");
+
+        //Filter the table: Column name and Filter keyword
+        //applyFilter("Status", "not fixed");
+
+        //Apply color for background to Table
+        //applyBackgroundColor("yellow");
+
+        //Apply border width and color for Table window
+        QStringList insertBorderStyle = {"1px", "blue"};
+        table1->applyBorderWidthColor(insertBorderStyle);
+
+        //Search on Column ID
+        table1->findColumn("Action");
+
         container.createContainer(mainContainerView.centralWidget(), tableContainer, 500, 200, 150, 10, "Table Container","gray");
 
 
@@ -66,23 +82,3 @@ int main(int argc, char *argv[])
      mainContainerView.show();
      return app.exec();
 }
-
-
-////Update a certain cell in a table with a certain row id and column
-//// updateTable(2, 1, "fixed");
-
-////Filter the table: Column name and Filter keyword
-////applyFilter("Status", "not fixed");
-
-////Apply color for background to Table
-////applyBackgroundColor("yellow");
-
-////Apply border width and color for Table window
-//QStringList insertBorderStyle = {"1px", "blue"};
-//table->applyBorderWidthColor(insertBorderStyle);
-
-////    Table *window = new Table;
-////    window->show();
-
-////Search on Column ID
-////findColumn("Action");

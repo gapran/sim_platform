@@ -92,13 +92,20 @@ void Table::addTableActionColumns(QStringList tableActionColumn) {
     }
 }
 
-//void Table::findColumn(QString columnName) {
-//    for (int a = 0; a < tableHeaders.size(); ++a) {
-//        if (columnName == tableHeaders[a]) {
-//            cout << "The column is found in the table." << "\n";
-//        }
-//    }
-//}
+void Table::findColumn(QString columnName) {
+
+    QStringList tableHeaders;
+    for(int i = 0; i < table->model()->columnCount(); i++)
+    {
+      tableHeaders.append(table->model()->headerData(i, Qt::Horizontal).toString());
+    }
+
+    for (int a = 0; a < tableHeaders.size(); ++a) {
+        if (columnName == tableHeaders[a]) {
+            cout << "The column is found in the table." << "\n";
+        }
+    }
+}
 
 //void Table::applyFilter(QString columnFilterName, QString filterName) {
 
