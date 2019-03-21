@@ -25,6 +25,7 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         maincontainerview.cpp
+        ../SimPlatform/
 
 HEADERS += \
         maincontainerview.h
@@ -38,7 +39,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 INCLUDEPATH += "../SimPlatform"
-LIBS += "-L../SimPlatform/debug -lSimPlatform"
+LIBS += "-L../SimPlatform/debug -lSimPlatform" \
+        "/home/**/SimPlatform/libSimPlatform.a"
 
 
 RESOURCES += \
