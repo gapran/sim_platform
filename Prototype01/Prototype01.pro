@@ -40,7 +40,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 INCLUDEPATH += "../SimPlatform"
 LIBS += "-L../SimPlatform/debug -lSimPlatform" \
-        "/home/**/SimPlatform/libSimPlatform.a"
+        "/home/travis/build/gapran/sim_platform/SimPlatform/libSimPlatform.a"
 
 
 RESOURCES += \
