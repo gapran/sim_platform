@@ -25,7 +25,6 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         maincontainerview.cpp \
-        ../SimPlatform/*.cpp
 
 HEADERS += \
         maincontainerview.h
