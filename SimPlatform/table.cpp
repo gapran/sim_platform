@@ -116,8 +116,7 @@ void Table::applyFilter(QString columnFilterName, QString filterName) {
 
     //Apply the filter on the table: Column name and Filter keyword
     if (filterName != "") {
-        int columnFilterNo;
-        int rowDeleteNo;
+        int columnFilterNo;       
         std::vector<int> rowsToDelete;
 
         //   int rowCount = table->rowCount();
@@ -132,13 +131,12 @@ void Table::applyFilter(QString columnFilterName, QString filterName) {
             QString search = table->item(q, columnFilterNo)->text();
 
             if (filterName != search) {
-                // table->removeRow(q);
                 rowsToDelete.push_back(q);
             }
         }
 
         for (unsigned int r = 0; r < rowsToDelete.size(); ++r) {
-            rowDeleteNo = rowsToDelete[r];
+            int rowDeleteNo = rowsToDelete[r];
             table->removeRow(rowDeleteNo -
                              r); // Once a row deleted, table view is now 1 less to the collected row value to be deleted
         }
