@@ -1,8 +1,6 @@
 #include "main.h"
 
-int main::main()
+int main()
 {
-
-   return 1;
 
 }
