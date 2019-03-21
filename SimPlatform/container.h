@@ -12,9 +12,10 @@ class Container {
 
 public:
 
-    int main(){
-        //Empty main method for make execution
-    }
+//    int main(){
+//        //Empty main method for make execution
+//        return 1;
+//    }
 
     void createMainContainer(QMainWindow *mainWindow, int length, int width, QString title, QString colour) {
 
