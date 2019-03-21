@@ -116,10 +116,9 @@ void Table::applyFilter(QString columnFilterName, QString filterName) {
 
     //Apply the filter on the table: Column name and Filter keyword
     if (filterName != "") {
-        int columnFilterNo;       
+        int columnFilterNo = 0;
         std::vector<int> rowsToDelete;
 
-        //   int rowCount = table->rowCount();
         for (int p = 0; p < tableHeaders.size(); ++p) {
             if (columnFilterName == tableHeaders[p]) {
                 columnFilterNo = p;

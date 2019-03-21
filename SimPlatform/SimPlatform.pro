@@ -27,12 +27,14 @@ CONFIG += c++11
 
 SOURCES += \
         table.cpp \
-        borderlayout.cpp
+        borderlayout.cpp \
+        main.cpp
 
 HEADERS += \
         table.h \
         container.h \
-        borderlayout.h
+        borderlayout.h \
+        main.h
 
 FORMS +=
 
