@@ -22,7 +22,7 @@ script:
  - make
  - pwd
  - ls -l
- - cd Simplatform
+ - cd SimPlatform
  - ls -l 
  - cd ../Prototype01
  - qmake Prototype01.pro
