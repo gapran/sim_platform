@@ -38,7 +38,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 INCLUDEPATH += "../SimPlatform"
-LIBS += "../SimPlatform/libSimPlatform.a"
+LIBS += "../SimPlatform/SimPlatform"
 
 RESOURCES += \
           resources.qrc
