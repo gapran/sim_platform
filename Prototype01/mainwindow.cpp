@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "gpacomponent.h"
+#include "codeeditor.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
