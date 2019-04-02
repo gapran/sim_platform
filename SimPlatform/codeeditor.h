@@ -37,6 +37,12 @@ class EditorWindow;
 class QTextDocument;
 class Highlighter;
 
+class Main
+{
+public:
+    Main();
+};
+
 class EditorWindow :public QMainWindow {
     Q_OBJECT
 public:

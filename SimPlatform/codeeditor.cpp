@@ -1,5 +1,10 @@
 #include "codeeditor.h"
 
+Main:: Main()
+{
+
+}
+
 //code editor implementation
 CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
 {

@@ -26,7 +26,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp
 INCLUDEPATH += ../SimPlatform
-LIBS += -L../build-SimPlatform-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/debug -lSimPlatform/libSimPlatform.a
+LIBS += -L../build-SimPlatform-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/debug -lSimPlatform
 
 HEADERS += \
         mainwindow.h
