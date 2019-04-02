@@ -22,6 +22,7 @@ script:
  - make
  - pwd
  - ls -l
+ - find /home/ -name "libSimPlatform.a"
  - cd ../Prototype01
  - qmake Prototype01.pro
  - make
