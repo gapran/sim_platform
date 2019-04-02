@@ -1,27 +1,19 @@
-#include "imageelement.h"
+#include "image.h"
 
-#include<iostream>
 #include<vector>
 #include<QLabel>
 #include<QTextCursor>
 
-using namespace std;
-
-
-ImageElement::ImageElement(QWidget *parent) : QDialog (parent)
+Image::Image(QWidget *parent) : QDialog (parent)
 {
-
     label = new QLabel;
-
-    setImage("C:/Users/hasee/Documents/Qt/Testing/Images/Capture.png");
-
-
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(label);
+    setLayout(layout);
 }
 
-void ImageElement::setImage(QString fileName)
+void Image::setImage(QString fileName)
 {
-    //QString filename = "C:/Users/hasee/Documents/Qt/Testing/Images/Capture.png";
-
     if (!fileName.isEmpty()){
 
         /** set content to show center in label */
@@ -31,47 +23,34 @@ void ImageElement::setImage(QString fileName)
         /** to check wether load ok */
         if(pix.load(fileName)){
             /** scale pixmap to fit in label'size and keep ratio of pixmap */
-            //pix = pix.scaled(lbl->size());
             label->setPixmap(pix);
             label->setScaledContents(true);
-            //ui->ImageButton->setText("");
         }
     }
 }
 
-void  ImageElement::ImageStyle()
+void  Image::setBox()
 {
-    label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    label->setFrameStyle(QFrame::Panel);
 }
 
-void ImageElement::setSize(int width, int height)
+void Image::setSize(int width, int height)
 {
-
     label->resize(width,height);
-
 }
 
-void ImageElement::setClickable()
+
+void Image::setHover(QString text)
 {
-
-
+    label->setToolTip(text);
 }
 
-void ImageElement::setHover()
+void Image::setAppear()
 {
-
-
-}
-
-void ImageElement::setAppear()
-{
-
     label->show();
 }
 
-void ImageElement::setDisappaer()
+void Image::setDisappaer()
 {
-
     label->hide();
 }
-
