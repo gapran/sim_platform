@@ -1,6 +1,6 @@
 #include "codeeditor.h"
 
-Main:: Main()
+main:: main()
 {
 
 }

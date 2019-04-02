@@ -37,10 +37,10 @@ class EditorWindow;
 class QTextDocument;
 class Highlighter;
 
-class Main
+class main
 {
 public:
-    Main();
+    main();
 };
 
 class EditorWindow :public QMainWindow {
