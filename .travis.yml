@@ -10,6 +10,12 @@ install:
  - sudo apt-get install build-essential g++
  - sudo apt install qt511-meta-full
  - sudo apt-get install qt5-default qt5-qmake qtbase5-dev-tools
+ - sudo apt-get install mingw-w64
+ 
+ before_script:
+ - QTDIR="/opt/qt511"
+ - PATH="$QTDIR/bin:$PATH"
+ - source /opt/qt511/bin/qt511-env.sh
  
 script:
  - echo -e "/opt/qt511/bin\n/opt/qt511/lib" > default.conf
