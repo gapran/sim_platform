@@ -192,7 +192,7 @@ void CodeEditor::setupEditor()
 
     highlighter = new Highlighter(this->document());
 
-    QFile file("gpacomponent.h");
+    QFile file("codeeditor.h");
     if (file.open(QFile::ReadOnly | QFile::Text))
         editor->setPlainText(file.readAll());
 
@@ -275,4 +275,33 @@ void EditorWindow::save()
                 return;
             }
     }
+}
+///// for popup
+TabDialog::TabDialog(const QString &fileName, QWidget *parent)
+    : QDialog(parent)
+{
+    QFileInfo fileInfo(fileName);
+
+    QStringList list ;
+
+    list.push_back("text in the check pannel");
+    list.push_back("Cause Of Error");
+    list.push_back("Element/Activity");
+    list.push_back("Way To Fix");
+    list.push_back("Repitition");
+
+    QTableWidget *tableWidget = new QTableWidget;
+    tableWidget->setColumnCount(5);
+    tableWidget->setShowGrid(true);
+    tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+    tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    tableWidget->setHorizontalHeaderLabels(list);
+    tableWidget->horizontalHeader()->setStretchLastSection(true);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout->addWidget((tableWidget));
+
+    setLayout(mainLayout);
+
+    setWindowTitle(tr("Tab Dialog"));
 }

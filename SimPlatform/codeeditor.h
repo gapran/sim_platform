@@ -16,6 +16,16 @@
 #include <QRegularExpression>
 #include <QtWidgets>
 #include <QTextStream>
+// for popup error elaboration
+#include <QDialog>
+#include <QTableWidget>
+#include <QStringList>
+
+class QDialogButtonBox;
+class QFileInfo;
+class QTabWidget;
+////////////////////
+
 
 class QPaintEvent;
 class QResizeEvent;
@@ -121,5 +131,19 @@ private:
     QTextCharFormat quotationFormat;
     QTextCharFormat functionFormat;
 };
+//tab for pop up
 
+class TabDialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit TabDialog(const QString &fileName, QWidget *parent = 0);
+   void  createUI(const QStringList &headers);
+//   void setHeaders
+
+private:
+    QTabWidget *tabWidget;
+//    QDialogButtonBox *buttonBox;
+};
 #endif // CODEEDITOR_H
