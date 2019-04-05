@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 
     QWidget *image1Widget = new QWidget(mainContainerView.centralWidget());
     Image *image1 = new Image(image1Widget);
-    QString filename = "C:/Users/varma/Pictures/gpa_logo.PNG";
+    QString filename = ":/resources/icon/gpa_logo.png";
     image1->setImage(filename);
     image1->setBox();
     image1->setHover("This is GPA Logo.");
