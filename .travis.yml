@@ -17,10 +17,10 @@ script:
  - sudo rm /usr/lib/x86_64-linux-gnu/qt-default/qtchooser/default.conf
  - sudo mv default.conf /usr/lib/x86_64-linux-gnu/qtchooser/
  - cd SimPlatform
- - qmake -project "QT += core gui widgets" 
+ - qmake -project "QT = core gui widgets" 
  - qmake SimPlatform.pro
  - make 
  - cd ../Prototype01
- - qmake -project "QT += core widgets" 
+ - qmake -project "QT = core widgets" 
  - qmake Prototype01.pro
  - make
