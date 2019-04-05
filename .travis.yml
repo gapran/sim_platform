@@ -19,6 +19,7 @@ script:
  - cd SimPlatform
  - qmake -project "QT = core gui widgets" 
  - qmake SimPlatform.pro
+ - ./configure --enable-static
  - make 
  - pwd
  - ls -l
