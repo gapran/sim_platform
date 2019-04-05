@@ -20,6 +20,8 @@ script:
  - qmake -project "QT = core gui widgets" 
  - qmake SimPlatform.pro
  - make 
+ - pwd
+ - ls -l
  - cd ../Prototype01
  - qmake -project "QT = core widgets" 
  - qmake Prototype01.pro
