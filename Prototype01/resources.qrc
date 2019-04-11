@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/resources">
         <file>icon/gpa_logo.png</file>
+        <file>icon/mobile.jpg</file>
     </qresource>
 </RCC>

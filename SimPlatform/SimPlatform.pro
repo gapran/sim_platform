@@ -1,13 +1,16 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-02-05T18:06:03
+# Project created by QtCreator 2019-03-06T12:13:52
 #
 #-------------------------------------------------
 
+QT       -= gui
 QT       += core widgets
 
+
 TARGET = SimPlatform
-TEMPLATE = app
+TEMPLATE = lib
+CONFIG += staticlib
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -22,19 +25,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-SOURCES += \
-        main.cpp \
-        mainwindow.cpp
+SOURCES += \       
+        borderlayout.cpp \
+        layout.cpp
 
-HEADERS += \
-        mainwindow.h
 
-FORMS +=
+HEADERS += \      
+        container.h \
+        borderlayout.h \
+        layout.h
+
+
+FORMS += \
+        form.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
-    application.qrc
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}

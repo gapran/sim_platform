@@ -1,4 +1,5 @@
 #include "container.h"
+#include "layout.h"
 #include "maincontainerview.h"
 #include <QApplication>
 #include <QHBoxLayout>
@@ -16,8 +17,8 @@ int main(int argc, char *argv[]) {
     // User Code goes here...
 
     QString mainTitle = "GPA Prototype";
-    int mainContainerLength = 1000;
-    int mainContainerWidth = 400;
+    int mainContainerLength = 400;
+    int mainContainerWidth = 600;
     QString mainColour = "white";
 
 
@@ -25,16 +26,11 @@ int main(int argc, char *argv[]) {
     Container container;
     container.createMainContainer(&mainContainerView, mainContainerLength, mainContainerWidth, mainTitle, mainColour);
 
-
-    //Create inner containers
-
-
-    // Layout
+    //Create layout
     QWidget *layoutWidget = new QWidget(mainContainerView.centralWidget());
-    Layout *layout = new Layout(layoutWidget);
-
-
-    container.createContainer(mainContainerView.centralWidget(), layout, 450, 100, 150, 300, "This is layout.", "white");
+    Layout *layoutMobile = new Layout(layoutWidget);
+    layoutMobile->setMobile();
+    container.createContainer(mainContainerView.centralWidget(), layoutMobile, mainContainerLength, mainContainerWidth, 0, 0, "This is layout.", "white");
 
 
     // User Code ends
