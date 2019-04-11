@@ -30,6 +30,7 @@ public:
     void setClick(QString link);
     void setPopulate();
     void setCancel();
+    QStringList setLinkTo(QWidget* widget, QString search);
 
 private:
 

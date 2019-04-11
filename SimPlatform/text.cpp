@@ -121,3 +121,12 @@ void Text:: setCancel()
 {
     textEdit->clear(); // Clears the text present previously
 }
+
+QStringList Text:: setLinkTo(QWidget* widget, QString search)
+{
+    QStringList linkList;
+    QString widgetName = widget->accessibleName();
+    linkList.append(widgetName);
+    linkList.append(search);
+    return linkList; // this list now can be used by target view for further operation
+}
