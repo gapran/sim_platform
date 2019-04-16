@@ -11,6 +11,9 @@ class Layout: public QDialog
 public:
     explicit Layout(QWidget *parent = 0);
     void setMobile();
+    void setWeb();
+    void setIDE();
+    void setCLI();
 
 private:
     QLabel *label;
