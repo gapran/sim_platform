@@ -5,12 +5,19 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
 {
     setupEditor();
     lineNumberArea = new LineNumberArea(this);
+    errorArea = new ErrorArea(this);
+
 
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
 
+    connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateErrorAreaWidth(int)));
+    connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateErrorArea(QRect,int)));
+
+    updateErrorAreaWidth(0);
     updateLineNumberAreaWidth(0);
+
     highlightCurrentLine();
 }
 
@@ -30,10 +37,32 @@ int CodeEditor::lineNumberAreaWidth()
     return space;
 }
 
+int CodeEditor:: errorAreaWidth()
+{
+    int digits = 1;
+    int max = qMax(1, blockCount());
+    while (max >= 10) {
+        max /= 10;
+        ++digits;
+    }
+
+    int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
+
+    return space;
+}
+
+
 void CodeEditor::updateLineNumberAreaWidth(int /* newBlockCount */)
 {
     setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
 }
+
+void CodeEditor::updateErrorAreaWidth(int /* newBlockCount */)
+{
+    setViewportMargins(errorAreaWidth(), 0, 0, 0);
+}
+
+
 
 void CodeEditor::updateLineNumberArea(const QRect &rect, int dy)
 {
@@ -46,13 +75,33 @@ void CodeEditor::updateLineNumberArea(const QRect &rect, int dy)
         updateLineNumberAreaWidth(0);
 }
 
+void CodeEditor::updateErrorArea(const QRect &rect, int dy)
+{
+    if (dy)
+        errorArea->scroll(0, dy);
+    else
+        errorArea->update(0, rect.y(), errorArea->height(), rect.height());
+
+    if (rect.contains(viewport()->rect()))
+        updateErrorAreaWidth(0);
+}
+
 void CodeEditor::resizeEvent(QResizeEvent *e)
 {
     QPlainTextEdit::resizeEvent(e);
 
     QRect cr = contentsRect();
-    lineNumberArea->setGeometry(QRect(cr.left(), cr.top(), lineNumberAreaWidth(), cr.height()));
+    lineNumberArea->setGeometry(QRect(8, cr.top(), lineNumberAreaWidth(), cr.height()));
 }
+
+void CodeEditor::resizeEventE(QResizeEvent *e)
+{
+    QPlainTextEdit::resizeEvent(e);
+
+    QRect cr = contentsRect();
+    errorArea->setGeometry(QRect(cr.left(), cr.top(), errorAreaWidth(), cr.height()));
+}
+
 void CodeEditor::highlightCurrentLine()
 {
     QList<QTextEdit::ExtraSelection> extraSelections;
@@ -87,6 +136,32 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
             QString number = QString::number(blockNumber + 1);
             painter.setPen(Qt::black);
             painter.drawText(0, top, lineNumberArea->width(), fontMetrics().height(),
+                             Qt::AlignRight, number);
+        }
+
+        block = block.next();
+        top = bottom;
+        bottom = top + (int) blockBoundingRect(block).height();
+        ++blockNumber;
+    }
+}
+
+void CodeEditor::errorAreaPaintEvent(QPaintEvent *event)
+{
+    QPainter painter(errorArea);
+    painter.fillRect(event->rect(), Qt::blue);
+
+
+    QTextBlock block = firstVisibleBlock();
+    int blockNumber = block.blockNumber();
+    int top = (int) blockBoundingGeometry(block).translated(contentOffset()).top();
+    int bottom = top + (int) blockBoundingRect(block).height();
+
+    while (block.isValid() && top <= event->rect().bottom()) {
+        if (block.isVisible() && bottom >= event->rect().top()) {
+            QString number = QString::number(blockNumber + 1);
+            painter.setPen(Qt::black);
+            painter.drawText(0, top, errorArea->width(), fontMetrics().height(),
                              Qt::AlignRight, number);
         }
 

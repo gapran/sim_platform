@@ -32,6 +32,7 @@ class QResizeEvent;
 class QSize;
 class QWidget;
 class LineNumberArea;
+class ErrorArea;
 class CodeEditor;
 class EditorWindow;
 class QTextDocument;
@@ -63,14 +64,20 @@ public:
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
+    int errorAreaWidth();
+    void errorAreaPaintEvent(QPaintEvent *event);
     virtual ~CodeEditor();
 protected:
     void resizeEvent(QResizeEvent *event);
+    void resizeEventE(QResizeEvent *event);
 
 private slots:
     void updateLineNumberAreaWidth(int newBlockCount);
     void highlightCurrentLine();
     void updateLineNumberArea(const QRect &, int);
+
+    void updateErrorAreaWidth(int newBlockCount);
+    void updateErrorArea(const QRect &, int);
 
     //highlighter
 private:
@@ -80,6 +87,7 @@ private:
     QTextEdit *editor;
     Highlighter *highlighter;
     QWidget *lineNumberArea;
+    QWidget *errorArea;
     QWidget *MenulineNumberArea;
 };
 
@@ -102,6 +110,28 @@ protected:
 private:
     CodeEditor *codeEditor;
 };
+
+/////////////////////////////////////////
+class ErrorArea : public QWidget
+{
+public:
+
+    ErrorArea(CodeEditor *editor) : QWidget(editor) {
+        codeEditor = editor;
+    }
+
+    QSize sizeHintE() const {
+        return QSize(codeEditor->errorAreaWidth(), 0);
+    }
+protected:
+    void paintEventE(QPaintEvent *event) {
+        codeEditor->errorAreaPaintEvent(event);
+    }
+
+private:
+    CodeEditor *codeEditor;
+};
+/////////////////////////////////////////
 
 // highlighter
 class Highlighter : public QSyntaxHighlighter
