@@ -21,7 +21,7 @@ void Layout::setMobile()
         label->setAlignment(Qt::AlignCenter);
         QPixmap pix;
 
-        /** to check wether load ok */
+        /** to check whether load ok */
         if(pix.load(fileName)){
             /** scale pixmap to fit in label'size and keep ratio of pixmap */
             label->setPixmap(pix);
@@ -39,7 +39,7 @@ void Layout::setWeb()
         label->setAlignment(Qt::AlignCenter);
         QPixmap pix;
 
-        /** to check wether load ok */
+        /** to check whether load ok */
         if(pix.load(fileName)){
             /** scale pixmap to fit in label'size and keep ratio of pixmap */
             label->setPixmap(pix);
@@ -57,7 +57,7 @@ void Layout::setIDE()
         label->setAlignment(Qt::AlignCenter);
         QPixmap pix;
 
-        /** to check wether load ok */
+        /** to check whether load ok */
         if(pix.load(fileName)){
             /** scale pixmap to fit in label'size and keep ratio of pixmap */
             label->setPixmap(pix);
@@ -75,7 +75,7 @@ void Layout::setCLI()
         label->setAlignment(Qt::AlignCenter);
         QPixmap pix;
 
-        /** to check wether load ok */
+        /** to check whether load ok */
         if(pix.load(fileName)){
             /** scale pixmap to fit in label'size and keep ratio of pixmap */
             label->setPixmap(pix);
