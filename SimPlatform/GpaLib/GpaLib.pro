@@ -1,13 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-02-05T18:06:03
+# Project created by QtCreator 2019-04-17T10:52:00
 #
 #-------------------------------------------------
 
-QT       += core widgets
+QT       += widgets qml quick sql
 
-TARGET = Prototype01
-TEMPLATE = app
+TARGET = GpaLib
+TEMPLATE = lib
+CONFIG += staticlib
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -20,25 +21,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += c++11
-
 SOURCES += \
-        main.cpp \
-        maincontainerview.cpp
+          *.cpp
 
 HEADERS += \
-        maincontainerview.h \
+          *.h
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
 
-FORMS += \
-      maincontainerview.ui
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/release/ -l
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -l
+else:unix: LIBS += -L$$OUT_PWD/'' -l
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
-INCLUDEPATH += "../SimPlatform"
-LIBS += "../build-SimPlatform-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/debug/libSimPlatform.a"
-
-RESOURCES += \
-          resources.qrc
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
