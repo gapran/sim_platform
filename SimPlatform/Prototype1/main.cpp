@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     // User Code goes here...
 
     QString mainTitle = "GPA Prototype";
-    int mainContainerLength = 800;
+    int mainContainerLength = 400;
     int mainContainerWidth = 600;
     QString mainColour = "white";
 
@@ -29,10 +29,10 @@ int main(int argc, char *argv[]) {
     //Create layout
     QWidget *layoutWidget = new QWidget(mainContainerView.centralWidget());
     Layout *layoutMobile = new Layout(layoutWidget);
-    //layoutMobile->setMobile();
+    layoutMobile->setMobile();
     //layoutMobile->setWeb();
     //layoutMobile->setIDE();
-    layoutMobile->setCLI();
+    //layoutMobile->setCLI();
 
     container.createContainer(mainContainerView.centralWidget(), layoutMobile, mainContainerLength, mainContainerWidth, 0, 0, "This is layout.", "white");
 
