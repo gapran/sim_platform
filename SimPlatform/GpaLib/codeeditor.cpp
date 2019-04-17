@@ -52,7 +52,7 @@ int CodeEditor:: errorAreaWidth()
 
 void CodeEditor::updateLineNumberAreaWidth(int /* newBlockCount */)
 {
-    setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
+    setViewportMargins(errorAreaWidth(), 0, 0, 0);
 }
 
 void CodeEditor::updateErrorAreaWidth(int /* newBlockCount */)
