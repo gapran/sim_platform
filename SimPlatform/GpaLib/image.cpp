@@ -54,3 +54,8 @@ void Image::setDisappaer()
 {
     label->hide();
 }
+
+void  Image::noBorder()
+{
+    label->setStyleSheet("border: none;");
+}

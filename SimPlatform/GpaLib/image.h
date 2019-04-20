@@ -21,6 +21,7 @@ public:
     void setHover(QString text);
     void setAppear();
     void setDisappaer();
+    void noBorder();
 
 signals:
    void clicked();
