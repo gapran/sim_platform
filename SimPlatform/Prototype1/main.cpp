@@ -6,6 +6,7 @@
 #include <QBoxLayout>
 #include <QLayout>
 #include <QDebug>
+#include "text.h"
 
 
 int main(int argc, char *argv[]) {
@@ -77,8 +78,27 @@ int main(int argc, char *argv[]) {
 
     container.createContainer(mainContainerView.centralWidget(), table1, 700, 200, 150, 10, "Table Container", "gray");
 
+    // Text
+       QWidget *textWidget = new QWidget(mainContainerView.centralWidget());
+       Text *text = new Text(textWidget);
 
-    // User Code ends
+    // Text Styles
+       text->setFontFamily("Georgia");
+       text->setTextSize(10);
+       //text->setTextItalic();
+       //text->setTextUnderline();
+       text->setTextBold();
+       //text->setTextColor("blue");
+       text->setBackgroundColor("white");
+       text->noBorder();
+
+       text->setText("Bronze");
+     //QString link = "<a href=\"www.example.de\bronze\">Bronze</a>";
+     //text->setClick(link);
+
+     container.createContainer(mainContainerView.centralWidget(), text, 100, 100, 10, 100, "This is hover for this text box.", "white");
+
+     // User Code ends
 
     mainContainerView.show();
     return app.exec();
