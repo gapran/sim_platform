@@ -130,3 +130,8 @@ QStringList Text:: setLinkTo(QWidget* widget, QString search)
     linkList.append(search);
     return linkList; // this list now can be used by target view for further operation
 }
+
+void Text:: noBorder()
+{
+        textEdit->setStyleSheet("border: none;");
+}

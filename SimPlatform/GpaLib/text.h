@@ -31,6 +31,7 @@ public:
     void setPopulate();
     void setCancel();
     QStringList setLinkTo(QWidget* widget, QString search);
+    void noBorder();
 
 private:
 
