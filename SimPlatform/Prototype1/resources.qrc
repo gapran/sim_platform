@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/resources">
         <file>icon/gpa_logo.png</file>
+        <file>icon/bronze_image.jpg</file>
     </qresource>
 </RCC>
