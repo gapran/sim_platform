@@ -118,15 +118,9 @@ int main(int argc, char *argv[]) {
      QWidget *bar1Widget = new QWidget(mainContainerView.centralWidget());
      Bar *bar1 = new Bar(bar1Widget);
      bar1->setValue(0,100,60);
-     bar1->setText("Analysis done!");
+     bar1->setText("Bronze achieved!");
      bar1->updatable(true);
-    container.createContainer(mainContainerView.centralWidget(), bar1, 150, 100, 10, 50, "Progress Bar", "white");
-
-     QWidget *bar2Widget = new QWidget(mainContainerView.centralWidget());
-     Bar *bar2 = new Bar(bar2Widget);
-     bar2->populate();
-     bar2->setText("Dummy value!");
-    container.createContainer(mainContainerView.centralWidget(), bar2, 150, 100, 10, 200, "Progress Bar", "white");
+    container.createContainer(mainContainerView.centralWidget(), bar1, 100, 100, 20, 130, "Progress Bar", "white");
 
 
    // User Code ends
