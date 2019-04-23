@@ -15,9 +15,28 @@ Filter::Filter(QWidget *parent) : QLabel(parent) {
 
 void Filter::createFilter(QString value) {
 
-    QVBoxLayout *hbox = new QVBoxLayout;
-    QCheckBox *checkBox = new QCheckBox(value, this);
-    hbox->addWidget(checkBox);
+    // QVBoxLayout *hbox = new QVBoxLayout;
+    filter = new QCheckBox(value, this);
+    // hbox->addWidget(checkBox);
+}
+
+void Filter::createFilterList(QStringList valueList) {
+
+    QGroupBox *groupBox = new QGroupBox();
+    groupBox->setFlat(true);
+
+    QVBoxLayout *vbox = new QVBoxLayout;
+
+    for (int i = 0; i < valueList.size(); i++) {
+
+        QCheckBox *checkBoxListItem = new QCheckBox();
+        QString value = valueList[i];
+        checkBoxListItem->setText(value);
+        vbox->addWidget(checkBoxListItem);
+    }
+
+    groupBox->setLayout(vbox);
+    groupBox->show();
 }
 
 void Filter::createFilterGroup() {

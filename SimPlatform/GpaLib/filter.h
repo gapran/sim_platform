@@ -13,6 +13,7 @@ public:
 
     void createFilterGroup();
     void createFilter(QString value);
+    void createFilterList(QStringList valueList);
 
 private:
     QCheckBox *filter;
