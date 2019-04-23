@@ -1,18 +1,17 @@
-#include "maincontainerview.h"
 #include "container.h"
 #include "image.h"
-#include "table.h"
-#include "text.h"
 #include "bar.h"
-
+#include "table.h"
+#include "maincontainerview.h"
 #include <QApplication>
-#include <QTextBrowser>
-#include <QHBoxLayout>
 #include <QPushButton>
 #include <QBoxLayout>
-#include <QTextEdit>
 #include <QLayout>
 #include <QDebug>
+#include <QTextEdit>
+#include <QTextBrowser>
+#include <QHBoxLayout>
+#include "text.h"
 
 
 int main(int argc, char *argv[]) {
@@ -32,6 +31,7 @@ int main(int argc, char *argv[]) {
     //Create main GpaComponent / window
     Container container;
     container.createMainContainer(&mainContainerView, mainContainerLength, mainContainerWidth, mainTitle, mainColour);
+
 
     //Create inner containers
 
@@ -84,47 +84,45 @@ int main(int argc, char *argv[]) {
     container.createContainer(mainContainerView.centralWidget(), table1, 700, 200, 150, 10, "Table Container", "gray");
 
     // Text
-    QWidget *textWidget = new QWidget(mainContainerView.centralWidget());
-    Text *text = new Text(textWidget);
+       QWidget *textWidget = new QWidget(mainContainerView.centralWidget());
+       Text *text = new Text(textWidget);
 
     // Text Styles
-    text->setFontFamily("Georgia");
-    text->setTextSize(10);
-    //text->setTextItalic();
-    //text->setTextUnderline();
-    text->setTextBold();
-    //text->setTextColor("blue");
-    text->setBackgroundColor("white");
-    text->noBorder();
+       text->setFontFamily("Georgia");
+       text->setTextSize(10);
+       //text->setTextItalic();
+       //text->setTextUnderline();
+       text->setTextBold();
+       //text->setTextColor("blue");
+       text->setBackgroundColor("white");
+       text->noBorder();
 
-    text->setText("Bronze");
-    //QString link = "<a href=\"www.example.de\bronze\">Bronze</a>";
-    //text->setClick(link);
+       text->setText("Bronze");
+     //QString link = "<a href=\"www.example.de\bronze\">Bronze</a>";
+     //text->setClick(link);
 
-    container.createContainer(mainContainerView.centralWidget(), text, 100, 100, 10, 100, "This is hover for this text box.", "white");
+     container.createContainer(mainContainerView.centralWidget(), text, 100, 100, 10, 100, "This is hover for this text box.", "white");
 
     // Image
-    QWidget *image1Widget = new QWidget(mainContainerView.centralWidget());
-    Image *image1 = new Image(image1Widget);
-    QString filename = ":/resources/icon/bronze_image.jpg";
-    image1->setImage(filename);
-    image1->setBox();
-    image1->setHover("This is Bronze Image.");
-    image1->noBorder();
-    //image1->clicked();
+      QWidget *image1Widget = new QWidget(mainContainerView.centralWidget());
+      Image *image1 = new Image(image1Widget);
+      QString filename = ":/resources/icon/bronze_image.jpg";
+      image1->setImage(filename);
+      image1->setBox();
+      image1->setHover("This is Bronze Image.");
+      image1->noBorder();
+    //  image1->clicked();
 
     container.createContainer(mainContainerView.centralWidget(), image1, 100, 100, 10, 10, "This is hover for image.", "white");
 
-    // Progress Bar
-    QWidget *bar1Widget = new QWidget(mainContainerView.centralWidget());
-    Bar *bar1 = new Bar(bar1Widget);
-    bar1->setValue(0,100,60);
-    bar1->setText("Bronze achieved!");
-    bar1->updatable(true);
-    container.createContainer(mainContainerView.centralWidget(), bar1, 100, 100, 20, 130, "Progress Bar", "white");
+   // User Code ends
 
-
-    // User Code ends
+    QWidget *imageCopy1Widget = new QWidget(mainContainerView.centralWidget());
+    Bar *bar = new Bar(imageCopy1Widget, 0, 100);
+    bar->setValue(60);
+    bar->setText("Bronze achieved!");
+    bar->updatable(true);
+    container.createContainer(mainContainerView.centralWidget(), bar, 100, 100, 20, 130, "Progress Bar", "white");
 
     mainContainerView.show();
     return app.exec();
