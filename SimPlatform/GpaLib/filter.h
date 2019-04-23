@@ -8,7 +8,7 @@ class Filter : public QLabel {
     Q_OBJECT
 
 public:
-    Filter(QWidget *parent = nullptr);
+    Filter(QWidget *parent = nullptr, QString value = "default");
     ~Filter();
 
     void createFilter(QString value);

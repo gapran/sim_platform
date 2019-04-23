@@ -5,18 +5,21 @@
 #include <QtWidgets>
 #include <iostream>
 
-Filter::Filter(QWidget *parent) : QLabel(parent) {
+Filter::Filter(QWidget *parent, QString value) : QLabel(parent) {
 
-    filter = new QCheckBox;
-    BorderLayout *layout = new BorderLayout;
-    layout->addWidget(filter, BorderLayout::Center);
+    QGroupBox *groupBox = new QGroupBox();
+
+    filter = new QCheckBox(value);
+    // BorderLayout *layout = new BorderLayout;
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(filter);
+    layout->addWidget(filter);
+
+    groupBox->setLayout(layout);
     setLayout(layout);
 }
 
-void Filter::createFilter(QString value) {
-
-    filter = new QCheckBox(value, this);
-}
+void Filter::createFilter(QString value) { filter->setText(value); }
 
 void Filter::createFilterList(QStringList valueList) {
 
@@ -34,6 +37,7 @@ void Filter::createFilterList(QStringList valueList) {
     }
 
     groupBox->setLayout(vbox);
+
     groupBox->show();
 }
 
