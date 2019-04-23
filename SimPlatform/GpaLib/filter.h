@@ -2,20 +2,20 @@
 #define FILTER_H
 
 #include <QCheckBox>
-#include <QLabel>
+#include <QListWidget>
 
-class Filter : public QLabel {
+class Filter : public QListWidget {
     Q_OBJECT
 
 public:
-    Filter(QWidget *parent = nullptr, QString value = "default");
+    Filter(QWidget *parent = nullptr);
     ~Filter();
 
     void createFilter(QString value);
     void createFilterList(QStringList valueList);
 
 private:
-    QCheckBox *filter;
+    QListWidget *filterList;
 };
 
 #endif // FILTER_H

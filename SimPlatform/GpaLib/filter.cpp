@@ -1,25 +1,19 @@
 #include "filter.h"
 #include "borderlayout.h"
 
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QtWidgets>
 #include <iostream>
 
-Filter::Filter(QWidget *parent, QString value) : QLabel(parent) {
+Filter::Filter(QWidget *parent) : QListWidget(parent) {
 
-    QGroupBox *groupBox = new QGroupBox();
-
-    filter = new QCheckBox(value);
-    // BorderLayout *layout = new BorderLayout;
+    filterList = new QListWidget;
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(filter);
-    layout->addWidget(filter);
-
-    groupBox->setLayout(layout);
+    layout->addWidget(filterList);
     setLayout(layout);
 }
 
-void Filter::createFilter(QString value) { filter->setText(value); }
+void Filter::createFilter(QString value) { filterList->addItem(value); }
 
 void Filter::createFilterList(QStringList valueList) {
 
@@ -41,4 +35,4 @@ void Filter::createFilterList(QStringList valueList) {
     groupBox->show();
 }
 
-Filter::~Filter() { delete filter; }
+Filter::~Filter() { delete filterList; }
