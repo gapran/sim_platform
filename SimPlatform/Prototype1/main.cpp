@@ -128,12 +128,19 @@ int main(int argc, char *argv[]) {
 
     // Filter
     QWidget *filter1Widget = new QWidget(mainContainerView.centralWidget());
-    QString value1 = "gsvarma";
     Filter *filter1 = new Filter(filter1Widget);
+
     filter1->createFilter("My Bugs");
     filter1->createFilter("All Bugs");
-    QStringList insertFilters = {"Source", "Sink", "Fix locations"};
-    filter1->createFilterList(insertFilters);
+
+    QStringList insertFilters1 = {"Source", "Sink", "Fix locations"};
+    QStringList insertFilters2 = {"SQL Injections", "XSS", "CSRF"};
+    QStringList insertFilters3 = {"High", "Medium", "Low"};
+
+    filter1->createFilterList(insertFilters1);
+    filter1->createFilterList(insertFilters2);
+    filter1->createFilterList(insertFilters3);
+
     container.createContainer(mainContainerView.centralWidget(), filter1, 150,
                               200, 870, 20, "This is hover for filter.",
                               "white");
