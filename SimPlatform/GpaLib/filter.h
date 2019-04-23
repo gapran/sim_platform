@@ -11,7 +11,6 @@ public:
     Filter(QWidget *parent = nullptr);
     ~Filter();
 
-    void createFilterGroup();
     void createFilter(QString value);
     void createFilterList(QStringList valueList);
 
