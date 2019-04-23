@@ -1,11 +1,10 @@
 #ifndef FILTER_H
 #define FILTER_H
 
-#include <QDialog>
+#include <QCheckBox>
+#include <QLabel>
 
-class QGroupBox;
-
-class Filter : public QDialog {
+class Filter : public QLabel {
     Q_OBJECT
 
 public:
@@ -13,9 +12,10 @@ public:
     ~Filter();
 
     void createFilterGroup();
+    void createFilter(QString value);
 
 private:
-    QDialog *filter;
+    QCheckBox *filter;
 };
 
 #endif // FILTER_H

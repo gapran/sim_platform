@@ -1,15 +1,23 @@
 #include "filter.h"
 #include "borderlayout.h"
 
+#include <QHBoxLayout>
 #include <QtWidgets>
 #include <iostream>
 
-Filter::Filter(QWidget *parent) : QDialog(parent) {
+Filter::Filter(QWidget *parent) : QLabel(parent) {
 
-    filter = new Filter;
+    filter = new QCheckBox;
     BorderLayout *layout = new BorderLayout;
     layout->addWidget(filter, BorderLayout::Center);
     setLayout(layout);
+}
+
+void Filter::createFilter(QString value) {
+
+    QVBoxLayout *hbox = new QVBoxLayout;
+    QCheckBox *checkBox = new QCheckBox(value, this);
+    hbox->addWidget(checkBox);
 }
 
 void Filter::createFilterGroup() {
@@ -32,6 +40,7 @@ void Filter::createFilterGroup() {
     vbox->addWidget(tristateBox);
     vbox->addStretch(1);
     groupBox->setLayout(vbox);
+    groupBox->show();
 }
 
 Filter::~Filter() { delete filter; }
