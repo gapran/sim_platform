@@ -7,32 +7,28 @@
 
 Filter::Filter(QWidget *parent) : QListWidget(parent) {
 
-    filterList = new QListWidget;
+    listWidget = new QListWidget;
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(filterList);
+    layout->addWidget(listWidget);
     setLayout(layout);
 }
 
-void Filter::createFilter(QString value) { filterList->addItem(value); }
+void Filter::createFilter(QString value) { listWidget->addItem(value); }
 
 void Filter::createFilterList(QStringList valueList) {
 
-    QGroupBox *groupBox = new QGroupBox();
-    groupBox->setFlat(true);
-
-    QVBoxLayout *vbox = new QVBoxLayout;
-
     for (int i = 0; i < valueList.size(); i++) {
 
-        QCheckBox *checkBoxListItem = new QCheckBox();
         QString value = valueList[i];
-        checkBoxListItem->setText(value);
-        vbox->addWidget(checkBoxListItem);
+        listWidget->addItem(value);
     }
 
-    groupBox->setLayout(vbox);
-
-    groupBox->show();
+    QListWidgetItem *item = nullptr;
+    for (int i = 0; i < listWidget->count(); ++i) {
+        item = listWidget->item(i);
+        item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+        item->setCheckState(Qt::Unchecked);
+    }
 }
 
-Filter::~Filter() { delete filterList; }
+Filter::~Filter() { delete listWidget; }

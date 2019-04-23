@@ -15,7 +15,7 @@ public:
     void createFilterList(QStringList valueList);
 
 private:
-    QListWidget *filterList;
+    QListWidget *listWidget;
 };
 
 #endif // FILTER_H

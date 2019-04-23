@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     // User Code goes here...
 
     QString mainTitle = "GPA Prototype";
-    int mainContainerLength = 1000;
+    int mainContainerLength = 1050;
     int mainContainerWidth = 400;
     QString mainColour = "white";
 
@@ -132,11 +132,10 @@ int main(int argc, char *argv[]) {
     Filter *filter1 = new Filter(filter1Widget);
     filter1->createFilter("My Bugs");
     filter1->createFilter("All Bugs");
-
-    // QStringList insertFilters = {"hello", "hi"};
-    // filter1->createFilterList(insertFilters);
+    QStringList insertFilters = {"Source", "Sink", "Fix locations"};
+    filter1->createFilterList(insertFilters);
     container.createContainer(mainContainerView.centralWidget(), filter1, 150,
-                              200, 900, 20, "This is hover for filter.",
+                              200, 870, 20, "This is hover for filter.",
                               "white");
 
     // User Code ends
