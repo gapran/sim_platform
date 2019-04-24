@@ -18,10 +18,3 @@ Bar::Bar(QWidget *parent, int min, int max) : QDialog (parent)
 void Bar::populate(){
     bar->setValue(75);
 }
-
-void Bar::onChange(int value)
-{
-    bar->setValue(value);
-}
-
-

@@ -25,7 +25,6 @@ public:
     }
 
     void populate();
-    void onChange(int value);
 
 private:
     QProgressBar *bar;
