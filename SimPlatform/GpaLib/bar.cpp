@@ -1,11 +1,10 @@
 #include "bar.h"
 
-#include<vector>
-#include<QLabel>
-#include<QTextCursor>
+#include <QLabel>
+#include <QTextCursor>
+#include <vector>
 
-Bar::Bar(QWidget *parent, int min, int max) : QDialog (parent)
-{
+Bar::Bar(QWidget *parent, int min, int max) : QDialog(parent) {
     bar = new QProgressBar;
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(bar);
@@ -13,8 +12,12 @@ Bar::Bar(QWidget *parent, int min, int max) : QDialog (parent)
 
     bar->setMinimum(min);
     bar->setMaximum(max);
+
+    QString minValue = QString::number(min);
+    QString maxValue = QString::number(max);
+
+    QString hint = "Min: " + minValue + "   Max: " + maxValue;
+    bar->setToolTip(hint);
 }
 
-void Bar::populate(){
-    bar->setValue(75);
-}
+void Bar::populate() { bar->setValue(75); }
