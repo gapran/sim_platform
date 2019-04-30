@@ -2,10 +2,10 @@
 #include "layout.h"
 #include "maincontainerview.h"
 #include <QApplication>
-#include <QHBoxLayout>
 #include <QBoxLayout>
-#include <QLayout>
 #include <QDebug>
+#include <QHBoxLayout>
+#include <QLayout>
 
 #include "bar.h"
 #include "container.h"
@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     // User Code goes here...
 
     QString mainTitle = "GPA Prototype";
-    int mainContainerLength = 400;
+    int mainContainerLength = 1000;
     int mainContainerWidth = 600;
     QString mainColour = "white";
 
@@ -108,7 +108,7 @@ int main(int argc, char *argv[]) {
     // table1->sort(true);
 
     container.createContainer(mainContainerView.centralWidget(), table1, 700,
-                              200, 150, 10, "Table Container", "gray");
+                              200, 150, 70, "Table Container", "gray");
 
     // Text
     QWidget *textWidget = new QWidget(mainContainerView.centralWidget());
@@ -129,7 +129,7 @@ int main(int argc, char *argv[]) {
     // text->setClick(link);
 
     container.createContainer(mainContainerView.centralWidget(), text, 100, 100,
-                              10, 100, "This is hover for this text box.",
+                              40, 180, "This is hover for this text box.",
                               "white");
 
     // Image
@@ -143,14 +143,14 @@ int main(int argc, char *argv[]) {
     //  image1->clicked();
 
     container.createContainer(mainContainerView.centralWidget(), image1, 100,
-                              100, 10, 10, "This is hover for image.", "white");
+                              100, 30, 70, "This is hover for image.", "white");
 
     // Progress bar
     QWidget *imageCopy1Widget = new QWidget(mainContainerView.centralWidget());
     Bar *bar = new Bar(imageCopy1Widget, 0, 100);
     bar->setValue(60);
     container.createContainer(mainContainerView.centralWidget(), bar, 100, 100,
-                              20, 130, "", "white");
+                              40, 220, "", "white");
 
     // User Code ends
 
