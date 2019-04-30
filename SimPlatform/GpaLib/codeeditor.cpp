@@ -18,6 +18,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
     updateLineNumberAreaWidth(0);
 
     highlightCurrentLine();
+    //showError(15);
 }
 
 CodeEditor::~CodeEditor(){}
@@ -46,18 +47,18 @@ int CodeEditor:: errorAreaWidth()
     }
 
     int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
-    return space + lineNumberAreaWidth();
+    return space;
 }
 
 
 void CodeEditor::updateLineNumberAreaWidth(int /* newBlockCount */)
 {
-    setViewportMargins(errorAreaWidth(), 0, 0, 0);
+    setViewportMargins(lineNumberAreaWidth()+errorAreaWidth(), 1, 0, 0);
 }
 
 void CodeEditor::updateErrorAreaWidth(int /* newBlockCount */)
 {
-    setViewportMargins(errorAreaWidth(), 0, 0, 0);
+//    setViewportMargins(errorAreaWidth() + lineNumberAreaWidth(), 15, 0, 0);
 }
 
 
@@ -121,6 +122,7 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 
     QTextBlock block = firstVisibleBlock();
     int blockNumber = block.blockNumber();
+    //qInfo() << "Block size is: " << blockNumber;
     int top = int (blockBoundingGeometry(block).translated(contentOffset()).top());
     int bottom = top + int (blockBoundingRect(block).height());
 
@@ -142,7 +144,8 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 void CodeEditor::errorAreaPaintEvent(QPaintEvent *event)
 {
     QPainter painter(errorArea);
-    painter.fillRect(event->rect(), Qt::blue);
+    errPainter = &painter;
+    painter.fillRect(event->rect(), Qt::gray);
 
 
     QTextBlock block = firstVisibleBlock();
@@ -153,9 +156,19 @@ void CodeEditor::errorAreaPaintEvent(QPaintEvent *event)
     while (block.isValid() && top <= event->rect().bottom()) {
         if (block.isVisible() && bottom >= event->rect().top()) {
             QString number = QString::number(blockNumber + 1);
-            painter.setPen(Qt::black);
-            painter.drawText(0, top, errorArea->width(), fontMetrics().height(),
-                             Qt::AlignRight, number);
+            if(number == "18"){
+                painter.setPen(Qt::red);
+//                painter.drawText(0, top, errorArea->width(), fontMetrics().height(),
+//                                 Qt::AlignRight, "0");
+                painter.fillRect(0,top, errorArea->width(), fontMetrics().height(), Qt::yellow);
+              //   drawCheck(painter, option, option.rect, index.data().toBool() ? Qt::Checked : Qt::Unchecked);
+
+            }
+            else {
+                painter.setPen(Qt::gray);
+                painter.drawText(0, top, errorArea->width(), fontMetrics().height(),
+                                 Qt::AlignRight, number);
+            }
         }
 
         block = block.next();
@@ -164,6 +177,14 @@ void CodeEditor::errorAreaPaintEvent(QPaintEvent *event)
         ++blockNumber;
     }
 }
+
+void CodeEditor::showError(int lineNum)
+{
+
+    errPainter->setPen(Qt::red);
+    errPainter->drawText(0, lineNum, errorArea->width(),fontMetrics().height(), Qt::AlignRight, "0");
+}
+
 //higlighter implementation for code editor
 Highlighter::Highlighter(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
@@ -226,6 +247,7 @@ void Highlighter::highlightBlock(const QString &text)
             setFormat(match.capturedStart(), match.capturedLength(), rule.format);
         }
     }
+
     setCurrentBlockState(0);
 
     int startIndex = 0;

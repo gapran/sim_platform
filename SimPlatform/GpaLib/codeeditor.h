@@ -66,6 +66,7 @@ public:
     int lineNumberAreaWidth();
     int errorAreaWidth();
     void errorAreaPaintEvent(QPaintEvent *event);
+    void showError(int lineNum);
     virtual ~CodeEditor();
 protected:
     void resizeEvent(QResizeEvent *event);
@@ -88,6 +89,7 @@ private:
     QWidget *lineNumberArea;
     QWidget *errorArea;
     QWidget *MenulineNumberArea;
+    QPainter *errPainter;
 };
 
 class LineNumberArea : public QWidget
@@ -119,11 +121,11 @@ public:
         codeEditor = editor;
     }
 
-    QSize sizeHintE() const {
+    QSize sizeHint() const {
         return QSize(codeEditor->errorAreaWidth(), 0);
     }
 protected:
-    void paintEventE(QPaintEvent *event) {
+    void paintEvent(QPaintEvent *event) {
         codeEditor->errorAreaPaintEvent(event);
     }
 
