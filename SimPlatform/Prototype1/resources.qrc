@@ -6,5 +6,6 @@
         <file>icon/mobile.jpg</file>
         <file>icon/mobile_high_fidelity.jpg</file>
         <file>icon/web.jpg</file>
+        <file>icon/bronze_image.jpg</file>
     </qresource>
 </RCC>
