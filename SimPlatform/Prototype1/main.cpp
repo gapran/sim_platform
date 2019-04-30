@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
     // table1->findColumn("Action");
 
     // When the user presses a column header then sorting happens.
-    // table1->sort(true);
+    table1->sort(true);
 
     container.createContainer(mainContainerView.centralWidget(), table1, 700,
                               200, 150, 10, "Table Container", "gray");
