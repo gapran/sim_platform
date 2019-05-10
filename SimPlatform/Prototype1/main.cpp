@@ -6,7 +6,6 @@
 #include <QDebug>
 #include <QHBoxLayout>
 #include <QLayout>
-
 #include "bar.h"
 #include "container.h"
 #include "image.h"
@@ -40,29 +39,38 @@ int main(int argc, char *argv[]) {
     container.createMainContainer(&mainContainerView, mainContainerLength,
                                   mainContainerWidth, mainTitle, mainColour);
 
-    // QPushButton *button1 = new QPushButton("One");
-    QPushButton *button2 = new QPushButton("Two");
-    QPushButton *button3 = new QPushButton("Three");
-    QPushButton *button4 = new QPushButton("Four");
-    QPushButton *button5 = new QPushButton("Five");
+    // Desired layout has be given here as a background image
+    // Layout Examples: cli, ide, mobile, web
+    // Replace the filename with desired layout name
+    //    mainContainerView.centralWidget()->setStyleSheet(
+    //        "border-image:url(:/resources/icon/ide.jpg)0 0 0 0 stretch "
+    //        "stretch;");
+
+    // Layout Management - https://doc.qt.io/qt-5/layout.html
+
+    QPushButton *button1 = new QPushButton("Button 1");
+    QPushButton *button2 = new QPushButton("Button 2");
+    QPushButton *button3 = new QPushButton("Button 3");
 
     // Image
     QWidget *image1Widget = new QWidget(mainContainerView.centralWidget());
-    Image *image1 = new Image(image1Widget);
+    Image *image = new Image(image1Widget);
     QString filename = ":/resources/icon/bronze_image.jpg";
-    image1->setImage(filename);
-    image1->setBox();
-    image1->setHover("This is Bronze Image.");
-    image1->noBorder();
-    image1->setParent(mainContainerView.centralWidget());
-    image1->show();
+    image->setImage(filename);
+    image->setHover("This is Bronze Image.");
+    image->noBorder();
+
+    // Progress bar
+    QWidget *imageCopy1Widget = new QWidget(mainContainerView.centralWidget());
+    Bar *bar = new Bar(imageCopy1Widget, 0, 100);
+    bar->setValue(60);
 
     QGridLayout *layout = new QGridLayout;
-    layout->addWidget(image1, 0, 0);
-    layout->addWidget(button2, 0, 1);
-    layout->addWidget(button3, 1, 0, 1, 2);
-    layout->addWidget(button4, 2, 0);
-    layout->addWidget(button5, 2, 1);
+    layout->addWidget(image, 0, 0);
+    layout->addWidget(bar, 0, 1);
+    layout->addWidget(button1, 1, 0, 1, 2);
+    layout->addWidget(button2, 2, 0);
+    layout->addWidget(button3, 2, 1);
 
     mainContainerView.centralWidget()->setLayout(layout);
 
@@ -70,124 +78,4 @@ int main(int argc, char *argv[]) {
 
     mainContainerView.show();
     return app.exec();
-
-    //    //Create layout
-    //    QWidget *layoutWidget = new
-    //    QWidget(mainContainerView.centralWidget()); Layout *layoutMobile = new
-    //    Layout(layoutWidget);
-    //    // layoutMobile->setMobile();
-    //    // layoutMobile->setWeb();
-    //    layoutMobile->setIDE();
-    //    //layoutMobile->setCLI();
-
-    //    container.createContainer(mainContainerView.centralWidget(),
-    //    layoutMobile, mainContainerLength, mainContainerWidth, 0, 0, "This is
-    //    layout.", "white");
-
-    //    // Create inner containers
-
-    //    // GPA Issue 4 - Table implementation
-    //    Table *table1 = new Table(mainContainerView.centralWidget());
-
-    //    // Create Table with rows and columns
-    //    table1->createTable(7, 7);
-
-    //    QStringList tableHeadersList = {"Name",       "Status",    "Progress",
-    //                                    "Start date", "Last date",
-    //                                    "Description", "Action"};
-    //    table1->addTableHeaders(tableHeadersList);
-
-    //    QStringList insertNameColumn = {"Alex", "John",  "Mike", "Bob",
-    //                                    "Max",  "Sarah", "Cindy"};
-    //    table1->addTableNameColumns(insertNameColumn);
-
-    //    QStringList insertStatusColumn = {"fixed",  "working", "not fixed",
-    //                                      "fixed",  "fixed",   "not fixed",
-    //                                      "working"};
-    //    table1->addTableStatusColumns(insertStatusColumn);
-
-    //    QStringList insertStartDateColumn = {
-    //        "16-02-2019", "16-02-2019", "15-02-2019", "15-02-2019",
-    //        "15-02-2019", "14-02-2019", "15-02-2019"};
-    //    table1->addTableStartDateColumns(insertStartDateColumn);
-
-    //    QStringList insertLastUpdateColumn = {
-    //        "17-02-2019", "18-02-2019", "16-02-2019", "17-02-2019",
-    //        "17-02-2019", "18-02-2019", "18-02-2019"};
-    //    table1->addTableLastUpdateColumns(insertLastUpdateColumn);
-
-    //    QStringList insertDescriptionColumn = {"des1", "des2", "des3", "des4",
-    //                                           "des5", "des6", "des7"};
-    //    table1->addTableDescriptionColumns(insertDescriptionColumn);
-
-    //    QStringList insertActionColumn = {"action1", "action2", "action3",
-    //                                      "action4", "action5", "action6",
-    //                                      "action7"};
-    //    table1->addTableActionColumns(insertActionColumn);
-
-    //    // Update a certain cell in a table with a certain row id and column
-    //    // table1->updateTable(2, 1, "fixed");
-
-    //    // Filter the table: Column name and Filter keyword
-    //    // table1->applyFilter("Status", "not fixed");
-
-    //    // Apply border width and color for Table window
-    //    // QStringList insertBorderStyle = {"1px", "blue"};
-    //    // table1->applyBorderWidthColor(insertBorderStyle);
-
-    //    // Search on Column ID
-    //    // table1->findColumn("Action");
-
-    //    // When the user presses a column header then sorting happens.
-    //    table1->sort(true);
-
-    //    container.createContainer(mainContainerView.centralWidget(), table1,
-    //    700,
-    //                              200, 150, 70, "Table Container", "gray");
-
-    //    // Text
-    //    QWidget *textWidget = new QWidget(mainContainerView.centralWidget());
-    //    Text *text = new Text(textWidget);
-
-    //    // Text Styles
-    //    text->setFontFamily("Georgia");
-    //    text->setTextSize(10);
-    //    // text->setTextItalic();
-    //    // text->setTextUnderline();
-    //    text->setTextBold();
-    //    // text->setTextColor("blue");
-    //    text->setBackgroundColor("white");
-    //    text->noBorder();
-
-    //    text->setText("Bronze");
-    //    // QString link = "<a href=\"www.example.de\bronze\">Bronze</a>";
-    //    // text->setClick(link);
-
-    //    container.createContainer(mainContainerView.centralWidget(), text,
-    //    100, 100,
-    //                              40, 180, "This is hover for this text box.",
-    //                              "white");
-
-    //    // Image
-    //    QWidget *image1Widget = new
-    //    QWidget(mainContainerView.centralWidget()); Image *image1 = new
-    //    Image(image1Widget); QString filename =
-    //    ":/resources/icon/bronze_image.jpg"; image1->setImage(filename);
-    //    image1->setBox();
-    //    image1->setHover("This is Bronze Image.");
-    //    image1->noBorder();
-    //    //  image1->clicked();
-
-    //    container.createContainer(mainContainerView.centralWidget(), image1,
-    //    100,
-    //                              100, 30, 70, "This is hover for image.",
-    //                              "white");
-
-    //    // Progress bar
-    //    QWidget *imageCopy1Widget = new
-    //    QWidget(mainContainerView.centralWidget()); Bar *bar = new
-    //    Bar(imageCopy1Widget, 0, 100); bar->setValue(60);
-    //    container.createContainer(mainContainerView.centralWidget(), bar, 100,
-    //    100,
-    //                              40, 220, "", "white");
 }
