@@ -1,18 +1,11 @@
-#include "container.h"
-#include "layout.h"
-#include "maincontainerview.h"
-#include <QApplication>
-#include <QBoxLayout>
-#include <QDebug>
-#include <QHBoxLayout>
-#include <QLayout>
-
 #include "bar.h"
 #include "container.h"
 #include "image.h"
+#include "layout.h"
 #include "maincontainerview.h"
 #include "table.h"
 #include "text.h"
+
 #include <QApplication>
 #include <QBoxLayout>
 #include <QDebug>
