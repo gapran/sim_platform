@@ -1,9 +1,11 @@
 #include "bar.h"
 #include "container.h"
 #include "image.h"
+#include "layout.h"
 #include "maincontainerview.h"
 #include "table.h"
 #include "text.h"
+
 #include <QApplication>
 #include <QBoxLayout>
 #include <QDebug>
@@ -23,13 +25,25 @@ int main(int argc, char *argv[]) {
 
     QString mainTitle = "GPA Prototype";
     int mainContainerLength = 1000;
-    int mainContainerWidth = 400;
+    int mainContainerWidth = 600;
     QString mainColour = "white";
 
     // Create main GpaComponent / window
     Container container;
     container.createMainContainer(&mainContainerView, mainContainerLength,
                                   mainContainerWidth, mainTitle, mainColour);
+
+    // Create layout
+    QWidget *layoutWidget = new QWidget(mainContainerView.centralWidget());
+    Layout *layoutMobile = new Layout(layoutWidget);
+    // layoutMobile->setMobile();
+    // layoutMobile->setWeb();
+    layoutMobile->setIDE();
+    // layoutMobile->setCLI();
+
+    container.createContainer(mainContainerView.centralWidget(), layoutMobile,
+                              mainContainerLength, mainContainerWidth, 0, 0,
+                              "This is layout.", "white");
 
     // Create inner containers
 
@@ -86,10 +100,10 @@ int main(int argc, char *argv[]) {
     // table1->findColumn("Action");
 
     // When the user presses a column header then sorting happens.
-    table1->sort(true);
+    // table1->sort(true);
 
     container.createContainer(mainContainerView.centralWidget(), table1, 700,
-                              200, 150, 10, "Table Container", "gray");
+                              200, 150, 70, "Table Container", "gray");
 
     // Text
     QWidget *textWidget = new QWidget(mainContainerView.centralWidget());
@@ -110,7 +124,7 @@ int main(int argc, char *argv[]) {
     // text->setClick(link);
 
     container.createContainer(mainContainerView.centralWidget(), text, 100, 100,
-                              10, 100, "This is hover for this text box.",
+                              40, 180, "This is hover for this text box.",
                               "white");
 
     // Image
@@ -124,14 +138,14 @@ int main(int argc, char *argv[]) {
     //  image1->clicked();
 
     container.createContainer(mainContainerView.centralWidget(), image1, 100,
-                              100, 10, 10, "This is hover for image.", "white");
+                              100, 30, 70, "This is hover for image.", "white");
 
     // Progress bar
     QWidget *imageCopy1Widget = new QWidget(mainContainerView.centralWidget());
     Bar *bar = new Bar(imageCopy1Widget, 0, 100);
     bar->setValue(60);
     container.createContainer(mainContainerView.centralWidget(), bar, 100, 100,
-                              20, 130, "", "white");
+                              40, 220, "", "white");
 
     // User Code ends
 
