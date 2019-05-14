@@ -15,6 +15,8 @@ Filter::Filter(QWidget *parent) : QListWidget(parent) {
 
 void Filter::createFilter(QString value) { listWidget->addItem(value); }
 
+void Filter::createFilterHeader(QString text) { listWidget->addItem(text); }
+
 void Filter::createFilterList(QStringList valueList) {
 
     for (int i = 0; i < valueList.size(); i++) {
