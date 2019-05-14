@@ -132,7 +132,7 @@ int main(int argc, char *argv[]) {
 
     filter1->createFilter("My Bugs");
     filter1->createFilter("All Bugs");
-
+    filter1->createFilterHeader("Marker Type");
     QStringList insertFilters1 = {"Source", "Sink", "Fix locations"};
     QStringList insertFilters2 = {"SQL Injections", "XSS", "CSRF"};
     QStringList insertFilters3 = {"High", "Medium", "Low"};
@@ -142,7 +142,7 @@ int main(int argc, char *argv[]) {
     filter1->createFilterList(insertFilters3);
 
     container.createContainer(mainContainerView.centralWidget(), filter1, 150,
-                              200, 870, 20, "This is hover for filter.",
+                              200, 870, 10, "This is hover for filter.",
                               "white");
 
     // User Code ends

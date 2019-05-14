@@ -15,7 +15,13 @@ Filter::Filter(QWidget *parent) : QListWidget(parent) {
 
 void Filter::createFilter(QString value) { listWidget->addItem(value); }
 
-void Filter::createFilterHeader(QString text) { listWidget->addItem(text); }
+void Filter::createFilterHeader(QString text) {
+    QListWidgetItem *item = nullptr;
+    listWidget->addItem(text);
+
+    item = listWidget->item(0);
+    item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+}
 
 void Filter::createFilterList(QStringList valueList) {
 
