@@ -11,7 +11,7 @@
 #include <QTextBrowser>
 #include <QHBoxLayout>
 #include "text.h"
-
+#include "tabdialog.h"
 
 int main(int argc, char *argv[]) {
 
@@ -115,6 +115,20 @@ int main(int argc, char *argv[]) {
     container.createContainer(mainContainerView.centralWidget(), image1, 100, 100, 10, 10, "This is hover for image.", "white");
 
    // User Code ends
+//tabs
+    QString fileName;
+
+    if (argc >= 2)
+        fileName = argv[1];
+    else
+        fileName = ".";
+
+   QWidget *genrarltabWidget = new QWidget(mainContainerView.centralWidget());
+   TabDialog *tabdialog=new TabDialog(fileName,genrarltabWidget);
+    container.createContainer(mainContainerView.centralWidget(), tabdialog, 700, 200, 150, 10,"This is hover for tabs.", "white");
+//    tabdialog.show();
+
+
 
     mainContainerView.show();
     return app.exec();
