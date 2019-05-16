@@ -14,6 +14,8 @@
 #include <QPushButton>
 #include <QTextBrowser>
 #include <QTextEdit>
+#include "text.h"
+#include "tabdialog.h"
 
 int main(int argc, char *argv[]) {
 
@@ -128,6 +130,7 @@ int main(int argc, char *argv[]) {
                               "white");
 
     // Image
+<<<<<<< HEAD
     QWidget *image1Widget = new QWidget(mainContainerView.centralWidget());
     Image *image1 = new Image(image1Widget);
     QString filename = ":/resources/icon/bronze_image.jpg";
@@ -148,6 +151,30 @@ int main(int argc, char *argv[]) {
                               40, 220, "", "white");
 
     // User Code ends
+=======
+      QWidget *image1Widget = new QWidget(mainContainerView.centralWidget());
+      Image *image1 = new Image(image1Widget);
+      QString filename = ":/resources/icon/bronze_image.jpg";
+      image1->setImage(filename);
+      image1->setBox();
+      image1->setHover("This is Bronze Image.");
+      image1->noBorder();
+      //image1->clicked();
+
+    container.createContainer(mainContainerView.centralWidget(), image1, 100, 100, 10, 10, "This is hover for image.", "white");
+
+   // User Code ends
+//tabs
+    QString fileName;
+
+    if (argc >= 2)
+        fileName = argv[1];
+    else
+        fileName = ".";
+
+    QWidget *genrarltabWidget = new QWidget(mainContainerView.centralWidget());
+    TabDialog *tabdialog=new TabDialog(fileName,genrarltabWidget);
+    container.createContainer(mainContainerView.centralWidget(), tabdialog, 700, 200, 150, 10,"This is hover for tabs.", "white");
 
     mainContainerView.show();
     return app.exec();
