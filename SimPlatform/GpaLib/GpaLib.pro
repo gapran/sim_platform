@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += widgets qml quick sql
+QT += charts
 
 TARGET = GpaLib
 TEMPLATE = lib
@@ -22,10 +23,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-          *.cpp
+          *.cpp \
+    graphs.cpp
 
 HEADERS += \
-          *.h
+          *.h \
+    graphs.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

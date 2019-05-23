@@ -11,6 +11,7 @@
 #include <QTextBrowser>
 #include <QHBoxLayout>
 #include "text.h"
+#include"graphs.h"
 
 
 int main(int argc, char *argv[]) {
@@ -114,6 +115,22 @@ int main(int argc, char *argv[]) {
 
     container.createContainer(mainContainerView.centralWidget(), image1, 100, 100, 10, 10, "This is hover for image.", "white");
 
+    QWidget *graph = new QWidget(mainContainerView.centralWidget());
+    Graphs *barGraph = new Graphs(graph);
+    QStringList names = {"Bronze", "Silver", "Gold", "Master","Proessional"};
+    QStringList val = {"10", "50", "25", "80","65"};
+    barGraph->drawBarGraph(5, names, val);
+
+    container.createContainer(mainContainerView.centralWidget(), barGraph, 400, 300, 80, 80, "This is hover for graph.", "white");
+
+    Graphs *lineGraph = new Graphs(graph);
+    //int values[5][2] = {{0,6}, {2,4}, {3,8}, {7,4}, {10,5}};
+    QStringList valx = {"0", "2", "3", "7","10"};
+    QStringList valy = {"6", "4", "8", "4","5"};
+    int num = 5;
+    lineGraph->drawLineGraph(num, valx, valy);
+
+    container.createContainer(mainContainerView.centralWidget(), lineGraph, 400, 300, 550, 80, "This is hover for graph.", "white");
    // User Code ends
 
     mainContainerView.show();
