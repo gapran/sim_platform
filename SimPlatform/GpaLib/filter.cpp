@@ -20,7 +20,7 @@ void Filter::createFilterHeader(QString text) {
     listWidget->addItem(text);
 
     item = listWidget->item(0);
-    item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+    item->setFlags(item->flags() & ~Qt::ItemIsUserCheckable);
 }
 
 void Filter::createFilterList(QStringList valueList) {
