@@ -126,7 +126,7 @@ int main(int argc, char *argv[]) {
     container.createContainer(mainContainerView.centralWidget(), image1, 100,
                               100, 10, 10, "This is hover for image.", "white");
 
-    // Filter
+    // Filter - For header, give index number considering complete list
     QWidget *filter1Widget = new QWidget(mainContainerView.centralWidget());
     Filter *filter1 = new Filter(filter1Widget);
 
@@ -138,7 +138,9 @@ int main(int argc, char *argv[]) {
     QStringList insertFilters3 = {"High", "Medium", "Low"};
 
     filter1->createFilterList(insertFilters1);
+    filter1->createFilterHeader("Vulnerability Type", 6);
     filter1->createFilterList(insertFilters2);
+    filter1->createFilterHeader("Priority", 10);
     filter1->createFilterList(insertFilters3);
 
     container.createContainer(mainContainerView.centralWidget(), filter1, 150,
