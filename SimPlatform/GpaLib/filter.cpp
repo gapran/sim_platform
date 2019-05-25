@@ -15,12 +15,12 @@ Filter::Filter(QWidget *parent) : QListWidget(parent) {
 
 void Filter::createFilter(QString value) { listWidget->addItem(value); }
 
-void Filter::createFilterHeader(QString text) {
+void Filter::createFilterHeader(QString text, int index) {
     QListWidgetItem *item = nullptr;
     listWidget->addItem(text);
 
-    item = listWidget->item(0);
-    item->setFlags(item->flags() & ~Qt::ItemIsUserCheckable);
+    item = listWidget->item(index);
+    item->setFlags(item->flags() & ~Qt::ItemIsSelectable & ~Qt::ItemIsEnabled);
 }
 
 void Filter::createFilterList(QStringList valueList) {

@@ -12,7 +12,7 @@ public:
     ~Filter();
 
     void createFilter(QString value);
-    void createFilterHeader(QString text);
+    void createFilterHeader(QString text, int index);
     void createFilterList(QStringList valueList);
 
 private:

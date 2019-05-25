@@ -132,7 +132,7 @@ int main(int argc, char *argv[]) {
 
     filter1->createFilter("My Bugs");
     filter1->createFilter("All Bugs");
-    filter1->createFilterHeader("Marker Type");
+    filter1->createFilterHeader("Marker Type", 2);
     QStringList insertFilters1 = {"Source", "Sink", "Fix locations"};
     QStringList insertFilters2 = {"SQL Injections", "XSS", "CSRF"};
     QStringList insertFilters3 = {"High", "Medium", "Low"};
