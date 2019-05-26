@@ -162,7 +162,7 @@ int main(int argc, char *argv[]) {
 
     QWidget *genrarltabWidget = new QWidget(mainContainerView.centralWidget());
     TabDialog *tabdialog=new TabDialog(fileName,genrarltabWidget);
-    container.createContainer(mainContainerView.centralWidget(), tabdialog, 700, 200, 150, 10,"This is hover for tabs.", "white");
+    container.createContainer(mainContainerView.centralWidget(), tabdialog, 700, 200, 150, 300,"This is hover for tabs.", "white");
 
     mainContainerView.show();
     return app.exec();
