@@ -47,7 +47,6 @@ public:
 
 private:
     QTabWidget *tabWidget;
-    QDialogButtonBox *buttonBox;
 };
 
 #endif
