@@ -27,8 +27,8 @@ int main(int argc, char *argv[]) {
     // User Code goes here...
 
     QString mainTitle = "GPA Prototype";
-    int mainContainerLength = 1000;
-    int mainContainerWidth = 600;
+    int mainContainerLength = 1200;
+    int mainContainerWidth = 700;
     QString mainColour = "white";
 
     // Create main GpaComponent / window
@@ -141,7 +141,7 @@ int main(int argc, char *argv[]) {
     //  image1->clicked();
 
     container.createContainer(mainContainerView.centralWidget(), image1, 100,
-                              100, 30, 70, "This is hover for image.", "white");
+                              100, 30, 90, "This is hover for image.", "white");
 
     // Progress bar
     QWidget *imageCopy1Widget = new QWidget(mainContainerView.centralWidget());
@@ -149,17 +149,6 @@ int main(int argc, char *argv[]) {
     bar->setValue(60);
     container.createContainer(mainContainerView.centralWidget(), bar, 100, 100,
                               40, 220, "", "white");
-
-    container.createContainer(mainContainerView.centralWidget(), image1, 100, 100, 10, 10, "This is hover for image.", "white");
-
-    QWidget *graph = new QWidget(mainContainerView.centralWidget());
-    Graphs *barGraph = new Graphs(graph);
-    QStringList names = {"Bronze", "Silver", "Gold", "Master","Proessional"};
-    QStringList val = {"10", "50", "25", "80","65"};
-    barGraph->drawBarGraph(5, names, val);
-
-    container.createContainer(mainContainerView.centralWidget(), barGraph, 400, 300, 80, 80, "This is hover for graph.", "white");
-
     // User Code ends
 
 //tabs
@@ -172,7 +161,7 @@ int main(int argc, char *argv[]) {
 
     QWidget *genrarltabWidget = new QWidget(mainContainerView.centralWidget());
     TabDialog *tabdialog=new TabDialog(fileName,genrarltabWidget);
-    container.createContainer(mainContainerView.centralWidget(), tabdialog, 700, 200, 150, 300,"This is hover for tabs.", "white");
+    container.createContainer(mainContainerView.centralWidget(), tabdialog, 800, 360, 150, 270,"This is hover for tabs.", "white");
 
     mainContainerView.show();
     return app.exec();
