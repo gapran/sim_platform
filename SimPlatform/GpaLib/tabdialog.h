@@ -2,7 +2,6 @@
 #define TABDIALOG_H
 #include <QDialog>
 
-class QDialogButtonBox;
 class QFileInfo;
 class QTabWidget;
 
