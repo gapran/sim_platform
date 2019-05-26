@@ -123,15 +123,7 @@ int main(int argc, char *argv[]) {
 
     container.createContainer(mainContainerView.centralWidget(), barGraph, 400, 300, 80, 80, "This is hover for graph.", "white");
 
-    Graphs *lineGraph = new Graphs(graph);
-    //int values[5][2] = {{0,6}, {2,4}, {3,8}, {7,4}, {10,5}};
-    QStringList valx = {"0", "2", "3", "7","10"};
-    QStringList valy = {"6", "4", "8", "4","5"};
-    int num = 5;
-    lineGraph->drawLineGraph(num, valx, valy);
-
-    container.createContainer(mainContainerView.centralWidget(), lineGraph, 400, 300, 550, 80, "This is hover for graph.", "white");
-   // User Code ends
+    // User Code ends
 
     mainContainerView.show();
     return app.exec();

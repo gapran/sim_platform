@@ -20,7 +20,6 @@ public:
     explicit Graphs(QWidget *parent = nullptr);
 
      void drawBarGraph(int num, QStringList list, QStringList values);
-     void drawLineGraph(int num, QStringList valx, QStringList valy);
 
 private:
      QtCharts::QChartView *chartView;

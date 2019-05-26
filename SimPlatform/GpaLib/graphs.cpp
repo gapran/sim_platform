@@ -67,30 +67,3 @@ void Graphs::drawBarGraph(int num, QStringList names, QStringList values)
 
 
 }
-
-void Graphs::drawLineGraph(int num, QStringList valx, QStringList valy)
-{
-
-    QLineSeries *series = new QLineSeries();
-
-    for (int i=0;i<num;i++)
-        {
-        int x= valx[i].toInt();
-        int y= valy[i].toInt();
-         series->append(x,y);
-        }
-
-         QChart *chart = new QChart();
-         chart->legend()->hide();
-         chart->addSeries(series);
-         chart->createDefaultAxes();
-         chart->setTitle("Line Chart");
-
-         QChartView *chartView = new QChartView(chart);
-         chartView->setRenderHint(QPainter::Antialiasing);
-
-         QHBoxLayout *layout = new QHBoxLayout;
-         layout->addWidget(chartView);
-         setLayout(layout);
-
-}
