@@ -175,7 +175,19 @@ void Table::show() {
 
 }
 
+void Table::filterTable(QString filterValue) {
 
-Table::~Table() {
-    delete table;
+    for (int r = 0; r < table->rowCount(); ++r) {
+        bool found = false;
+        for (int c = 0; c < table->columnCount(); ++c) {
+            QTableWidgetItem *item = table->item(r, c);
+            if (item->text().contains(filterValue)) {
+                found = true;
+                break;
+            }
+        }
+        table->setRowHidden(r, !found);
+    }
 }
+
+Table::~Table() { delete table; }
