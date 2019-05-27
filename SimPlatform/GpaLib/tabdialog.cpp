@@ -43,7 +43,7 @@ MonitorVisulizeTab::MonitorVisulizeTab(const QFileInfo &fileInfo, QWidget *paren
     QStringList val = {"10", "50", "25", "80","65"};
     barGraph->drawBarGraph(5, names, val);
     Container container;
-    container.createContainer(graph, barGraph, 400, 800, 80, 80, "This is hover for graph.", "white");
+    container.createContainer(graph, barGraph, 400, 400, 80, 80, "This is hover for graph.", "white");
 
     permissionsGroup->setLayout(permissionsLayout);
     QVBoxLayout *mainLayout = new QVBoxLayout;

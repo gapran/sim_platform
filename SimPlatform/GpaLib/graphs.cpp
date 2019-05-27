@@ -18,13 +18,12 @@ QT_CHARTS_USE_NAMESPACE
 
 Graphs::Graphs(QWidget *parent) : QDialog (parent){
 
-//    //chartView = new QtCharts::QChartView();
-//    QHBoxLayout *layout = new QHBoxLayout;
-//    layout->addWidget(chartView);
-//    setLayout(layout);
+    chartView = new QChartView();
+}
 
-    QString var = "hello";
-    qDebug()<<var;
+Graphs:: ~Graphs()
+{
+    delete  chartView;
 }
 
 void Graphs::drawBarGraph(int num, QStringList names, QStringList values)
@@ -40,10 +39,6 @@ void Graphs::drawBarGraph(int num, QStringList names, QStringList values)
             series->append(set);
         }
 
-//        QtCharts::QBarSet *set0 = new QtCharts::QBarSet("Bronze");
-//        *set0 << 10;
-//        QtCharts::QBarSeries *series = new QtCharts::QBarSeries();
-//        series->append(set0);
 
         QChart *chart = new QChart();
         chart->addSeries(series);
@@ -58,7 +53,8 @@ void Graphs::drawBarGraph(int num, QStringList names, QStringList values)
         chart->legend()->setVisible(true);
         chart->legend()->setAlignment(Qt::AlignBottom);
 
-        QChartView *chartView = new QChartView(chart);
+        //QChartView *chartView = new QChartView(chart);
+        chartView->setChart(chart);
         chartView->setRenderHint(QPainter::Antialiasing);
 
         QHBoxLayout *layout = new QHBoxLayout;

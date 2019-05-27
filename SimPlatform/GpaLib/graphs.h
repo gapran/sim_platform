@@ -19,6 +19,8 @@ class Graphs : public QDialog
 public:
     explicit Graphs(QWidget *parent = nullptr);
 
+    ~Graphs();
+
      void drawBarGraph(int num, QStringList list, QStringList values);
 
 private:
