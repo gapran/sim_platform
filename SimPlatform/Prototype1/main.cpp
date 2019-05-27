@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QHBoxLayout>
 #include <QLayout>
+#include <QObject>
 #include <QPushButton>
 #include <QTextBrowser>
 #include <QTextEdit>
@@ -146,6 +147,11 @@ int main(int argc, char *argv[]) {
     container.createContainer(mainContainerView.centralWidget(), filter1, 150,
                               200, 870, 10, "This is hover for filter.",
                               "white");
+
+    // Connections
+
+    QObject::connect(filter1, &Filter::itemSelected, table1,
+                     &Table::filterTable);
 
     // User Code ends
 

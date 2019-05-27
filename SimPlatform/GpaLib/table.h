@@ -46,6 +46,9 @@ public:
 private:
     QTableWidget *table;
 
+public slots:
+
+    void filterTable(QString filterValue);
 };
 
 
