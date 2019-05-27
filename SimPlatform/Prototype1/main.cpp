@@ -150,25 +150,35 @@ int main(int argc, char *argv[]) {
                               40, 220, "", "white");
 
     // Tabs
-    QString fileName;
-    if (argc >= 2)
-        fileName = argv[1];
-    else
-        fileName = ".";
-
     QWidget *genrarltabWidget = new QWidget(mainContainerView.centralWidget());
-    TabDialog *tabdialog=new TabDialog(fileName,genrarltabWidget);
+
+    QLabel *labelAnalyze = new QLabel("Analysis results");
+    QLabel *labelMonitor = new QLabel("Monitor functionalities");
+    QLabel *labelCategorize = new QLabel("Categorize functionalities");
+    QLabel *labelHighlights = new QLabel("Highlights information");
+
+    QMap<QString, QWidget *> tabs;
+    tabs.insert("Analyze", labelAnalyze);
+    tabs.insert("Monitor and visualize", labelMonitor);
+    tabs.insert("Categorize", labelCategorize);
+    tabs.insert("Highlights", labelHighlights);
+
+    TabDialog *tabdialog = new TabDialog("Tabs", tabs, genrarltabWidget);
     container.createContainer(mainContainerView.centralWidget(), tabdialog, 800,
                               360, 150, 270,"This is hover for tabs.", "white");
 
     // Graphs
     QWidget *graph = new QWidget();
     Graphs *barGraph = new Graphs(graph);
-    QStringList names = {"Bronze", "Silver", "Gold", "Master","Professional"};
-    QStringList val = {"10", "50", "25", "80","65"};
-    barGraph->drawBarGraph("Bar chart", 5, names, val);
+    QMap<QString, int> bars;
+    bars.insert("Bronze", 10);
+    bars.insert("Silver", 50);
+    bars.insert("Gold", 25);
+    bars.insert("Master", 80);
+    bars.insert("Professional", 65);
+    barGraph->drawBarGraph("Bar chart", bars);
     container.createContainer(mainContainerView.centralWidget(), barGraph, 700,
-                              200, 200, 475, "This is hover for graph.", "white");
+                              200, 200, 425, "This is hover for graph.", "white");
 
     /** User code ends here... **/
 
