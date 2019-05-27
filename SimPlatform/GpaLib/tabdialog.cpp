@@ -1,6 +1,5 @@
 #include <QtWidgets>
 #include "tabdialog.h"
-#include"graphs.h"
 #include "container.h"
 
 TabDialog::TabDialog(const QString &fileName, QWidget *parent)
@@ -36,18 +35,9 @@ MonitorVisulizeTab::MonitorVisulizeTab(const QFileInfo &fileInfo, QWidget *paren
     QGroupBox *permissionsGroup = new QGroupBox(tr("Add component for MonitorVisulize here"));
     QVBoxLayout *permissionsLayout = new QVBoxLayout;
 
-
-    QWidget *graph = new QWidget();
-    Graphs *barGraph = new Graphs(graph);
-    QStringList names = {"Bronze", "Silver", "Gold", "Master","Proessional"};
-    QStringList val = {"10", "50", "25", "80","65"};
-    barGraph->drawBarGraph(5, names, val);
-    Container container;
-    container.createContainer(graph, barGraph, 400, 400, 80, 80, "This is hover for graph.", "white");
-
     permissionsGroup->setLayout(permissionsLayout);
     QVBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->addWidget(barGraph);
+    mainLayout->addWidget(permissionsGroup);
     mainLayout->addStretch(1);
     setLayout(mainLayout);
 }

@@ -26,7 +26,7 @@ Graphs:: ~Graphs()
     delete  chartView;
 }
 
-void Graphs::drawBarGraph(int num, QStringList names, QStringList values)
+void Graphs::drawBarGraph(QString title, int num, QStringList names, QStringList values)
 {
     QtCharts::QBarSeries *series = new QtCharts::QBarSeries();
 
@@ -42,7 +42,7 @@ void Graphs::drawBarGraph(int num, QStringList names, QStringList values)
 
         QChart *chart = new QChart();
         chart->addSeries(series);
-        chart->setTitle("Barchart");
+        chart->setTitle(title);
         chart->setAnimationOptions(QChart::SeriesAnimations);
 
         QValueAxis *axisY = new QValueAxis();
@@ -54,11 +54,13 @@ void Graphs::drawBarGraph(int num, QStringList names, QStringList values)
         chart->legend()->setAlignment(Qt::AlignBottom);
 
         //QChartView *chartView = new QChartView(chart);
+        chart->setMargins(QMargins(0,0,0,0));
         chartView->setChart(chart);
         chartView->setRenderHint(QPainter::Antialiasing);
 
         QHBoxLayout *layout = new QHBoxLayout;
         layout->addWidget(chartView);
+        layout->setContentsMargins(0, 0, 0, 0);
         setLayout(layout);
 
 
