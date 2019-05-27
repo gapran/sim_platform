@@ -26,42 +26,37 @@ Graphs:: ~Graphs()
     delete  chartView;
 }
 
-void Graphs::drawBarGraph(QString title, int num, QStringList names, QStringList values)
+void Graphs::drawBarGraph(QString title, QMap<QString, int> bars)
 {
     QtCharts::QBarSeries *series = new QtCharts::QBarSeries();
 
-    for (int i=0;i<num;i++)
-        {
-            QtCharts::QBarSet *set = new QtCharts::QBarSet(names[i]);
+    for(QString barName : bars.keys())
+    {
+        QtCharts::QBarSet *set = new QtCharts::QBarSet(barName);
+        *set << bars[barName];
+        series->append(set);
+    }
 
-            *set << values[i].toInt();
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle(title);
+    chart->setAnimationOptions(QChart::SeriesAnimations);
 
-            series->append(set);
-        }
+    QValueAxis *axisY = new QValueAxis();
+    axisY->setRange(0,100);
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisY);
 
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignBottom);
 
-        QChart *chart = new QChart();
-        chart->addSeries(series);
-        chart->setTitle(title);
-        chart->setAnimationOptions(QChart::SeriesAnimations);
+    //QChartView *chartView = new QChartView(chart);
+    chart->setMargins(QMargins(0,0,0,0));
+    chartView->setChart(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
 
-        QValueAxis *axisY = new QValueAxis();
-        axisY->setRange(0,100);
-        chart->addAxis(axisY, Qt::AlignLeft);
-        series->attachAxis(axisY);
-
-        chart->legend()->setVisible(true);
-        chart->legend()->setAlignment(Qt::AlignBottom);
-
-        //QChartView *chartView = new QChartView(chart);
-        chart->setMargins(QMargins(0,0,0,0));
-        chartView->setChart(chart);
-        chartView->setRenderHint(QPainter::Antialiasing);
-
-        QHBoxLayout *layout = new QHBoxLayout;
-        layout->addWidget(chartView);
-        layout->setContentsMargins(0, 0, 0, 0);
-        setLayout(layout);
-
-
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(chartView);
+    layout->setContentsMargins(0, 0, 0, 0);
+    setLayout(layout);
 }

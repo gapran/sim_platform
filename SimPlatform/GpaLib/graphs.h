@@ -21,7 +21,7 @@ public:
 
     ~Graphs();
 
-     void drawBarGraph(QString title, int num, QStringList list, QStringList values);
+     void drawBarGraph(QString title, QMap<QString, int> bars);
 
 private:
      QtCharts::QChartView *chartView;
