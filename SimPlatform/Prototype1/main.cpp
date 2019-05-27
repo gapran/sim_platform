@@ -1,8 +1,10 @@
 #include "bar.h"
 #include "container.h"
+#include "graphs.h"
 #include "image.h"
 #include "layout.h"
 #include "maincontainerview.h"
+#include "tabdialog.h"
 #include "table.h"
 #include "text.h"
 
@@ -14,8 +16,6 @@
 #include <QPushButton>
 #include <QTextBrowser>
 #include <QTextEdit>
-#include "text.h"
-#include "tabdialog.h"
 
 int main(int argc, char *argv[]) {
 
@@ -23,11 +23,11 @@ int main(int argc, char *argv[]) {
     qDebug() << "Welcome to GPA Prototype Builder!";
     MainWindow mainContainerView;
 
-    // User Code goes here...
+    /** User Code starts here... **/
 
     QString mainTitle = "GPA Prototype";
-    int mainContainerLength = 1000;
-    int mainContainerWidth = 600;
+    int mainContainerLength = 1200;
+    int mainContainerWidth = 700;
     QString mainColour = "white";
 
     // Create main GpaComponent / window
@@ -140,7 +140,7 @@ int main(int argc, char *argv[]) {
     //  image1->clicked();
 
     container.createContainer(mainContainerView.centralWidget(), image1, 100,
-                              100, 30, 70, "This is hover for image.", "white");
+                              100, 30, 90, "This is hover for image.", "white");
 
     // Progress bar
     QWidget *imageCopy1Widget = new QWidget(mainContainerView.centralWidget());
@@ -149,12 +149,8 @@ int main(int argc, char *argv[]) {
     container.createContainer(mainContainerView.centralWidget(), bar, 100, 100,
                               40, 220, "", "white");
 
-    container.createContainer(mainContainerView.centralWidget(), image1, 100, 100, 10, 10, "This is hover for image.", "white");
-
-   // User Code ends
-//tabs
+    // Tabs
     QString fileName;
-
     if (argc >= 2)
         fileName = argv[1];
     else
@@ -162,7 +158,19 @@ int main(int argc, char *argv[]) {
 
     QWidget *genrarltabWidget = new QWidget(mainContainerView.centralWidget());
     TabDialog *tabdialog=new TabDialog(fileName,genrarltabWidget);
-    container.createContainer(mainContainerView.centralWidget(), tabdialog, 700, 200, 150, 300,"This is hover for tabs.", "white");
+    container.createContainer(mainContainerView.centralWidget(), tabdialog, 800,
+                              360, 150, 270,"This is hover for tabs.", "white");
+
+    // Graphs
+    QWidget *graph = new QWidget();
+    Graphs *barGraph = new Graphs(graph);
+    QStringList names = {"Bronze", "Silver", "Gold", "Master","Professional"};
+    QStringList val = {"10", "50", "25", "80","65"};
+    barGraph->drawBarGraph("Bar chart", 5, names, val);
+    container.createContainer(mainContainerView.centralWidget(), barGraph, 700,
+                              200, 200, 475, "This is hover for graph.", "white");
+
+    /** User code ends here... **/
 
     mainContainerView.show();
     return app.exec();

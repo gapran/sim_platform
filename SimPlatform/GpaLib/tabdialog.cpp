@@ -1,5 +1,6 @@
 #include <QtWidgets>
 #include "tabdialog.h"
+#include "container.h"
 
 TabDialog::TabDialog(const QString &fileName, QWidget *parent)
     : QDialog(parent)
@@ -33,6 +34,7 @@ MonitorVisulizeTab::MonitorVisulizeTab(const QFileInfo &fileInfo, QWidget *paren
 {
     QGroupBox *permissionsGroup = new QGroupBox(tr("Add component for MonitorVisulize here"));
     QVBoxLayout *permissionsLayout = new QVBoxLayout;
+
     permissionsGroup->setLayout(permissionsLayout);
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addWidget(permissionsGroup);

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += widgets qml quick sql
+QT       += widgets qml quick sql charts
 
 TARGET = GpaLib
 TEMPLATE = lib
@@ -23,9 +23,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
           *.cpp
-
 HEADERS += \
           *.h
+
 unix {
     target.path = /usr/lib
     INSTALLS += target
