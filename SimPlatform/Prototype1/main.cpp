@@ -133,16 +133,18 @@ int main(int argc, char *argv[]) {
 
     filter1->createFilter("My Bugs");
     filter1->createFilter("All Bugs");
-    filter1->createFilterHeader("Marker Type", 2);
-    QStringList insertFilters1 = {"Source", "Sink", "Fix locations"};
-    QStringList insertFilters2 = {"SQL Injections", "XSS", "CSRF"};
-    QStringList insertFilters3 = {"High", "Medium", "Low"};
 
+    filter1->createFilterHeader("Status", 2);
+    QStringList insertFilters0 = {"fixed", "not fixed", "working"};
+    filter1->createFilterList(insertFilters0);
+
+    filter1->createFilterHeader("Marker Type", 6);
+    QStringList insertFilters1 = {"Source", "Sink", "Fix locations"};
     filter1->createFilterList(insertFilters1);
-    filter1->createFilterHeader("Vulnerability Type", 6);
+
+    filter1->createFilterHeader("Vulnerability Type", 10);
+    QStringList insertFilters2 = {"SQL Injections", "XSS", "CSRF"};
     filter1->createFilterList(insertFilters2);
-    filter1->createFilterHeader("Priority", 10);
-    filter1->createFilterList(insertFilters3);
 
     container.createContainer(mainContainerView.centralWidget(), filter1, 150,
                               200, 870, 10, "This is hover for filter.",
@@ -150,8 +152,8 @@ int main(int argc, char *argv[]) {
 
     // Connections
 
-    QObject::connect(filter1, &Filter::itemSelected, table1,
-                     &Table::filterTable);
+    QObject::connect(filter1, &Filter::itemSelectionChanged, table1,
+                     table1->filterTable(filter1->selectedItems()));
 
     // User Code ends
 

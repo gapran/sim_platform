@@ -15,8 +15,9 @@ public:
     void createFilterHeader(QString text, int index);
     void createFilterList(QStringList valueList);
 
-signals:
-    void itemSelected(QString itemSelectedValue);
+    // public:
+    // signals:
+    //    QList<QListWidgetItem *> filtersSelected();
 
 private:
     QListWidget *listWidget;

@@ -39,4 +39,9 @@ void Filter::createFilterList(QStringList valueList) {
     }
 }
 
+// QList<QListWidgetItem *> Filter::filtersSelected() {
+
+//    return this->selectedItems();
+//}
+
 Filter::~Filter() { delete listWidget; }

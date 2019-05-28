@@ -1,9 +1,10 @@
 #ifndef TABLE_H
 #define TABLE_H
 
-#include <QTableWidgetItem>
-#include <QTableWidget>
 #include <QHBoxLayout>
+#include <QListWidget>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 class Table : public QTableWidget {
     Q_OBJECT
@@ -48,7 +49,7 @@ private:
 
 public slots:
 
-    void filterTable(QString filterValue);
+    void filterTable(QList<QListWidgetItem *> qList);
 };
 
 
