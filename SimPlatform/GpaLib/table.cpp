@@ -1,12 +1,12 @@
 #include "table.h"
 #include "borderlayout.h"
 
+#include <QDebug>
 #include <QList>
 #include <iostream>
 #include <vector>
 
-using namespace std; //Import the standard library
-
+using namespace std; // Import the standard library
 
 Table::Table(QWidget *parent) : QTableWidget(parent) {
 
@@ -17,7 +17,6 @@ Table::Table(QWidget *parent) : QTableWidget(parent) {
     layout->addWidget(table, BorderLayout::Center);
 
     setLayout(layout);
-
 }
 
 void Table::createTable(int row, int column) {
@@ -176,21 +175,22 @@ void Table::show() {
 
 }
 
-void Table::filterTable(QList<QListWidgetItem *> qList) {
+void Table::filterTable() {
 
-    for (int i = 0; i < qList.count(); ++i) {
-        for (int r = 0; r < table->rowCount(); ++r) {
-            bool found = false;
-            for (int c = 0; c < table->columnCount(); ++c) {
-                QTableWidgetItem *item = table->item(r, c);
-                if (item->text().contains(qList[i]->text())) {
-                    found = true;
-                    break;
-                }
-            }
-            table->setRowHidden(r, !found);
-        }
-    }
+    qDebug() << "I am in filter table";
+    //    for (int i = 0; i < qList.count(); ++i) {
+    //        for (int r = 0; r < table->rowCount(); ++r) {
+    //            bool found = false;
+    //            for (int c = 0; c < table->columnCount(); ++c) {
+    //                QTableWidgetItem *item = table->item(r, c);
+    //                if (item->text().contains(qList[i]->text())) {
+    //                    found = true;
+    //                    break;
+    //                }
+    //            }
+    //            table->setRowHidden(r, !found);
+    //        }
+    //    }
 }
 
 Table::~Table() { delete table; }

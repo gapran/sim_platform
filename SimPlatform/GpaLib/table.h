@@ -49,7 +49,7 @@ private:
 
 public slots:
 
-    void filterTable(QList<QListWidgetItem *> qList);
+    void filterTable();
 };
 
 
