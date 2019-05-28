@@ -1,5 +1,4 @@
 #include "codeeditor.h"
-
 //code editor implementation
 CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
 {
@@ -10,15 +9,11 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
-
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateErrorAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateErrorArea(QRect,int)));
-
     updateErrorAreaWidth(0);
     updateLineNumberAreaWidth(0);
-
     highlightCurrentLine();
-    //showError(15);
 }
 
 CodeEditor::~CodeEditor(){}
@@ -31,9 +26,7 @@ int CodeEditor::lineNumberAreaWidth()
         max /= 10;
         ++digits;
     }
-
     int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
-
     return space;
 }
 
@@ -88,7 +81,6 @@ void CodeEditor::updateErrorArea(const QRect &rect, int dy)
 void CodeEditor::resizeEvent(QResizeEvent *e)
 {
     QPlainTextEdit::resizeEvent(e);
-
     QRect cr = contentsRect();
     QRect lna = QRect(cr.left(), cr.top(), lineNumberAreaWidth(), cr.height());
     lineNumberArea->setGeometry(lna);
@@ -102,9 +94,7 @@ void CodeEditor::highlightCurrentLine()
 
     if (!isReadOnly()) {
         QTextEdit::ExtraSelection selection;
-
         QColor lineColor = QColor(Qt::green).lighter(160);
-
         selection.format.setBackground(lineColor);
         selection.format.setProperty(QTextFormat::FullWidthSelection, true);
         selection.cursor = textCursor();
@@ -118,14 +108,10 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 {
     QPainter painter(lineNumberArea);
     painter.fillRect(event->rect(), Qt::lightGray);
-
-
     QTextBlock block = firstVisibleBlock();
     int blockNumber = block.blockNumber();
-    //qInfo() << "Block size is: " << blockNumber;
     int top = int (blockBoundingGeometry(block).translated(contentOffset()).top());
     int bottom = top + int (blockBoundingRect(block).height());
-
     while (block.isValid() && top <= event->rect().bottom()) {
         if (block.isVisible() && bottom >= event->rect().top()) {
             QString number = QString::number(blockNumber + 1);
@@ -146,8 +132,6 @@ void CodeEditor::errorAreaPaintEvent(QPaintEvent *event)
     QPainter painter(errorArea);
     errPainter = &painter;
     painter.fillRect(event->rect(), Qt::gray);
-
-
     QTextBlock block = firstVisibleBlock();
     int blockNumber = block.blockNumber();
     int top = int (blockBoundingGeometry(block).translated(contentOffset()).top());
@@ -158,11 +142,7 @@ void CodeEditor::errorAreaPaintEvent(QPaintEvent *event)
             QString number = QString::number(blockNumber + 1);
             if(number == "18"){
                 painter.setPen(Qt::red);
-//                painter.drawText(0, top, errorArea->width(), fontMetrics().height(),
-//                                 Qt::AlignRight, "0");
                 painter.fillRect(0,top, errorArea->width(), fontMetrics().height(), Qt::yellow);
-              //   drawCheck(painter, option, option.rect, index.data().toBool() ? Qt::Checked : Qt::Unchecked);
-
             }
             else {
                 painter.setPen(Qt::gray);
@@ -180,7 +160,6 @@ void CodeEditor::errorAreaPaintEvent(QPaintEvent *event)
 
 void CodeEditor::showError(int lineNum)
 {
-
     errPainter->setPen(Qt::red);
     errPainter->drawText(0, lineNum, errorArea->width(),fontMetrics().height(), Qt::AlignRight, "0");
 }
@@ -271,17 +250,13 @@ void Highlighter::highlightBlock(const QString &text)
 }
 void CodeEditor::setupEditor()
 {
-
     QFont font;
     font.setFamily("Courier");
     font.setFixedPitch(true);
     font.setPointSize(10);
-
     editor = new QTextEdit;
     editor->setFont(font);
-
     highlighter = new Highlighter(this->document());
-
     QFile file("codeeditor.h");
     if (file.open(QFile::ReadOnly | QFile::Text))
         editor->setPlainText(file.readAll());
@@ -291,9 +266,52 @@ void CodeEditor::setupEditor()
 EditorWindow::EditorWindow(QWidget *parent): QMainWindow (parent){
     setupFileMenu();
     currFile.clear();
-    editor=new CodeEditor();
-    setCentralWidget(editor);
+    layoutSetup();
 }
+void EditorWindow :: layoutSetup(){
+    editor=new CodeEditor();
+    QSplitter *mainsplitter = new QSplitter(Qt::Vertical);
+    QSplitter *splitter_ver = new QSplitter(Qt::Vertical);
+    splitter_ver->addWidget(editor);
+    //for test
+    listWidget = new QListWidget;
+
+       for(int i = 0; i < 10; i++){
+           listWidget->addItem("Bug number " + QString::number(i));
+       }
+       QStringList list ;
+       list.push_back("text in the check pannel");
+       list.push_back("Cause Of Error");
+       list.push_back("Element/Activity");
+       list.push_back("Way To Fix");
+       list.push_back("Repitition");
+       QTableWidget *tableWidget = new QTableWidget;
+       tableWidget->setColumnCount(5);
+       tableWidget->setShowGrid(true);
+       tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+       tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+       tableWidget->setHorizontalHeaderLabels(list);
+       tableWidget->horizontalHeader()->setStretchLastSection(true);
+
+    QSplitter *splitterhor = new QSplitter(Qt::Horizontal);
+    splitterhor->addWidget(listWidget);
+    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)),
+        this, SLOT(itemClicked(QListWidgetItem*)));
+    splitterhor->addWidget(tableWidget);
+    mainsplitter->addWidget(splitter_ver);
+    mainsplitter->addWidget(splitterhor);
+    setCentralWidget(mainsplitter);
+}
+void EditorWindow::itemClicked(QListWidgetItem* item)
+{
+    qDebug("Item Clicked: " + item->text().toLatin1());
+    item->setTextColor(Qt::black);
+    item->setBackgroundColor(Qt::yellow);
+    int ln=18;
+    QTextCursor cursor(editor->document()->findBlockByLineNumber(ln-1)); // ln-1 because line number starts from 0
+    editor->setTextCursor(cursor);
+}
+
 void EditorWindow::setupFileMenu()
 {
     QMenu *fileMenu = new QMenu(tr("&File"), this);
@@ -365,33 +383,4 @@ void EditorWindow::save()
                 return;
             }
     }
-}
-///// for popup
-TabDialog::TabDialog(const QString &fileName, QWidget *parent)
-    : QDialog(parent)
-{
-    QFileInfo fileInfo(fileName);
-
-    QStringList list ;
-
-    list.push_back("text in the check pannel");
-    list.push_back("Cause Of Error");
-    list.push_back("Element/Activity");
-    list.push_back("Way To Fix");
-    list.push_back("Repitition");
-
-    QTableWidget *tableWidget = new QTableWidget;
-    tableWidget->setColumnCount(5);
-    tableWidget->setShowGrid(true);
-    tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-    tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-    tableWidget->setHorizontalHeaderLabels(list);
-    tableWidget->horizontalHeader()->setStretchLastSection(true);
-
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->addWidget((tableWidget));
-
-    setLayout(mainLayout);
-
-    setWindowTitle(tr("Tab Dialog"));
 }

@@ -21,12 +21,10 @@
 #include <QTableWidget>
 #include <QStringList>
 
+
 class QDialogButtonBox;
 class QFileInfo;
 class QTabWidget;
-////////////////////
-
-
 class QPaintEvent;
 class QResizeEvent;
 class QSize;
@@ -37,22 +35,22 @@ class CodeEditor;
 class EditorWindow;
 class QTextDocument;
 class Highlighter;
-
-
 class EditorWindow :public QMainWindow {
     Q_OBJECT
 public:
     EditorWindow(QWidget *parent =0);
     void setupFileMenu();
+    void layoutSetup();
 public slots :
     void newFile();
     void save();
     void saveToFile();
     void openFile(const QString &path = QString());
-
+    void itemClicked(QListWidgetItem* item);
 private:
     CodeEditor *editor;
     QString currFile;
+    QListWidget *listWidget;
 };
 //code editor
 class CodeEditor : public QPlainTextEdit
@@ -112,7 +110,6 @@ private:
     CodeEditor *codeEditor;
 };
 
-/////////////////////////////////////////
 class ErrorArea : public QWidget
 {
 public:
@@ -132,8 +129,6 @@ protected:
 private:
     CodeEditor *codeEditor;
 };
-/////////////////////////////////////////
-
 // highlighter
 class Highlighter : public QSyntaxHighlighter
 {
@@ -163,19 +158,4 @@ private:
     QTextCharFormat quotationFormat;
     QTextCharFormat functionFormat;
 };
-//tab for pop up
-
-class TabDialog : public QDialog
-{
-    Q_OBJECT
-
-public:
-    explicit TabDialog(const QString &fileName, QWidget *parent = 0);
-   void  createUI(const QStringList &headers);
-//   void setHeaders
-
-private:
-    QTabWidget *tabWidget;
-//    QDialogButtonBox *buttonBox;
-};
-#endif // CODEEDITOR_H
+#endif
