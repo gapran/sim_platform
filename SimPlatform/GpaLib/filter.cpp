@@ -36,14 +36,17 @@ void Filter::createFilterList(QStringList valueList) {
     for (int i = 0; i < listWidget->count(); ++i) {
         item = listWidget->item(i);
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-        item->setCheckState(Qt::Unchecked);
+        item->setCheckState(Qt::Checked);
     }
 }
 
 void Filter::getFiltersList() {
 
-    QList<QListWidgetItem *> filtersList = listWidget->selectedItems();
+    // QList<QListWidgetItem *> filtersList = listWidget->selectedItems();
     qDebug() << "I am in getFiltersList";
+    qDebug() << listWidget->selectedItems().size();
+    qDebug() << listWidget->size();
+    qDebug() << listWidget->selectedItems().length();
 }
 
 // QList<QListWidgetItem *> Filter::filtersSelected() {
