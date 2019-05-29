@@ -37,10 +37,9 @@ void Filter::createFilterList(QStringList valueList) {
     QListWidgetItem *item = nullptr;
     for (int i = 0; i < listWidget->count(); ++i) {
         item = listWidget->item(i);
-        item->setFlags(item->flags() | Qt::ItemIsSelectable |
-                       Qt::ItemIsUserCheckable);
-        item->setCheckState(Qt::Checked);
-        item->setSelected(true);
+        item->setFlags(item->flags() | Qt::ItemIsSelectable);
+        // item->setCheckState(Qt::Checked);
+        // item->setSelected(true);
     }
 }
 
