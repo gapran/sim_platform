@@ -10,7 +10,7 @@ class Table : public QTableWidget {
     Q_OBJECT
 
 public:
-    explicit Table(QWidget *parent = 0);
+    explicit Table(QWidget *parent = nullptr);
 
     void createTable(int row, int column);
 

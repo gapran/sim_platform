@@ -178,38 +178,33 @@ void Table::show() {
 
 void Table::filterTable() {
 
-    qDebug() << "I am in filter table";
+    if (global_filter_list.contains("All Bugs")) {
+        // Show all rows
+        for (int r = 0; r < table->rowCount(); r++) {
+            table->showRow(r);
+        }
+    } else {
 
-    qDebug() << global_filter_list.length();
-    qDebug() << table->rowCount();
-    qDebug() << table->columnCount();
+        for (int r = 0; r < table->rowCount(); r++) {
+            bool found = false;
+            for (int c = 0; c < table->columnCount(); c++) {
+                if (c != 2) { // Skips the progress column i.e., empty
+                    QTableWidgetItem *item = table->item(r, c);
 
-    // Show all rows
-    for (int r = 0; r < table->rowCount(); r++) {
-        table->showRow(r);
-    }
+                    QString table_item = item->text();
 
-    // for (int i = 0; i < global_filter_list.count(); i++) {
-    for (int r = 0; r < table->rowCount(); r++) {
-        bool found = false;
-        for (int c = 0; c < table->columnCount(); c++) {
-            if (c != 2) { // Skips the progress column i.e., empty
-                QTableWidgetItem *item = table->item(r, c);
-                // QString filter_value = global_filter_list.at(i);
-                QString table_item = item->text();
-                // qDebug() << filter_value;
-                qDebug() << table_item;
-                if (global_filter_list.contains(table_item)) {
-                    table->showRow(r);
-                    found = true;
-                    break;
+                    if (global_filter_list.contains(table_item)) {
+                        table->showRow(r);
+                        found = true;
+                        break;
+                    }
                 }
             }
-        }
-        if (!found) {
-            table->hideRow(r);
+            if (!found) {
+                table->hideRow(r);
+            }
         }
     }
-    }
+}
 
 Table::~Table() { delete table; }
