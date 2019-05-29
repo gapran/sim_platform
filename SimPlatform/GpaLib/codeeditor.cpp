@@ -305,8 +305,8 @@ void EditorWindow :: layoutSetup(){
 void EditorWindow::itemClicked(QListWidgetItem* item)
 {
     qDebug("Item Clicked: " + item->text().toLatin1());
-    item->setTextColor(Qt::black);
-    item->setBackgroundColor(Qt::yellow);
+//    item->setTextColor(Qt::black);
+//    item->setBackgroundColor(Qt::yellow);
     int ln=18;
     QTextCursor cursor(editor->document()->findBlockByLineNumber(ln-1)); // ln-1 because line number starts from 0
     editor->setTextCursor(cursor);
