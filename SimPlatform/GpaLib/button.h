@@ -1,14 +1,14 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include <QDialog>
+#include <QLabel>
 #include <QPushButton>
 #include <iostream>
 
 using namespace std;
 class Qlabel;
 
-class Button : public QDialog {
+class Button : public QPushButton {
     Q_OBJECT
 
 public:
@@ -18,7 +18,7 @@ public:
     void setName(QString name);
 
 private:
-    QPushButton *pushButton;
+    QLabel *name;
 
 signals:
     void clicked();

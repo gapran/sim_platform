@@ -6,14 +6,17 @@
 #include <QtWidgets>
 #include <iostream>
 
-Button::Button(QWidget *parent) : QDialog(parent) {
+Button::Button(QWidget *parent) : QPushButton(parent) {
 
-    pushButton = new QPushButton;
+    name = new QLabel;
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(pushButton);
+    layout->addWidget(name, Qt::AlignCenter);
     setLayout(layout);
 }
 
-void Button::setName(QString name) { pushButton->setText(name); }
+void Button::setName(QString name_value) {
+    name->setText(name_value);
+    name->setAlignment(Qt::AlignCenter);
+}
 
-Button::~Button() { delete pushButton; }
+Button::~Button() { delete name; }
