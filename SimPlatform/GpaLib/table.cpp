@@ -195,11 +195,15 @@ void Table::filterTable() {
                     qDebug() << filter_value;
                     qDebug() << table_item;
                     if (table_item == filter_value) {
+                        table->showRow(r);
                         found = true;
                         break;
                     }
                 }
-                table->setRowHidden(r, !found);
+                // table->setRowHidden(r, !found);
+            }
+            if (!found) {
+                table->hideRow(r);
             }
         }
     }
