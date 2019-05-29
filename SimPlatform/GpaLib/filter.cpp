@@ -17,10 +17,8 @@ Filter::Filter(QWidget *parent) : QListWidget(parent) {
 void Filter::createFilter(QString value) { listWidget->addItem(value); }
 
 void Filter::createFilterHeader(QString text, int index) {
-    QListWidgetItem *item = nullptr;
+    QListWidgetItem *item = listWidget->item(index);
     listWidget->addItem(text);
-
-    item = listWidget->item(index);
     item->setFlags(item->flags() & ~Qt::ItemIsSelectable & ~Qt::ItemIsEnabled);
     item->setSelected(false);
 }
