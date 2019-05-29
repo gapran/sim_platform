@@ -1,6 +1,7 @@
 #include "button.h"
 #include "container.h"
 #include "filter.h"
+#include "globals.h"
 #include "image.h"
 #include "maincontainerview.h"
 #include "table.h"
@@ -18,7 +19,7 @@
 int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
-    qDebug() << "Welcome to GPA Prototype Builder!";
+    qDebug() << "Welcome to " << project_name << " Prototype Builder!";
     MainWindow mainContainerView;
 
     // User Code goes here...

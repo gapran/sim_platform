@@ -23,11 +23,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
           *.cpp \
-          button.cpp
+          button.cpp \
+          globals.cpp
 
 HEADERS += \
           *.h \
-          button.h
+          button.h \
+          globals.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
