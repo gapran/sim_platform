@@ -184,6 +184,11 @@ void Table::filterTable() {
     qDebug() << table->rowCount();
     qDebug() << table->columnCount();
 
+    // Show all rows
+    for (int r = 0; r < table->rowCount(); r++) {
+        table->showRow(r);
+    }
+
     for (int i = 0; i < global_filter_list.count(); i++) {
         for (int r = 0; r < table->rowCount(); r++) {
             bool found = false;
