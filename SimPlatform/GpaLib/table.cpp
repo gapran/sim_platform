@@ -1,5 +1,6 @@
 #include "table.h"
 #include "borderlayout.h"
+#include "globals.h"
 
 #include <QDebug>
 #include <QList>
@@ -178,19 +179,21 @@ void Table::show() {
 void Table::filterTable() {
 
     qDebug() << "I am in filter table";
-    //    for (int i = 0; i < qList.count(); ++i) {
-    //        for (int r = 0; r < table->rowCount(); ++r) {
-    //            bool found = false;
-    //            for (int c = 0; c < table->columnCount(); ++c) {
-    //                QTableWidgetItem *item = table->item(r, c);
-    //                if (item->text().contains(qList[i]->text())) {
-    //                    found = true;
-    //                    break;
-    //                }
-    //            }
-    //            table->setRowHidden(r, !found);
-    //        }
-    //    }
+
+    qDebug() << global_filter_list.length();
+    for (int i = 0; i < global_filter_list.count(); ++i) {
+        for (int r = 0; r < table->rowCount(); ++r) {
+            bool found = false;
+            for (int c = 0; c < table->columnCount(); ++c) {
+                QTableWidgetItem *item = table->item(r, c);
+                if (item->text().contains(global_filter_list.at(i))) {
+                    found = true;
+                    break;
+                }
+            }
+            table->setRowHidden(r, !found);
+        }
+    }
 }
 
 Table::~Table() { delete table; }
