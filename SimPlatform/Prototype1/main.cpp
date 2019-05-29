@@ -134,17 +134,18 @@ int main(int argc, char *argv[]) {
 
     filter1->createFilter("My Bugs");
     filter1->createFilter("All Bugs");
+    filter1->createFilter(""); // Empty line in filter list for white space
 
-    filter1->createFilterHeader("Status", 2);
-    QStringList insertFilters0 = {"fixed", "not fixed", "working"};
+    filter1->createFilterHeader("Status", 3);
+    QStringList insertFilters0 = {"fixed", "not fixed", "working", ""};
     filter1->createFilterList(insertFilters0);
 
-    filter1->createFilterHeader("Marker Type", 6);
-    QStringList insertFilters1 = {"Source", "Sink", "Fix locations"};
+    filter1->createFilterHeader("Marker Type", 8);
+    QStringList insertFilters1 = {"Source", "Sink", "Fix locations", ""};
     filter1->createFilterList(insertFilters1);
 
-    filter1->createFilterHeader("Vulnerability Type", 10);
-    QStringList insertFilters2 = {"SQL Injections", "XSS", "CSRF"};
+    filter1->createFilterHeader("Vulnerability Type", 13);
+    QStringList insertFilters2 = {"SQL Injections", "XSS", "CSRF", ""};
     filter1->createFilterList(insertFilters2);
 
     container.createContainer(mainContainerView.centralWidget(), filter1, 150,
