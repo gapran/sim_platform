@@ -166,6 +166,8 @@ int main(int argc, char *argv[]) {
 
     QObject::connect(filterButton, SIGNAL(clicked()), filter1,
                      SLOT(getFiltersList()));
+    QObject::connect(filterButton, SIGNAL(clicked()), table1,
+                     SLOT(filterTable()));
 
     // User Code ends
 
