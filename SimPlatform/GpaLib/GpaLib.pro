@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += widgets qml quick sql
+
+QT       += widgets qml quick sql charts
 
 TARGET = GpaLib
 TEMPLATE = lib
@@ -22,10 +23,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    codeeditor.cpp
-
+          *.cpp
 HEADERS += \
-    codeeditor.h
+          *.h
+
 unix {
     target.path = /usr/lib
     INSTALLS += target
@@ -33,7 +34,8 @@ unix {
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/release/ -l
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -l
-else:unix: LIBS += -L$$OUT_PWD/'' -l
+
+else:unix: LIBS += -L$$OUT_PWD/'' -l -framework CoreFoundation
 
 INCLUDEPATH += $$PWD/.
 DEPENDPATH += $$PWD/.

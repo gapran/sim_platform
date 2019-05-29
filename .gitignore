@@ -24,7 +24,7 @@ build-*
 # Compiled Static libraries
 *.lai
 *.la
-*.a
+#*.a
 *.lib
 
 # Executables
@@ -70,5 +70,10 @@ compile_commands.json
 
 # QtCreator local machine specific files for imported projects
 *creator.user*
+<<<<<<< HEAD
 
 *.user
+=======
+*.user
+SimPlatform/SimPlatform.pro.user
+>>>>>>> origin/develop

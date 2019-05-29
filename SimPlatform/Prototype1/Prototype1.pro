@@ -4,8 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
 
+QT       += core gui charts
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Prototype1
@@ -25,14 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp
+          *.cpp
 
 HEADERS += \
-        mainwindow.h
+          *.h
 
 FORMS += \
-        mainwindow.ui
+        *.ui
+
+RESOURCES += \
+            *.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
