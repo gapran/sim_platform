@@ -6,6 +6,16 @@
 #include "maincontainerview.h"
 #include "table.h"
 #include "text.h"
+#include "bar.h"
+#include "container.h"
+#include "graphs.h"
+#include "image.h"
+#include "layout.h"
+#include "maincontainerview.h"
+#include "tabdialog.h"
+#include "table.h"
+#include "text.h"
+
 #include <QApplication>
 #include <QBoxLayout>
 #include <QDebug>
@@ -22,17 +32,30 @@ int main(int argc, char *argv[]) {
     qDebug() << "Welcome to " << project_name << " Prototype Builder!";
     MainWindow mainContainerView;
 
-    // User Code goes here...
+    /** User Code starts here... **/
 
     QString mainTitle = "GPA Prototype";
-    int mainContainerLength = 1050;
-    int mainContainerWidth = 400;
+
+    int mainContainerLength = 1200;
+    int mainContainerWidth = 700;
     QString mainColour = "white";
 
     // Create main GpaComponent / window
     Container container;
     container.createMainContainer(&mainContainerView, mainContainerLength,
                                   mainContainerWidth, mainTitle, mainColour);
+
+    // Create layout
+    QWidget *layoutWidget = new QWidget(mainContainerView.centralWidget());
+    Layout *layoutMobile = new Layout(layoutWidget);
+    // layoutMobile->setMobile();
+    // layoutMobile->setWeb();
+    layoutMobile->setIDE();
+    // layoutMobile->setCLI();
+
+    container.createContainer(mainContainerView.centralWidget(), layoutMobile,
+                              mainContainerLength, mainContainerWidth, 0, 0,
+                              "This is layout.", "white");
 
     // Create inner containers
 
@@ -92,7 +115,7 @@ int main(int argc, char *argv[]) {
     // table1->sort(true);
 
     container.createContainer(mainContainerView.centralWidget(), table1, 700,
-                              200, 150, 10, "Table Container", "gray");
+                              200, 150, 70, "Table Container", "gray");
 
     // Text
     QWidget *textWidget = new QWidget(mainContainerView.centralWidget());
@@ -113,7 +136,7 @@ int main(int argc, char *argv[]) {
     // text->setClick(link);
 
     container.createContainer(mainContainerView.centralWidget(), text, 100, 100,
-                              10, 100, "This is hover for this text box.",
+                              40, 180, "This is hover for this text box.",
                               "white");
 
     // Image
@@ -124,10 +147,49 @@ int main(int argc, char *argv[]) {
     image1->setBox();
     image1->setHover("This is Bronze Image.");
     image1->noBorder();
-    // image1->clicked();
+    //  image1->clicked();
 
     container.createContainer(mainContainerView.centralWidget(), image1, 100,
-                              100, 10, 10, "This is hover for image.", "white");
+                              100, 30, 90, "This is hover for image.", "white");
+
+    // Progress bar
+    QWidget *imageCopy1Widget = new QWidget(mainContainerView.centralWidget());
+    Bar *bar = new Bar(imageCopy1Widget, 0, 100);
+    bar->setValue(60);
+    container.createContainer(mainContainerView.centralWidget(), bar, 100, 100,
+                              40, 220, "", "white");
+
+    // Tabs
+    QWidget *genrarltabWidget = new QWidget(mainContainerView.centralWidget());
+
+    QLabel *labelAnalyze = new QLabel("Analysis results");
+    QLabel *labelMonitor = new QLabel("Monitor functionalities");
+    QLabel *labelCategorize = new QLabel("Categorize functionalities");
+    QLabel *labelHighlights = new QLabel("Highlights information");
+
+    QMap<QString, QWidget *> tabs;
+    tabs.insert("Analyze", labelAnalyze);
+    tabs.insert("Monitor and visualize", labelMonitor);
+    tabs.insert("Categorize", labelCategorize);
+    tabs.insert("Highlights", labelHighlights);
+
+    TabDialog *tabdialog = new TabDialog("Tabs", tabs, genrarltabWidget);
+    container.createContainer(mainContainerView.centralWidget(), tabdialog, 800,
+                              360, 150, 270,"This is hover for tabs.", "white");
+
+    // Graphs
+    QWidget *graph = new QWidget();
+    Graphs *barGraph = new Graphs(graph);
+    QMap<QString, int> bars;
+    bars.insert("Bronze", 10);
+    bars.insert("Silver", 50);
+    bars.insert("Gold", 25);
+    bars.insert("Master", 80);
+    bars.insert("Professional", 65);
+    barGraph->drawBarGraph("Bar chart", bars);
+    container.createContainer(mainContainerView.centralWidget(), barGraph, 700,
+                              200, 200, 425, "This is hover for graph.",
+                              "white");
 
     // Filter - For header, give index number considering complete list
     QWidget *filter1Widget = new QWidget(mainContainerView.centralWidget());
@@ -169,7 +231,7 @@ int main(int argc, char *argv[]) {
     QObject::connect(filterButton, SIGNAL(clicked()), table1,
                      SLOT(filterTable()));
 
-    // User Code ends
+    /** User code ends here... **/
 
     mainContainerView.show();
     return app.exec();
