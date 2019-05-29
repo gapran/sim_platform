@@ -189,29 +189,27 @@ void Table::filterTable() {
         table->showRow(r);
     }
 
-    for (int i = 0; i < global_filter_list.count(); i++) {
-        for (int r = 0; r < table->rowCount(); r++) {
-            bool found = false;
-            for (int c = 0; c < table->columnCount(); c++) {
-                if (c != 2) { // Skips the progress column i.e., empty
-                    QTableWidgetItem *item = table->item(r, c);
-                    QString filter_value = global_filter_list.at(i);
-                    QString table_item = item->text();
-                    qDebug() << filter_value;
-                    qDebug() << table_item;
-                    if (table_item == filter_value) {
-                        table->showRow(r);
-                        found = true;
-                        break;
-                    }
+    // for (int i = 0; i < global_filter_list.count(); i++) {
+    for (int r = 0; r < table->rowCount(); r++) {
+        bool found = false;
+        for (int c = 0; c < table->columnCount(); c++) {
+            if (c != 2) { // Skips the progress column i.e., empty
+                QTableWidgetItem *item = table->item(r, c);
+                // QString filter_value = global_filter_list.at(i);
+                QString table_item = item->text();
+                // qDebug() << filter_value;
+                qDebug() << table_item;
+                if (global_filter_list.contains(table_item)) {
+                    table->showRow(r);
+                    found = true;
+                    break;
                 }
-                // table->setRowHidden(r, !found);
-            }
-            if (!found) {
-                table->hideRow(r);
             }
         }
+        if (!found) {
+            table->hideRow(r);
+        }
     }
-}
+    }
 
 Table::~Table() { delete table; }
