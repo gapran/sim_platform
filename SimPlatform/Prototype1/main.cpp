@@ -165,15 +165,6 @@ int main(int argc, char *argv[]) {
     QObject::connect(filterButton, SIGNAL(clicked()), filter1,
                      SLOT(getFiltersList()));
 
-    //    QObject::connect(filter1, &Filter::itemSelectionChanged, table1,
-    //                     table1->filterTable(filter1->selectedItems()));
-
-    QObject::connect(filter1, SIGNAL(itemSelectionChanged()), table1,
-                     SLOT(filterTable()));
-
-    QPushButton *button = new QPushButton("click me");
-    QObject::connect(button, SIGNAL(clicked()), &app, SLOT(quit()));
-    button->show();
     // User Code ends
 
     mainContainerView.show();
