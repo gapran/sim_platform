@@ -181,17 +181,26 @@ void Table::filterTable() {
     qDebug() << "I am in filter table";
 
     qDebug() << global_filter_list.length();
-    for (int i = 0; i < global_filter_list.count(); ++i) {
-        for (int r = 0; r < table->rowCount(); ++r) {
+    qDebug() << table->rowCount();
+    qDebug() << table->columnCount();
+
+    for (int i = 0; i < global_filter_list.count(); i++) {
+        for (int r = 0; r < table->rowCount(); r++) {
             bool found = false;
-            for (int c = 0; c < table->columnCount(); ++c) {
-                QTableWidgetItem *item = table->item(r, c);
-                if (item->text().contains(global_filter_list.at(i))) {
-                    found = true;
-                    break;
+            for (int c = 0; c < table->columnCount(); c++) {
+                if (c != 2) { // Skips the progress column i.e., empty
+                    QTableWidgetItem *item = table->item(r, c);
+                    QString filter_value = global_filter_list.at(i);
+                    QString table_item = item->text();
+                    qDebug() << filter_value;
+                    qDebug() << table_item;
+                    if (table_item == filter_value) {
+                        found = true;
+                        break;
+                    }
                 }
+                table->setRowHidden(r, !found);
             }
-            table->setRowHidden(r, !found);
         }
     }
 }
