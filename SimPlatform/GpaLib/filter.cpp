@@ -47,6 +47,7 @@ void Filter::getFiltersList() {
     qDebug() << listWidget->selectedItems().size();
     qDebug() << listWidget->size();
     qDebug() << listWidget->selectedItems().length();
+    qDebug() << listWidget->item(0)->text();
 }
 
 // QList<QListWidgetItem *> Filter::filtersSelected() {
