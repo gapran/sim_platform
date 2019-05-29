@@ -9,6 +9,7 @@
 Filter::Filter(QWidget *parent) : QListWidget(parent) {
 
     listWidget = new QListWidget;
+    listWidget->setSelectionMode(QAbstractItemView::MultiSelection);
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(listWidget);
     setLayout(layout);
@@ -22,6 +23,7 @@ void Filter::createFilterHeader(QString text, int index) {
 
     item = listWidget->item(index);
     item->setFlags(item->flags() & ~Qt::ItemIsSelectable & ~Qt::ItemIsEnabled);
+    item->setSelected(false);
 }
 
 void Filter::createFilterList(QStringList valueList) {
@@ -53,7 +55,8 @@ void Filter::getFiltersList() {
 
     for (int i = 0; i < listWidget->count(); ++i) {
         QListWidgetItem *item = listWidget->item(i);
-        qDebug() << item->text();
+        if (item->isSelected())
+            qDebug() << item->text();
     }
 }
 
