@@ -1,8 +1,6 @@
 #ifndef FILTER_H
 #define FILTER_H
 
-#include <QCheckBox>
-#include <QList>
 #include <QListWidget>
 
 class Filter : public QListWidget {
@@ -15,10 +13,6 @@ public:
     void createFilter(QString value);
     void createFilterHeader(QString text, int index);
     void createFilterList(QStringList valueList);
-
-    // public:
-    // signals:
-    //    QList<QListWidgetItem *> filtersSelected();
 
 public slots:
 

@@ -2,10 +2,8 @@
 #include "borderlayout.h"
 #include "globals.h"
 
-#include <QList>
 #include <QVBoxLayout>
 #include <QtWidgets>
-#include <iostream>
 
 Filter::Filter(QWidget *parent) : QListWidget(parent) {
 
@@ -39,25 +37,10 @@ void Filter::createFilterList(QStringList valueList) {
     for (int i = 0; i < listWidget->count(); ++i) {
         item = listWidget->item(i);
         item->setFlags(item->flags() | Qt::ItemIsSelectable);
-        // item->setCheckState(Qt::Checked);
-        // item->setSelected(true);
     }
 }
 
 void Filter::getFiltersList() {
-
-    // QList<QListWidgetItem *> filtersList = listWidget->selectedItems();
-    qDebug() << "I am in getFiltersList";
-    // qDebug() << listWidget->selectedItems().at(1);
-    qDebug() << listWidget->size();
-    qDebug() << listWidget->selectedItems().length();
-    qDebug() << listWidget->item(0)->text();
-
-    for (int i = 0; i < listWidget->count(); ++i) {
-        QListWidgetItem *item = listWidget->item(i);
-        if (item->isSelected())
-            qDebug() << item->text();
-    }
 
     // Add to global filter list
     if (!global_filter_list.isEmpty()) {
@@ -68,13 +51,6 @@ void Filter::getFiltersList() {
         if (item->isSelected())
             global_filter_list.append(item->text()); // Adds new filters
     }
-
-    qDebug() << global_filter_list.length();
 }
-
-// QList<QListWidgetItem *> Filter::filtersSelected() {
-
-//    return this->selectedItems();
-//}
 
 Filter::~Filter() { delete listWidget; }
