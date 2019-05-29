@@ -162,6 +162,9 @@ int main(int argc, char *argv[]) {
 
     // Connections
 
+    QObject::connect(filterButton, SIGNAL(clicked()), filter1,
+                     SLOT(getFiltersList()));
+
     //    QObject::connect(filter1, &Filter::itemSelectionChanged, table1,
     //                     table1->filterTable(filter1->selectedItems()));
 
