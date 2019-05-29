@@ -1,5 +1,6 @@
 #include "filter.h"
 #include "borderlayout.h"
+#include "globals.h"
 
 #include <QList>
 #include <QVBoxLayout>
@@ -57,6 +58,18 @@ void Filter::getFiltersList() {
         if (item->isSelected())
             qDebug() << item->text();
     }
+
+    // Add to global filter list
+    if (!global_filter_list.isEmpty()) {
+        global_filter_list.clear(); // Removes the old filters
+    }
+    for (int i = 0; i < listWidget->count(); ++i) {
+        QListWidgetItem *item = listWidget->item(i);
+        if (item->isSelected())
+            global_filter_list.append(item->text()); // Adds new filters
+    }
+
+    qDebug() << global_filter_list.length();
 }
 
 // QList<QListWidgetItem *> Filter::filtersSelected() {
