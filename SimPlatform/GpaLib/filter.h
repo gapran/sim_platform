@@ -2,6 +2,7 @@
 #define FILTER_H
 
 #include <QCheckBox>
+#include <QList>
 #include <QListWidget>
 
 class Filter : public QListWidget {
@@ -18,6 +19,10 @@ public:
     // public:
     // signals:
     //    QList<QListWidgetItem *> filtersSelected();
+
+public slots:
+
+    void getFiltersList();
 
 private:
     QListWidget *listWidget;

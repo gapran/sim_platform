@@ -1,6 +1,7 @@
 #include "filter.h"
 #include "borderlayout.h"
 
+#include <QList>
 #include <QVBoxLayout>
 #include <QtWidgets>
 #include <iostream>
@@ -37,6 +38,12 @@ void Filter::createFilterList(QStringList valueList) {
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
         item->setCheckState(Qt::Unchecked);
     }
+}
+
+void Filter::getFiltersList() {
+
+    QList<QListWidgetItem *> filtersList = listWidget->selectedItems();
+    qDebug() << "I am in getFiltersList";
 }
 
 // QList<QListWidgetItem *> Filter::filtersSelected() {

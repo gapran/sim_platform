@@ -1,3 +1,4 @@
+#include "button.h"
 #include "container.h"
 #include "filter.h"
 #include "image.h"
@@ -149,6 +150,15 @@ int main(int argc, char *argv[]) {
     container.createContainer(mainContainerView.centralWidget(), filter1, 150,
                               200, 870, 10, "This is hover for filter.",
                               "white");
+
+    // Filter Button
+    QWidget *filterButtonWidget =
+        new QWidget(mainContainerView.centralWidget());
+    Button *filterButton = new Button(filterButtonWidget);
+    filterButton->setName("Filter");
+    container.createContainer(mainContainerView.centralWidget(), filterButton,
+                              150, 50, 870, 200,
+                              "This is hover for filter butoon.", "white");
 
     // Connections
 
