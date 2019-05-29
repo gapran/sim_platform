@@ -158,7 +158,7 @@ int main(int argc, char *argv[]) {
     filterButton->setName("Filter");
     container.createContainer(mainContainerView.centralWidget(), filterButton,
                               150, 50, 870, 200,
-                              "This is hover for filter butoon.", "white");
+                              "This is hover for filter button.", "white");
 
     // Connections
 
