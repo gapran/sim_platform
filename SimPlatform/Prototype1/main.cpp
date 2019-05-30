@@ -176,7 +176,8 @@ int main(int argc, char *argv[]) {
 
     TabDialog *tabdialog = new TabDialog("Tabs", tabs, genrarltabWidget);
     container.createContainer(mainContainerView.centralWidget(), tabdialog, 800,
-                              360, 150, 270,"This is hover for tabs.", "white");
+                              360, 150, 270, "This is hover for tabs.",
+                              "white");
 
     // Graphs
     QWidget *graph = new QWidget();
@@ -213,7 +214,7 @@ int main(int argc, char *argv[]) {
     filter1->createFilterList(insertFilters2);
 
     container.createContainer(mainContainerView.centralWidget(), filter1, 150,
-                              200, 870, 10, "This is hover for filter.",
+                              200, 1000, 70, "This is hover for filter.",
                               "white");
 
     // Filter Button
@@ -222,7 +223,7 @@ int main(int argc, char *argv[]) {
     Button *filterButton = new Button(filterButtonWidget);
     filterButton->setName("Filter");
     container.createContainer(mainContainerView.centralWidget(), filterButton,
-                              150, 50, 870, 200,
+                              150, 50, 1000, 270,
                               "This is hover for filter button.", "white");
 
     // Connections
