@@ -1,4 +1,6 @@
+#include "QWidget"
 #include "bar.h"
+#include "codeeditor.h"
 #include "container.h"
 #include "graphs.h"
 #include "image.h"
@@ -7,7 +9,6 @@
 #include "tabdialog.h"
 #include "table.h"
 #include "text.h"
-
 #include <QApplication>
 #include <QBoxLayout>
 #include <QDebug>
@@ -102,7 +103,7 @@ int main(int argc, char *argv[]) {
     // table1->findColumn("Action");
 
     // When the user presses a column header then sorting happens.
-    // table1->sort(true);
+    table1->sort(true);
 
     container.createContainer(mainContainerView.centralWidget(), table1, 700,
                               200, 150, 70, "Table Container", "gray");
@@ -179,6 +180,11 @@ int main(int argc, char *argv[]) {
     barGraph->drawBarGraph("Bar chart", bars);
     container.createContainer(mainContainerView.centralWidget(), barGraph, 700,
                               200, 200, 425, "This is hover for graph.", "white");
+
+    // Code editor
+    EditorWindow editor;
+    editor.setWindowTitle(QObject::tr("Code Editor"));
+    editor.showMaximized();
 
     /** User code ends here... **/
 
