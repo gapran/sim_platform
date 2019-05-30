@@ -4,7 +4,6 @@
 #
 #-------------------------------------------------
 
-
 QT       += widgets qml quick sql charts
 
 TARGET = GpaLib
@@ -34,7 +33,6 @@ unix {
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/release/ -l
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -l
-
 else:unix: LIBS += -L$$OUT_PWD/'' -l -framework CoreFoundation
 
 INCLUDEPATH += $$PWD/.
