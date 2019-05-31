@@ -1,6 +1,4 @@
-#include "QWidget"
 #include "bar.h"
-#include "button.h"
 #include "codeeditor.h"
 #include "container.h"
 #include "filter.h"
@@ -12,15 +10,16 @@
 #include "tabdialog.h"
 #include "table.h"
 #include "text.h"
+
 #include <QApplication>
 #include <QBoxLayout>
 #include <QDebug>
 #include <QHBoxLayout>
 #include <QLayout>
 #include <QObject>
-#include <QPushButton>
 #include <QTextBrowser>
 #include <QTextEdit>
+#include <QWidget>
 
 int main(int argc, char *argv[]) {
 
