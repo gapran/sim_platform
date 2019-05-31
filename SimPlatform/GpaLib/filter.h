@@ -2,6 +2,7 @@
 #define FILTER_H
 
 #include <QListWidget>
+#include <QTableWidget>
 
 class Filter : public QListWidget {
     Q_OBJECT
@@ -14,6 +15,7 @@ public:
     void createFilterHeader(QString text, int index);
     void createFilterList(QStringList valueList);
     void createConnections();
+    void connectTable(QTableWidget *tableWid);
 
 public slots:
 

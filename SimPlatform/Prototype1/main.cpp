@@ -1,15 +1,10 @@
+#include "QWidget"
+#include "bar.h"
 #include "button.h"
+#include "codeeditor.h"
 #include "container.h"
 #include "filter.h"
 #include "globals.h"
-#include "image.h"
-#include "maincontainerview.h"
-#include "table.h"
-#include "text.h"
-#include "QWidget"
-#include "bar.h"
-#include "codeeditor.h"
-#include "container.h"
 #include "graphs.h"
 #include "image.h"
 #include "layout.h"
@@ -227,10 +222,7 @@ int main(int argc, char *argv[]) {
 
     // Connections
 
-    QObject::connect(filterButton, SIGNAL(clicked()), filter1,
-                     SLOT(getFiltersList()));
-    QObject::connect(filterButton, SIGNAL(clicked()), table1,
-                     SLOT(filterTable()));
+    filter1->connectTable(table1);
 
     // Code editor
     EditorWindow editor;
