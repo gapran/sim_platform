@@ -13,7 +13,7 @@ class Image: public QDialog
 {
     Q_OBJECT
 public:
-    explicit Image(QWidget *parent = 0);
+    explicit Image(QWidget *parent = nullptr);
 
     void setImage(QString fileName);
     void setBox();
