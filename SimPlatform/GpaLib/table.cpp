@@ -178,7 +178,6 @@ void Table::show() {
 
 void Table::filterTable() {
 
-    qDebug() << "I am in filterTable";
     if (global_filter_list.contains("All Bugs")) {
         // Show all rows
         for (int r = 0; r < table->rowCount(); r++) {

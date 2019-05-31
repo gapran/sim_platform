@@ -44,7 +44,6 @@ void Filter::createFilterList(QStringList valueList) {
 
 void Filter::getFiltersList() {
 
-    qDebug() << "I am in getFiltersList";
     // Add to global filter list
     if (!global_filter_list.isEmpty()) {
         global_filter_list.clear(); // Removes the old filters
@@ -61,8 +60,6 @@ void Filter::createConnections() {
                      SLOT(addCheckedHighlight(QListWidgetItem *)));
     QObject::connect(listWidget, SIGNAL(itemChanged(QListWidgetItem *)), this,
                      SLOT(getFiltersList()));
-    //    QObject::connect(listWidget, SIGNAL(itemChanged(QListWidgetItem *)), ,
-    //                     SLOT(filterTable()));
 }
 
 void Filter::addCheckedHighlight(QListWidgetItem *item) {

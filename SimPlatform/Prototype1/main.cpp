@@ -211,15 +211,6 @@ int main(int argc, char *argv[]) {
                               200, 1000, 70, "This is hover for filter.",
                               "white");
 
-    // Filter Button
-    QWidget *filterButtonWidget =
-        new QWidget(mainContainerView.centralWidget());
-    Button *filterButton = new Button(filterButtonWidget);
-    filterButton->setName("Filter");
-    container.createContainer(mainContainerView.centralWidget(), filterButton,
-                              150, 50, 1000, 270,
-                              "This is hover for filter button.", "white");
-
     // Connections
 
     filter1->connectTable(table1);
