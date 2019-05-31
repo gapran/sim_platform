@@ -155,23 +155,25 @@ int main(int argc, char *argv[]) {
                               40, 220, "", "white");
 
     // Tabs
-    QWidget *genrarltabWidget = new QWidget(mainContainerView.centralWidget());
+    //    QWidget *genrarltabWidget = new
+    //    QWidget(mainContainerView.centralWidget());
 
-    QLabel *labelAnalyze = new QLabel("Analysis results");
-    QLabel *labelMonitor = new QLabel("Monitor functionalities");
-    QLabel *labelCategorize = new QLabel("Categorize functionalities");
-    QLabel *labelHighlights = new QLabel("Highlights information");
+    //    QLabel *labelAnalyze = new QLabel("Analysis results");
+    //    QLabel *labelMonitor = new QLabel("Monitor functionalities");
+    //    QLabel *labelCategorize = new QLabel("Categorize functionalities");
+    //    QLabel *labelHighlights = new QLabel("Highlights information");
 
-    QMap<QString, QWidget *> tabs;
-    tabs.insert("Analyze", labelAnalyze);
-    tabs.insert("Monitor and visualize", labelMonitor);
-    tabs.insert("Categorize", labelCategorize);
-    tabs.insert("Highlights", labelHighlights);
+    //    QMap<QString, QWidget *> tabs;
+    //    tabs.insert("Analyze", labelAnalyze);
+    //    tabs.insert("Monitor and visualize", labelMonitor);
+    //    tabs.insert("Categorize", labelCategorize);
+    //    tabs.insert("Highlights", labelHighlights);
 
-    TabDialog *tabdialog = new TabDialog("Tabs", tabs, genrarltabWidget);
-    container.createContainer(mainContainerView.centralWidget(), tabdialog, 800,
-                              360, 150, 270, "This is hover for tabs.",
-                              "white");
+    //    TabDialog *tabdialog = new TabDialog("Tabs", tabs, genrarltabWidget);
+    //    container.createContainer(mainContainerView.centralWidget(),
+    //    tabdialog, 800,
+    //                              360, 150, 270, "This is hover for tabs.",
+    //                              "white");
 
     // Graphs
     QWidget *graph = new QWidget();
@@ -228,7 +230,7 @@ int main(int argc, char *argv[]) {
                    "ullamco laboris nisi ut aliquip ex ea commodo consequat. ");
 
     container.createContainer(mainContainerView.centralWidget(), text2, 400,
-                              100, 40, 180, "This is hover for this text box.",
+                              100, 150, 280, "This is hover for this text box.",
                               "white");
 
     QWidget *image2Widget = new QWidget(mainContainerView.centralWidget());
@@ -237,13 +239,13 @@ int main(int argc, char *argv[]) {
     image2->setImage(filename2);
     image2->noBorder();
     container.createContainer(
-        mainContainerView.centralWidget(), image2, 50, 50, 40, 200,
+        mainContainerView.centralWidget(), image2, 30, 30, 125, 300,
         "This is hover for Notification element.", "white");
 
     // Code editor
-    EditorWindow editor;
-    editor.setWindowTitle(QObject::tr("Code Editor"));
-    editor.showMaximized();
+    //    EditorWindow editor;
+    //    editor.setWindowTitle(QObject::tr("Code Editor"));
+    //    editor.showMaximized();
 
     /** User code ends here... **/
 
