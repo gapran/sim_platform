@@ -1,11 +1,13 @@
 #include "table.h"
 #include "borderlayout.h"
+#include "globals.h"
 
-#include<iostream>
-#include<vector>
+#include <QDebug>
+#include <QList>
+#include <iostream>
+#include <vector>
 
-using namespace std; //Import the standard library
-
+using namespace std; // Import the standard library
 
 Table::Table(QWidget *parent) : QTableWidget(parent) {
 
@@ -16,7 +18,6 @@ Table::Table(QWidget *parent) : QTableWidget(parent) {
     layout->addWidget(table, BorderLayout::Center);
 
     setLayout(layout);
-
 }
 
 void Table::createTable(int row, int column) {
@@ -175,7 +176,35 @@ void Table::show() {
 
 }
 
+void Table::filterTable() {
 
-Table::~Table() {
-    delete table;
+    if (global_filter_list.contains("All Bugs")) {
+        // Show all rows
+        for (int r = 0; r < table->rowCount(); r++) {
+            table->showRow(r);
+        }
+    } else {
+
+        for (int r = 0; r < table->rowCount(); r++) {
+            bool found = false;
+            for (int c = 0; c < table->columnCount(); c++) {
+                if (c != 2) { // Skips the progress column i.e., empty
+                    QTableWidgetItem *item = table->item(r, c);
+
+                    QString table_item = item->text();
+
+                    if (global_filter_list.contains(table_item)) {
+                        table->showRow(r);
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found) {
+                table->hideRow(r);
+            }
+        }
+    }
 }
+
+Table::~Table() { delete table; }

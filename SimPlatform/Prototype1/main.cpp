@@ -1,7 +1,8 @@
-#include "QWidget"
 #include "bar.h"
 #include "codeeditor.h"
 #include "container.h"
+#include "filter.h"
+#include "globals.h"
 #include "graphs.h"
 #include "image.h"
 #include "layout.h"
@@ -9,24 +10,27 @@
 #include "tabdialog.h"
 #include "table.h"
 #include "text.h"
+
 #include <QApplication>
 #include <QBoxLayout>
 #include <QDebug>
 #include <QHBoxLayout>
 #include <QLayout>
-#include <QPushButton>
+#include <QObject>
 #include <QTextBrowser>
 #include <QTextEdit>
+#include <QWidget>
 
 int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
-    qDebug() << "Welcome to GPA Prototype Builder!";
+    qDebug() << "Welcome to " << project_name << " Prototype Builder!";
     MainWindow mainContainerView;
 
     /** User Code starts here... **/
 
     QString mainTitle = "GPA Prototype";
+
     int mainContainerLength = 1200;
     int mainContainerWidth = 700;
     QString mainColour = "white";
@@ -166,7 +170,8 @@ int main(int argc, char *argv[]) {
 
     TabDialog *tabdialog = new TabDialog("Tabs", tabs, genrarltabWidget);
     container.createContainer(mainContainerView.centralWidget(), tabdialog, 800,
-                              360, 150, 270,"This is hover for tabs.", "white");
+                              360, 150, 270, "This is hover for tabs.",
+                              "white");
 
     // Graphs
     QWidget *graph = new QWidget();
@@ -179,7 +184,35 @@ int main(int argc, char *argv[]) {
     bars.insert("Professional", 65);
     barGraph->drawBarGraph("Bar chart", bars);
     container.createContainer(mainContainerView.centralWidget(), barGraph, 700,
-                              200, 200, 425, "This is hover for graph.", "white");
+                              200, 200, 425, "This is hover for graph.",
+                              "white");
+
+    // Filter - For header, give index number considering complete list
+    QWidget *filter1Widget = new QWidget(mainContainerView.centralWidget());
+    Filter *filter1 = new Filter(filter1Widget);
+
+    filter1->createFilter("My Bugs");
+    filter1->createFilter("All Bugs");
+    filter1->createFilterHeader("Status", 2);
+
+    QStringList insertFilters0 = {"fixed", "not fixed", "working"};
+    filter1->createFilterList(insertFilters0);
+
+    filter1->createFilterHeader("Marker Type", 6);
+    QStringList insertFilters1 = {"Source", "Sink", "Fix locations"};
+    filter1->createFilterList(insertFilters1);
+
+    filter1->createFilterHeader("Vulnerability Type", 10);
+    QStringList insertFilters2 = {"SQL Injections", "XSS", "CSRF"};
+    filter1->createFilterList(insertFilters2);
+
+    container.createContainer(mainContainerView.centralWidget(), filter1, 150,
+                              200, 1000, 70, "This is hover for filter.",
+                              "white");
+
+    // Connections
+
+    filter1->connectTable(table1);
 
     // Code editor
     EditorWindow editor;

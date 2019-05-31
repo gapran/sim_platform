@@ -1,15 +1,16 @@
 #ifndef TABLE_H
 #define TABLE_H
 
-#include <QTableWidgetItem>
-#include <QTableWidget>
 #include <QHBoxLayout>
+#include <QListWidget>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 class Table : public QTableWidget {
     Q_OBJECT
 
 public:
-    explicit Table(QWidget *parent = 0);
+    explicit Table(QWidget *parent = nullptr);
 
     void createTable(int row, int column);
 
@@ -46,6 +47,9 @@ public:
 private:
     QTableWidget *table;
 
+public slots:
+
+    void filterTable();
 };
 
 
