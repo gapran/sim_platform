@@ -214,6 +214,32 @@ int main(int argc, char *argv[]) {
 
     filter1->connectTable(table1);
 
+    // Notification element - GPA: Issue 11
+
+    QWidget *text2Widget = new QWidget(mainContainerView.centralWidget());
+    Text *text2 = new Text(text2Widget);
+    text2->setFontFamily("Georgia");
+    text2->setTextSize(10);
+    text2->setTextBold();
+    text2->setBackgroundColor("green");
+    text2->setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+                   "sed do eiusmod tempor incididunt ut labore et dolore magna "
+                   "aliqua. Ut enim ad minim veniam, quis nostrud exercitation "
+                   "ullamco laboris nisi ut aliquip ex ea commodo consequat. ");
+
+    container.createContainer(mainContainerView.centralWidget(), text2, 400,
+                              100, 40, 180, "This is hover for this text box.",
+                              "white");
+
+    QWidget *image2Widget = new QWidget(mainContainerView.centralWidget());
+    Image *image2 = new Image(image2Widget);
+    QString filename2 = ":/resources/icon/red_triangle.jpg";
+    image2->setImage(filename2);
+    image2->noBorder();
+    container.createContainer(
+        mainContainerView.centralWidget(), image2, 50, 50, 40, 200,
+        "This is hover for Notification element.", "white");
+
     // Code editor
     EditorWindow editor;
     editor.setWindowTitle(QObject::tr("Code Editor"));

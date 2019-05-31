@@ -17,14 +17,15 @@ void Image::setImage(QString fileName)
     if (!fileName.isEmpty()){
 
         /** set content to show center in label */
-        label->setAlignment(Qt::AlignCenter);
+        label->setAlignment(Qt::AlignJustify);
         QPixmap pix;
 
-        /** to check wether load ok */
+        /** to check whether load ok */
         if(pix.load(fileName)){
             /** scale pixmap to fit in label'size and keep ratio of pixmap */
             label->setPixmap(pix);
             label->setScaledContents(true);
+            label->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
         }
     }
 }
