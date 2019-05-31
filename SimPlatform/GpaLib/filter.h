@@ -13,10 +13,12 @@ public:
     void createFilter(QString value);
     void createFilterHeader(QString text, int index);
     void createFilterList(QStringList valueList);
+    void createConnections();
 
 public slots:
 
     void getFiltersList();
+    void addCheckedHighlight(QListWidgetItem *item);
 
 private:
     QListWidget *listWidget;
