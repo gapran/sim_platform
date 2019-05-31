@@ -15,7 +15,7 @@ class Text: public QDialog
 {
     Q_OBJECT
 public:
-    explicit Text(QWidget *parent = 0);
+    explicit Text(QWidget *parent = nullptr);
 
     ~Text();
 
