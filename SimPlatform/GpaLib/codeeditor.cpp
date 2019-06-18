@@ -347,20 +347,6 @@ void EditorWindow::openFile(const QString &path)
         QStringList fileDel = fileName.split(rx);
         int size= fileDel.size();
         QString tempfile = fileDel.at(size-1);
-
-        file = tempfile.toUtf8().data();
-        qDebug()<<tempfile;
-
-        Database * db = new Database();
-        db->connect();
-        list<Error> errors = db->getFileErrors(file);
-    //    list<Error>::iterator p = errors.begin();
-    //    while(p != errors.end())
-    //    {
-    //        cout <<"Rule ID :: "<< p->rule_id<<endl ;
-    //        p++;
-    //    }
-
     }
 
 
