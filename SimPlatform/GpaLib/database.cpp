@@ -23,7 +23,7 @@ void Database::connect()
 
 }
 
-void Database::insertError(int id, string location, string message, string description, int start_line, int project_id, string program_line_of_code, string text_check_pannel ,string sarif_file_location, string way_to_fix, string element, string rule_id , int repitition)
+void Database::insertError(int id, string location, string message, string description, int start_line, int project_id, string program_line_of_code, string text_check_pannel ,string sarif_file_location, string way_to_fix, string element, int repitition)
 {
     QSqlQuery qry;
     qry.prepare("Insert into Errors("
@@ -37,7 +37,6 @@ void Database::insertError(int id, string location, string message, string descr
                 "sarif_file_location, "
                 "way_to_fix, "
                 "element, "
-                "rule_id, "
                 "repitition) "
                 "Values "
                 "(?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -52,7 +51,6 @@ void Database::insertError(int id, string location, string message, string descr
     qry.addBindValue(sarif_file_location.data());
     qry.addBindValue(way_to_fix.data());
     qry.addBindValue(element.data());
-    qry.addBindValue(rule_id.data());
     qry.addBindValue(repitition);
     //qry.exec();
 
@@ -94,8 +92,7 @@ list<Error> Database::getErrors()
             string element = query.value(rec.indexOf("element")).toString().toUtf8().data();
             int repition = query.value(rec.indexOf("repitition")).toInt();
             string program_line_of_code="";
-            string rule_id = query.value(rec.indexOf("rule_id")).toString().toUtf8().data();
-            Error error(id, location, message , description, start_line, project_id,program_line_of_code, text_check_pannel, sarif_file_location, way_to_fix, element, rule_id , repition);
+            Error error(id, location, message , description, start_line, project_id,program_line_of_code, text_check_pannel, sarif_file_location, way_to_fix, element, repition);
             errors.push_back(error);
         }
     }
@@ -129,8 +126,7 @@ list<Error> Database::getFileErrors(string file)
             string element = query.value(rec.indexOf("element")).toString().toUtf8().data();
             int repition = query.value(rec.indexOf("repitition")).toInt();
             string program_line_of_code="";
-            string rule_id = query.value(rec.indexOf("rule_id")).toString().toUtf8().data();
-            Error error(id, location, message , description, start_line, project_id,program_line_of_code, text_check_pannel, sarif_file_location, way_to_fix, element, rule_id , repition);
+            Error error(id, location, message , description, start_line, project_id,program_line_of_code, text_check_pannel, sarif_file_location, way_to_fix, element, repition);
             errors.push_back(error);
         }
     }

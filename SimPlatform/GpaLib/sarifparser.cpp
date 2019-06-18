@@ -48,7 +48,7 @@ void SarifParser::parse(Database db)
 
      std::string pro_id_string = std::to_string(project_id);
 
-     error_id = "Err_"+pro_id_string;
+
 
      cout<<"Size of results"<<results.size();
 
@@ -66,7 +66,7 @@ void SarifParser::parse(Database db)
          description = qdescription.toUtf8().constData();
          start_line = qline_number.toUtf8().constData();
          string program_line_of_code ="";
-         string rule_id = ruleId.toUtf8().constData();
+
 
          cout<<"Line Number"<<start_line<<endl;
 
@@ -78,7 +78,7 @@ void SarifParser::parse(Database db)
 
          cout<<"Value of id"<<j<<endl;
 
-         db.insertError(j,location,message,description,line_number,project_id,program_line_of_code,text_check_pannel,sarif_file_location,way_to_fix,element,rule_id,repitition);
+         db.insertError(j,location,message,description,line_number,project_id,program_line_of_code,text_check_pannel,sarif_file_location,way_to_fix,element,repitition);
 
 
 
