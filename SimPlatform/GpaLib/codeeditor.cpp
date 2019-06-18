@@ -1,4 +1,7 @@
 #include "codeeditor.h"
+#include<iostream>
+
+using namespace std;
 //code editor implementation
 CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
 {
@@ -325,19 +328,42 @@ void EditorWindow::setupFileMenu()
 void EditorWindow::openFile(const QString &path)
 {
     QString fileName = path;
+    string file;
 
     if (fileName.isNull())
     {
-        fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", "C++ Files (*.cpp *.h)");
+        fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", "C++ Files (*.cpp *.h *.java)");
         qDebug()<<fileName;
         currFile = fileName;
     }
 
-    if (!fileName.isEmpty()) {
+    if (!fileName.isEmpty())
+    {
         QFile file(fileName);
         if (file.open(QFile::ReadOnly | QFile::Text))
             editor->setPlainText(file.readAll());
+
+        QRegExp rx("[:/]|[/]");
+        QStringList fileDel = fileName.split(rx);
+        int size= fileDel.size();
+        QString tempfile = fileDel.at(size-1);
+
+        file = tempfile.toUtf8().data();
+        qDebug()<<tempfile;
+
+        Database * db = new Database();
+        db->connect();
+        list<Error> errors = db->getFileErrors(file);
+    //    list<Error>::iterator p = errors.begin();
+    //    while(p != errors.end())
+    //    {
+    //        cout <<"Rule ID :: "<< p->rule_id<<endl ;
+    //        p++;
+    //    }
+
     }
+
+
 }
 
 void EditorWindow::newFile()

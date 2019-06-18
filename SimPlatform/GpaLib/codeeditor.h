@@ -20,6 +20,8 @@
 #include <QDialog>
 #include <QTableWidget>
 #include <QStringList>
+#include<database.h>
+
 
 
 class QDialogButtonBox;
